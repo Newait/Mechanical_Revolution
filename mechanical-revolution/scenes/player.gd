@@ -5,13 +5,14 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var playerState = "Running"
 
-
 func _physics_process(delta: float) -> void:
+	var direction := Input.get_axis("move_left", "move_right")
+	var desired_velocity := velocity.move_toward()
 	match playerState:
 		"Running":
-			var direction := Input.get_axis("ui_left", "ui_right")
-			if direction:
-				velocity.x = direction * SPEED
+			if direction != 0:
+				
+				velocity.x = direction * SPEED 
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 				# Handle jump.
@@ -19,7 +20,6 @@ func _physics_process(delta: float) -> void:
 				velocity.y = JUMP_VELOCITY
 				playerState = "Falling"
 		"Falling":
-			var direction := Input.get_axis("ui_left", "ui_right")
 			if direction:
 				velocity.x = direction * SPEED * 0.5
 			else:
