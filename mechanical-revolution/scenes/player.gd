@@ -1,17 +1,17 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const MAX_SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var playerState = "Running"
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
-	var desired_velocity := velocity.move_toward()
+	var desired_velocity : Vector2
 	match playerState:
 		"Running":
 			if direction != 0:
-				
+				desired_velocity = direction * MAX_SPEED
 				velocity.x = direction * SPEED 
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
