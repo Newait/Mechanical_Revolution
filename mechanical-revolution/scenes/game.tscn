@@ -19,3 +19,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Play" type="Button" parent="UI/StartScreen/ColorRect"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 343.0
+offset_right = 847.0
+offset_bottom = 377.0
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="UI/StartScreen/ColorRect"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 398.0
+offset_right = 847.0
+offset_bottom = 434.0
+text = "Quit"
