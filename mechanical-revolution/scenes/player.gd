@@ -1,33 +1,49 @@
 extends CharacterBody2D
 
 
-const MAX_SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const MAX_SPEED := 300.0
+const ACCELERATION := 1500.0
+const DECCELERATION := 1300.0
+const AIR_ACCELERATION := 900.0
+const JUMP_VELOCITY := -400.0
 var playerState = "Running"
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	var desired_velocity : Vector2
+	desired_velocity.x = direction * MAX_SPEED
+	velocity += get_gravity() * delta
+	if Input.is_action_just_pressed("Shoot"):
+		pass
 	match playerState:
 		"Running":
-			if direction != 0:
-				desired_velocity = direction * MAX_SPEED
-				velocity.x = direction * SPEED 
-			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				# Handle jump.
-			if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-				velocity.y = JUMP_VELOCITY
-				playerState = "Falling"
-		"Falling":
 			if direction:
-				velocity.x = direction * SPEED * 0.5
+				velocity.x = move_toward(velocity.x, desired_velocity.x, ACCELERATION * delta)
 			else:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.x = move_toward(velocity.x, 0, DECCELERATION * delta)
 				# Handle jump.
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				velocity.y = JUMP_VELOCITY
+				playerState = "Jump Up"
+		"Jump Up":
+			# Add the gravity.
+			if velocity.y < 0:
+				playerState = "Falling"
+			
+			if direction:
+				velocity.x = move_toward(velocity.x, desired_velocity.x, AIR_ACCELERATION * delta)
+			else:
+				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
+
+		"Falling":
+			if is_on_floor():
+				playerState = "Running"
+			velocity += get_gravity() * delta
+			if direction:
+				velocity.x = move_toward(velocity.x, desired_velocity.x, AIR_ACCELERATION * delta)
+			else:
+				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
+
 
 
 

@@ -18,9 +18,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -35,6 +35,7 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.70588696, 0.7058867, 0.70588654, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -42,4 +43,5 @@ sprite_frames = SubResource("SpriteFrames_i3pqv")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_sh265")
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_g2els")

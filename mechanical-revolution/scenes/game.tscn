@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://cfdse231xuejh"]
+[gd_scene load_steps=3 format=3 uid="uid://cfdse231xuejh"]
+
+[ext_resource type="PackedScene" uid="uid://bthhrey1wx5os" path="res://scenes/player.tscn" id="1_uwrxv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8cj0n"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_8cj0n")
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(2, -40)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 57.0
+offset_top = -41.0
+offset_right = 97.0
+offset_bottom = -1.0
