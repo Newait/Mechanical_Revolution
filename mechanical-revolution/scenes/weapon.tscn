@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7rgtrys6bi5g"]
+
+[ext_resource type="Script" uid="uid://bomw3km7rsfkn" path="res://scenes/weapon.gd" id="1_xasec"]
+[ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_uxn4k"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_xasec")
+projectile = ExtResource("2_uxn4k")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2

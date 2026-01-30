@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bthhrey1wx5os"]
+[gd_scene load_steps=8 format=3 uid="uid://bthhrey1wx5os"]
 
 [ext_resource type="Texture2D" uid="uid://cs3aqqhbyeto8" path="res://assets/Sprite-0001-Sheet.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c1rmemdk1s4ei" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://b7rgtrys6bi5g" path="res://scenes/weapon.tscn" id="3_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
 atlas = ExtResource("1_4flbx")
@@ -22,6 +24,10 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
+Projectile = ExtResource("2_qhqgy")
+
+[node name="Weapon" parent="." instance=ExtResource("3_dqkch")]
+position = Vector2(0, -16)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8

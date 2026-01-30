@@ -6,15 +6,20 @@ const ACCELERATION := 1500.0
 const DECCELERATION := 1300.0
 const AIR_ACCELERATION := 900.0
 const JUMP_VELOCITY := -400.0
+@export var Projectile : PackedScene
 var playerState = "Running"
+@onready var weapon: Node2D = $Weapon
 
+
+func _ready() -> void:
+	pass
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	var desired_velocity : Vector2
 	desired_velocity.x = direction * MAX_SPEED
 	velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("Shoot"):
-		pass
+		weapon.fire_projectile()
 	match playerState:
 		"Running":
 			if direction:
