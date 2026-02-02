@@ -5,21 +5,29 @@ const MAX_SPEED := 300.0
 const ACCELERATION := 1500.0
 const DECCELERATION := 1300.0
 const AIR_ACCELERATION := 900.0
-const JUMP_VELOCITY := -400.0
+const JUMP_VELOCITY := -800.0
 @export var Projectile : PackedScene
 var playerState = "Running"
-@onready var weapon: Node2D = $Weapon
+@onready var weapon: Weapon = $Weapon
 
 
 func _ready() -> void:
 	pass
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
+	weapon.rotation = (get_local_mouse_position().normalized() * (-1 if weapon.flippedH else 1)).angle()
+	var shouldFlip = (
+		((not weapon.flippedH) and (get_local_mouse_position().x < 0.0))
+		or ((weapon.flippedH) and (get_local_mouse_position().x > 0.0))
+	)
+	if shouldFlip: 
+		weapon.flipH()
+		
 	var desired_velocity : Vector2
 	desired_velocity.x = direction * MAX_SPEED
 	velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("Shoot"):
-		weapon.fire_projectile()
+		weapon.fire(get_local_mouse_position().normalized())
 	match playerState:
 		"Running":
 			if direction:
