@@ -36,6 +36,8 @@ func _physics_process(delta: float) -> void:
 		"stunned":
 			enemyspeed == 0
 			#AnimationPlayer2d.play("stunned_animation")
+			#spawn_weapon()
+
 
 
 func player_position():
@@ -46,3 +48,8 @@ func _on_hitbox_area_shape_entered() -> void:
 	pass
 	#player_health -= 10
 	# tuff
+
+
+
+func _on_detection_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

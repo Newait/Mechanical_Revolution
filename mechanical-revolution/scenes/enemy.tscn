@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfaqc4wojcyu7"]
+[gd_scene load_steps=4 format=3 uid="uid://dfaqc4wojcyu7"]
+
+[ext_resource type="Script" uid="uid://conw3nlsht78k" path="res://scenes/enemy.gd" id="1_7p1mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 
@@ -6,6 +8,7 @@
 radius = 19.026299
 
 [node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_7p1mj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 color = Color(0.30876935, 0.30876938, 0.3087693, 1)
@@ -32,3 +35,5 @@ target_position = Vector2(-33, 0)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
