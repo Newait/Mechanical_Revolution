@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfdse231xuejh"]
+[gd_scene load_steps=4 format=3 uid="uid://cfdse231xuejh"]
 
 [ext_resource type="PackedScene" uid="uid://bthhrey1wx5os" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_yqjtg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8cj0n"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_yqjtg")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 
@@ -12,6 +14,7 @@
 shape = SubResource("WorldBoundaryShape2D_8cj0n")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
 position = Vector2(2, -40)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -21,3 +24,28 @@ offset_left = 57.0
 offset_top = -41.0
 offset_right = 97.0
 offset_bottom = -1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.037
+anchor_right = 0.29900002
+anchor_bottom = 0.125
+offset_left = 0.19999886
+offset_top = 0.024000168
+offset_right = 0.5519409
+step = 0.1
+value = 100.0
+show_percentage = false
