@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7rgtrys6bi5g"]
+
+[ext_resource type="Script" uid="uid://bomw3km7rsfkn" path="res://scripts/weapon.gd" id="1_xasec"]
+[ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_uxn4k"]
+
+[node name="Weapon" type="Node2D"]
+scale = Vector2(0.46, 0.46)
+script = ExtResource("1_xasec")
+projectile = ExtResource("2_uxn4k")
+
+[node name="Handle" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -8.0
+offset_right = 26.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Barrel" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -8.0
+offset_right = 50.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="CDTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
