@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfaqc4wojcyu7"]
+[gd_scene load_steps=3 format=3 uid="uid://dfaqc4wojcyu7"]
+
+[ext_resource type="Texture2D" uid="uid://dtlk48e87g1r3" path="res://icon.svg" id="1_7p1mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
+radius = 71.34424
 
 [node name="Enemy" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7p1mj")
 
 [node name="Area2D" type="Area2D" parent="."]
 

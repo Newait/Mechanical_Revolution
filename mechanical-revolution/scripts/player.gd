@@ -34,7 +34,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Shoot"):
 		weapon.fire(get_local_mouse_position().normalized())
 		take_damage(10.0)
-	print("I am run. Also here is:" + playerState)
 	match playerState:
 		"Running":
 			if direction:

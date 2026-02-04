@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfdse231xuejh"]
+[gd_scene load_steps=5 format=3 uid="uid://cfdse231xuejh"]
 
 [ext_resource type="PackedScene" uid="uid://bthhrey1wx5os" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8cj0n"]
 
@@ -49,3 +50,6 @@ offset_right = 0.5519409
 step = 0.1
 value = 100.0
 show_percentage = false
+
+[node name="Enemy" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(225, -80)
