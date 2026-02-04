@@ -1,12 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfaqc4wojcyu7"]
+[gd_scene load_steps=4 format=3 uid="uid://dfaqc4wojcyu7"]
+
+[ext_resource type="Script" uid="uid://conw3nlsht78k" path="res://scenes/enemy.gd" id="1_7p1mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7p1mj"]
+radius = 19.026299
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_7p1mj")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+color = Color(0.30876935, 0.30876938, 0.3087693, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_8tegq")
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_7p1mj")
+debug_color = Color(0.8817264, 0.32290268, 0.26064122, 0.41960785)
+
+[node name="Raycastright" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(30, 0)
+
+[node name="Raycastleft" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(-33, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
