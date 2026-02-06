@@ -6,7 +6,7 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8cj0n"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
 
 [node name="Floor" type="StaticBody2D" parent="."]
@@ -52,4 +52,4 @@ value = 100.0
 show_percentage = false
 
 [node name="Enemy" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(225, -80)
+position = Vector2(219, -129)
