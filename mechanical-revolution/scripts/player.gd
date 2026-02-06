@@ -11,6 +11,7 @@ var playerState = "Running"
 @onready var weapon: Weapon = $Weapon
 
 signal tookDamage
+var max_health := 100.0
 var health := 100.0:
 	set(val):
 		health = val
@@ -65,11 +66,18 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+func knockback(force: Vector2) -> void:
+	velocity += force
 
 func take_damage(damage: float) -> void:
 	health -= damage
 	if health <= 0:
 		death()
+		
+func heal(healing: float) -> void:
+	health += healing
+	if health < max_health:
+		health = max_health
 
 func death() -> void:
 	get_tree().reload_current_scene()

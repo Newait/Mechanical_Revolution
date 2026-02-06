@@ -8,6 +8,7 @@ radius = 16.03122
 
 [node name="PlayerProjectile" type="Area2D"]
 collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_oxij3")
 travel_speed = 800.0
 
