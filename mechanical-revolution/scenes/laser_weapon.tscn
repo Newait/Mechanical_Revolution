@@ -43,7 +43,7 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 1.3907121
+anchor_top = 1.3907118
 anchor_right = 0.5
 anchor_bottom = 1.3907118
 offset_left = -5.7249985
@@ -53,6 +53,22 @@ offset_bottom = 5.430008
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.38848957
+metadata/_edit_use_anchors_ = true
+
+[node name="Handrest" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.30434
+offset_top = -6.521738
+offset_right = 129.94432
+offset_bottom = 9.138262
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 0)
+color = Color(0.43270373, 0.8903686, 1.3628917, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Barrel" type="ColorRect" parent="."]
@@ -71,7 +87,7 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="Barrel4" type="ColorRect" parent="."]
+[node name="Muzzle" type="ColorRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -86,23 +102,7 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="Barrel3" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 91.30434
-offset_top = -6.521738
-offset_right = 129.94432
-offset_bottom = 9.138262
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(20, 0)
-color = Color(0.43270373, 0.8903686, 1.3628917, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Barrel5" type="ColorRect" parent="."]
+[node name="Sight" type="ColorRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -118,7 +118,7 @@ pivot_offset = Vector2(20, 0)
 color = Color(0.86938787, 0.5318918, 0.15926424, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Barrel2" type="ColorRect" parent="."]
+[node name="Stock" type="ColorRect" parent="."]
 unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -134,7 +134,7 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="Barrel3" type="ColorRect" parent="Barrel2"]
+[node name="Stock2" type="ColorRect" parent="Stock"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -152,7 +152,7 @@ rotation = 1.5707964
 pivot_offset = Vector2(20, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="Barrel4" type="ColorRect" parent="Barrel2"]
+[node name="Stock3" type="ColorRect" parent="Stock"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
