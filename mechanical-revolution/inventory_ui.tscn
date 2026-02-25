@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctjel1kqkrfmt"]
+
+[ext_resource type="Texture2D" uid="uid://bg6ycn3xuwbv7" path="res://assets/Screenshot 2026-02-25 at 10.59.23 AM.png" id="1_5v8q7"]
+
+[node name="InventoryUI" type="Sprite2D"]
+position = Vector2(739, 732)
+texture = ExtResource("1_5v8q7")
+
+[node name="Inventory" type="Label" parent="."]
+offset_left = -650.0
+offset_top = -683.0
+offset_right = 131.0
+offset_bottom = -567.0
+theme_override_font_sizes/font_size = 69
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Equipment" type="Label" parent="."]
+offset_left = 239.0
+offset_top = -680.0
+offset_right = 645.0
+offset_bottom = -569.0
+theme_override_font_sizes/font_size = 69
+text = "Player"
+horizontal_alignment = 1
+vertical_alignment = 1
