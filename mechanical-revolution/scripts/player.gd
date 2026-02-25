@@ -8,7 +8,11 @@ const AIR_ACCELERATION := 900.0
 const JUMP_VELOCITY := -800.0
 @export var Projectile : PackedScene
 var playerState = "Running"
-@onready var weapon: Weapon = $Weapon
+#@onready var weapon: Weapon = $Weapon
+var weapon: Weapon
+@onready var inventory: Node2D = $Inventory
+@export var toolbar : Array[Node]
+var current_weapon := 0
 
 signal tookDamage
 var max_health := 100.0
@@ -18,7 +22,14 @@ var health := 100.0:
 		tookDamage.emit(val)
 
 func _ready() -> void:
-	pass
+	for wep:Weapon in toolbar:
+		wep.visible = false
+	toolbar = inventory.get_children()
+	if toolbar[0]:
+		weapon = toolbar[0]
+		weapon.visible = true
+	
+		
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	weapon.rotation = (get_local_mouse_position().normalized() * (-1 if weapon.flippedH else 1)).angle()
@@ -78,6 +89,10 @@ func heal(healing: float) -> void:
 	health += healing
 	if health < max_health:
 		health = max_health
+
+func change_weapon(index: int) -> void:
+	current_weapon = index
+	weapon = toolbar[current_weapon]
 
 func death() -> void:
 	get_tree().reload_current_scene()

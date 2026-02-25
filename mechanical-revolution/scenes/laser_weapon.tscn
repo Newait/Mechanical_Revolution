@@ -1,0 +1,176 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq3pkksnq5ke0"]
+
+[ext_resource type="Script" uid="uid://bomw3km7rsfkn" path="res://scripts/weapon.gd" id="1_dhtfa"]
+[ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_b7gsj"]
+
+[node name="LaserWeapon" type="Node2D"]
+scale = Vector2(0.46, 0.46)
+script = ExtResource("1_dhtfa")
+projectile = ExtResource("2_b7gsj")
+
+[node name="Handle" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 32.608696
+offset_right = 43.958694
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.5752221
+metadata/_edit_use_anchors_ = true
+
+[node name="Magazine" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 60.869553
+offset_top = -6.521739
+offset_right = 72.31955
+offset_bottom = 19.65826
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Magazine2" type="ColorRect" parent="Magazine"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.3907118
+anchor_right = 0.5
+anchor_bottom = 1.3907118
+offset_left = -5.7249985
+offset_top = -15.0
+offset_right = 4.5350018
+offset_bottom = 5.430008
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.38848957
+metadata/_edit_use_anchors_ = true
+
+[node name="Handrest" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 91.30434
+offset_top = -6.521738
+offset_right = 129.94432
+offset_bottom = 9.138262
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 0)
+color = Color(0.43270373, 0.8903686, 1.3628917, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Barrel" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 18.695652
+offset_top = -8.0
+offset_right = 142.52567
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="Muzzle" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 140.43481
+offset_top = -1.4782615
+offset_right = 176.0048
+offset_bottom = 4.4117384
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="Sight" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 41.30432
+offset_top = -10.869564
+offset_right = 79.94432
+offset_bottom = -0.6295643
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 0)
+color = Color(0.86938787, 0.5318918, 0.15926424, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Stock" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.304344
+offset_top = -3.652176
+offset_right = 20.285656
+offset_bottom = 0.55782413
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="Stock2" type="ColorRect" parent="Stock"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.012405
+offset_top = 17.460209
+offset_right = -17.602407
+offset_bottom = 21.67021
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+pivot_offset = Vector2(20, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="Stock3" type="ColorRect" parent="Stock"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.795
+offset_top = 13.112379
+offset_right = 25.565
+offset_bottom = 17.32238
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.2430005
+pivot_offset = Vector2(20, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="CDTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
