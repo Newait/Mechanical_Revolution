@@ -1,22 +1,19 @@
 extends RayCast2D
 
-#@onready var laser: RayCast2D = $Laser
-
-func _get_enemy_node() -> void:
-	var enemy := get_tree().root.get_node("Game/Enemy")
+var damage := 5.0
+var direction := Vector2.ZERO
 
 
-func _get_player_node() -> void:
-	var player := get_tree().root.get_node("Game/Player")
-
-func _take_damage(damage) -> void:
+func _ready() -> void:
 	pass
-
-func ready_() -> void:
-	_get_player_node()
-	_get_enemy_node()
-	if is_colliding():
-		pass
-		
-		
 			
+
+func _physics_process(delta: float) -> void:
+	position += direction * delta
+	
+	if is_colliding():
+		if (get_collider() is Enemy):
+			(get_collider() as Enemy).take_damage(damage)
+
+func upd_direction(lookvector:Vector2) -> void:
+	direction = lookvector

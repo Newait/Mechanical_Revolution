@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjb5k7eu0d6is"]
+[gd_scene load_steps=3 format=3 uid="uid://bjb5k7eu0d6is"]
 
 [ext_resource type="Script" uid="uid://bjo6qkykomm8m" path="res://scripts/laser.gd" id="1_xmihv"]
+[ext_resource type="Texture2D" uid="uid://dtlk48e87g1r3" path="res://icon.svg" id="2_a7dhc"]
 
 [node name="Laser" type="RayCast2D"]
 script = ExtResource("1_xmihv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.1920929e-07, 23.000002)
+scale = Vector2(0.037109382, 0.3671875)
+texture = ExtResource("2_a7dhc")
