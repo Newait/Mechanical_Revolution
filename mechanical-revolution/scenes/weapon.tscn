@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7rgtrys6bi5g"]
+[gd_scene load_steps=2 format=3 uid="uid://b7rgtrys6bi5g"]
 
 [ext_resource type="Script" uid="uid://bomw3km7rsfkn" path="res://scripts/weapontest.gd" id="1_xasec"]
-[ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_uxn4k"]
 
 [node name="Weapon" type="Node2D"]
 scale = Vector2(0.46, 0.46)
 script = ExtResource("1_xasec")
-projectile = ExtResource("2_uxn4k")
-flippedH = null
 
 [node name="Handle" type="ColorRect" parent="."]
 unique_name_in_owner = true

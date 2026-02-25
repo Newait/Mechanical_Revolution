@@ -1,8 +1,6 @@
 class_name LaserWeapon extends Weapon
-@export var laser := PackedScene
+@export var laser : PackedScene
 
-func _ready() -> void:
-	pass
 
-func flipH() -> void:
-	print("break stuff no work")
+func fire(lookVector:Vector2) -> void:
+	add_child(laser.instantiate())
