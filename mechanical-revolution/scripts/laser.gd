@@ -1,4 +1,4 @@
-extends RayCast2D
+class_name Laser extends RayCast2D
 
 var damage := 5.0
 var direction := Vector2.ZERO

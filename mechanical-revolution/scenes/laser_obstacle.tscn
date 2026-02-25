@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://bj1eumhcbvy7f"]
+[gd_scene load_steps=2 format=3 uid="uid://bj1eumhcbvy7f"]
+
+[ext_resource type="Script" uid="uid://bltkha8cy3nvg" path="res://scripts/laser_obstacle.gd" id="1_015ie"]
 
 [node name="laser_obstacle" type="RayCast2D"]
+script = ExtResource("1_015ie")
