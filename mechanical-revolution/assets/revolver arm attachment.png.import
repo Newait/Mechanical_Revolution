@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd7bmyol20nbk"
-path="res://.godot/imported/standin.png-34270d8d423d49df96de95ca3935d521.ctex"
+uid="uid://ei6548pki7fb"
+path="res://.godot/imported/revolver arm attachment.png-bd33140d6f4ea1d3c922937ab218f1da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/standin.png"
-dest_files=["res://.godot/imported/standin.png-34270d8d423d49df96de95ca3935d521.ctex"]
+source_file="res://Assets/revolver arm attachment.png"
+dest_files=["res://.godot/imported/revolver arm attachment.png-bd33140d6f4ea1d3c922937ab218f1da.ctex"]
 
 [params]
 
