@@ -3,4 +3,13 @@ class_name LaserWeapon extends Weapon
 
 
 func fire(lookVector:Vector2) -> void:
-	add_child(laser.instantiate())
+	#if _can_fire:
+		#_can_fire = false
+		#timer.start()
+		#timer.timeout.connect(func () -> void:
+			#_can_fire = true
+		#)
+	#else:
+		#return
+	var newLaser : Laser= laser.instantiate()
+	
