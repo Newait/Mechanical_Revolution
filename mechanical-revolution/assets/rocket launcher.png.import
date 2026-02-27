@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2c52plw3om5r"
-path="res://.godot/imported/rocket launcher.png-aab4b01490c2049827395f6979de88ab.ctex"
+path="res://.godot/imported/rocket launcher.png-3320095af6b6d5b32b328a70d3d55529.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/rocket launcher.png"
-dest_files=["res://.godot/imported/rocket launcher.png-aab4b01490c2049827395f6979de88ab.ctex"]
+source_file="res://assets/rocket launcher.png"
+dest_files=["res://.godot/imported/rocket launcher.png-3320095af6b6d5b32b328a70d3d55529.ctex"]
 
 [params]
 
