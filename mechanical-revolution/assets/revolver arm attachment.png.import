@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ei6548pki7fb"
-path="res://.godot/imported/revolver arm attachment.png-3d3d2339d990d23efeb697afc3c75c95.ctex"
+uid="uid://c1aeyk15jhgjd"
+path="res://.godot/imported/revolver arm attachment.png-bd33140d6f4ea1d3c922937ab218f1da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/revolver arm attachment.png"
-dest_files=["res://.godot/imported/revolver arm attachment.png-3d3d2339d990d23efeb697afc3c75c95.ctex"]
+source_file="res://Assets/revolver arm attachment.png"
+dest_files=["res://.godot/imported/revolver arm attachment.png-bd33140d6f4ea1d3c922937ab218f1da.ctex"]
 
 [params]
 
