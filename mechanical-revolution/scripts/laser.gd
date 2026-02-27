@@ -3,6 +3,9 @@ class_name Laser extends RayCast2D
 var damage := 5.0
 var direction := Vector2.ZERO
 
+func _init(look: Vector2, dps: float) -> void:
+	direction = look
+	damage = dps
 
 func _ready() -> void:
 	pass

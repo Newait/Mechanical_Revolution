@@ -12,6 +12,7 @@ var playerState = "Running"
 var weapon: Weapon
 @onready var inventory: Node2D = $Inventory
 @export var toolbar : Array[Node]
+@export var weaponkeybinds : Dictionary
 var current_weapon := 0
 
 signal tookDamage
@@ -32,17 +33,19 @@ func _ready() -> void:
 		
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
-	weapon.rotation = (get_local_mouse_position().normalized() * (-1 if weapon.flippedH else 1)).angle()
-	var shouldFlip = (
-		((not weapon.flippedH) and (get_local_mouse_position().x < 0.0))
-		or ((weapon.flippedH) and (get_local_mouse_position().x > 0.0))
-	)
-	if shouldFlip: 
-		weapon.flipH()
-		
+	#weapon.rotation = (get_local_mouse_position().normalized() * (-1 if weapon.flippedH else 1)).angle()
+	#var shouldFlip = (
+		#((not weapon.flippedH) and (get_local_mouse_position().x < 0.0))
+		#or ((weapon.flippedH) and (get_local_mouse_position().x > 0.0))
+	#)
+	#if shouldFlip: 
+		#weapon.flipH()
+		#
 	var desired_velocity : Vector2
 	desired_velocity.x = direction * MAX_SPEED
 	velocity += get_gravity() * delta
+	if Input.is_key_pressed(KEY_1):
+		change_weapon(0)
 	if Input.is_action_just_pressed("Shoot"):
 		weapon.fire(get_local_mouse_position().normalized())
 		take_damage(10.0)

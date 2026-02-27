@@ -21,7 +21,7 @@ func fire(lookVector:Vector2) -> void:
 		)
 	else:
 		return
-	var newProjectile : PlayerProjectileGB= projectile.instantiate()
+	var newProjectile : PlayerProjectileGB= attack.instantiate()
 	newProjectile.direction = lookVector
 	get_tree().current_scene.add_child(newProjectile)
 	if (get_parent() is Node2D ):

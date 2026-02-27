@@ -1,12 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq3pkksnq5ke0"]
+[gd_scene load_steps=2 format=3 uid="uid://cq3pkksnq5ke0"]
 
 [ext_resource type="Script" uid="uid://frpsp54ofiy" path="res://scripts/laser_weapon.gd" id="1_nblfd"]
-[ext_resource type="PackedScene" path="res://scenes/laser.tscn" id="2_dhtfa"]
 
 [node name="LaserWeapon" type="Node2D"]
 scale = Vector2(0.46, 0.46)
 script = ExtResource("1_nblfd")
-laser = ExtResource("2_dhtfa")
 
 [node name="Handle" type="ColorRect" parent="."]
 unique_name_in_owner = true
