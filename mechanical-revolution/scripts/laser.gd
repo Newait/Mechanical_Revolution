@@ -8,6 +8,7 @@ func _init(look: Vector2, dps: float) -> void:
 	damage = dps
 
 func _ready() -> void:
+	
 	pass
 			
 

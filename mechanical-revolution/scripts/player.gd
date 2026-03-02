@@ -29,7 +29,7 @@ func _ready() -> void:
 	if toolbar[0]:
 		weapon = toolbar[0]
 		weapon.visible = true
-	
+
 		
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
@@ -46,6 +46,12 @@ func _physics_process(delta: float) -> void:
 	velocity += get_gravity() * delta
 	if Input.is_key_pressed(KEY_1):
 		change_weapon(0)
+	elif Input.is_key_pressed(KEY_2):
+		change_weapon(1)
+	elif Input.is_key_pressed(KEY_3):
+		change_weapon(2)
+	elif Input.is_key_pressed(KEY_4):
+		change_weapon(3)
 	if Input.is_action_just_pressed("Shoot"):
 		weapon.fire(get_local_mouse_position().normalized())
 		take_damage(10.0)
