@@ -12,7 +12,7 @@ var playerState = "Running"
 var weapon: Weapon
 @onready var inventory: Node2D = $Inventory
 @export var toolbar : Array[Node]
-@export var weaponkeybinds : Dictionary
+#@export var weaponkeybinds : Dictionary
 var current_weapon := 0
 
 signal tookDamage
