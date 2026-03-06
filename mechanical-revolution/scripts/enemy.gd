@@ -7,6 +7,8 @@ var enemystate := "idle"
 var acceleration := 100.0
 var contact_damage := 10.0
 var kb_force := 1000.0
+@export var dropped_resource : Droppable
+@export var droppable_scene : PackedScene
 @onready var detect_box: Area2D = %DetectBox
 @onready var hitbox: Area2D = %Hitbox
 
@@ -95,4 +97,7 @@ func _on_detection_body_exited(body: Node2D) -> void:
 			#_on_death()
 func _on_death() -> void:
 	_get_player_node().heal(enemyworth)
+	var dropped_item = droppable_scene.instantiate()
+	dropped_item.Init(dropped_resource)
+	get_tree().root.add_child(dropped_item)
 	queue_free()
