@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0f4culh8dpg"
-path="res://.godot/imported/robot 1.png-e5d64ef2639ddd38e1f49161622fcbef.ctex"
+uid="uid://d33px6xtkvpn3"
+path="res://.godot/imported/rocket launcher.png-aab4b01490c2049827395f6979de88ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/robot 1.png"
-dest_files=["res://.godot/imported/robot 1.png-e5d64ef2639ddd38e1f49161622fcbef.ctex"]
+source_file="res://Assets/rocket launcher.png"
+dest_files=["res://.godot/imported/rocket launcher.png-aab4b01490c2049827395f6979de88ab.ctex"]
 
 [params]
 
