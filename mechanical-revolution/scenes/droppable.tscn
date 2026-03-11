@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://dtlk48e87g1r3" path="res://icon.svg" id="2_cn0pc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02gnq"]
-size = Vector2(40, 32)
+size = Vector2(56, 52)
 
 [node name="Droppable" type="Area2D"]
 collision_mask = 8
 script = ExtResource("1_63xtw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_02gnq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
