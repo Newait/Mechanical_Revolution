@@ -93,7 +93,7 @@ func take_damage(damage: float) -> void:
 	health -= damage
 	if health <= 0:
 		death()
-		
+
 func heal(healing: float) -> void:
 	health += healing
 	if health < max_health:
