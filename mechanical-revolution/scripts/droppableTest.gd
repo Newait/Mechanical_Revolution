@@ -22,7 +22,6 @@ func on_body_entered(body:Node2D) -> void:
 	interact_text.visible = true
 
 func on_body_exited(body: Node2D) -> void:
-	
 	within_range = false
 	interact_text.visible = false
 
