@@ -11,7 +11,7 @@ var playerState = "Running"
 #@onready var weapon: Weapon = $Weapon
 var weapon: Weapon
 @onready var inventory: Node2D = $Inventory
-@export var toolbar : Array[Node]
+@export var toolbar : Array[WeaponItem]
 #@export var weaponkeybinds : Dictionary
 var current_weapon := 0
 
@@ -23,9 +23,6 @@ var health := 100.0:
 		tookDamage.emit(val)
 
 func _ready() -> void:
-	for wep:Weapon in toolbar:
-		wep.visible = false
-	toolbar = inventory.get_children()
 	if toolbar[0]:
 		weapon = toolbar[0]
 		weapon.visible = true

@@ -10,7 +10,6 @@ func _init(look: Vector2, dps: float) -> void:
 func _ready() -> void:
 	
 	pass
-			
 
 func _physics_process(delta: float) -> void:
 	position += direction * delta
