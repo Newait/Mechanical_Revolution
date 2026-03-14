@@ -9,9 +9,15 @@ const JUMP_VELOCITY := -800.0
 @export var Projectile : PackedScene
 var playerState = "Running"
 #@onready var weapon: Weapon = $Weapon
-var weapon: Weapon
+var weapon: Weapon:
+	set(val):
+		if (weapon):
+			weapon.queue_free()
+		weapon = val
+		add_child(weapon)
 @onready var inventory: Node2D = $Inventory
 @export var toolbar : Array[WeaponItem]
+@export var weaponScns: Dictionary[String, PackedScene]
 #@export var weaponkeybinds : Dictionary
 var current_weapon := 0
 
@@ -23,9 +29,11 @@ var health := 100.0:
 		tookDamage.emit(val)
 
 func _ready() -> void:
-	if toolbar[0]:
-		weapon = toolbar[0]
+	if len(toolbar) > 0 and toolbar[0]:
+		weapon = weaponScns[toolbar[0].WeaponName].instantiate()
 		weapon.visible = true
+		
+		
 
 		
 func _physics_process(delta: float) -> void:
@@ -97,8 +105,8 @@ func heal(healing: float) -> void:
 		health = max_health
 
 func change_weapon(index: int) -> void:
-	current_weapon = index
-	weapon = toolbar[current_weapon]
+	if (len(toolbar) > index and toolbar[index]):
+		weapon = weaponScns[toolbar[index].WeaponName].instantiate()
 
 func death() -> void:
 	get_tree().reload_current_scene()
