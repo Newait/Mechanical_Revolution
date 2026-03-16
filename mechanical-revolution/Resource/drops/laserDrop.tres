@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Droppable" load_steps=2 format=3 uid="uid://caah1rsiuv84l"]
 
-[ext_resource type="Script" uid="uid://c1n3yixg27n4l" path="res://scripts/droppable.gd" id="1_1e4lu"]
+[ext_resource type="Script" uid="uid://c1n3yixg27n4l" path="res://scripts/resourceScripts/droppable.gd" id="1_1e4lu"]
 
 [resource]
 script = ExtResource("1_1e4lu")
