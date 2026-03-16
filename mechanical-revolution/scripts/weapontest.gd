@@ -1,17 +1,6 @@
 extends Weapon
-@export var flippedH:= false
 ## This timer's wait_time serves as the cooldown for the weapon
 
-@onready var _handle: ColorRect = %Handle
-@onready var _barrel: ColorRect = %Barrel
-
-
-func flipH() -> void:
-	flippedH = not flippedH
-	_handle.position.x *= -1
-	_handle.position.x -= _handle.size.x
-	_barrel.position.x *= -1
-	_barrel.position.x -= _barrel.size.x
 func fire(lookVector:Vector2) -> void:
 	if _can_fire:
 		_can_fire = false
