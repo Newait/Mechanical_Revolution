@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	target_position = direction * range
+	print(laser_sprite)
 	laser_sprite.position = (target_position/2 + position)
 	laser_sprite.scale.x = target_position.length()
 	if is_colliding():
