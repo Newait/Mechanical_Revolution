@@ -21,6 +21,7 @@ var weapon: Weapon:
 var droppable_scene : PackedScene = preload("uid://bsyfxb11phyub")
 #@export var weaponkeybinds : Dictionary
 var current_weapon := 0
+var is_interactable
 
 signal tookDamage
 var max_health := 100.0
@@ -38,7 +39,8 @@ func _ready() -> void:
 		
 		
 func _on_area_entered(area: Node2D) -> void:
-	if area is Interactable:
+	
+	if area is Interactable and Input.is_action_pressed("interact"):
 		if area is WeaponPickup:
 			var dropped := (area as WeaponPickup).Interact()
 			if toolbar.size() < 4:

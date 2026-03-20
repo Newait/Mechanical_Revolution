@@ -28,4 +28,6 @@ func on_body_exited(_body: Node2D) -> void:
 
 func Interact() -> Droppable:
 	queue_free()
+	print("thing")
+	#call_deferred("queue_free")
 	return attachedDroppable
