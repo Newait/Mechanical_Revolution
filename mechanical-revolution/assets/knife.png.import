@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfbwfmuw2u8d0"
-path="res://.godot/imported/knife.png-7cbdcaf88ed5ebb8c8fd26dd39be5fcb.ctex"
+path="res://.godot/imported/knife.png-fe86871d33c75ce9d4eb4f1452dfa3c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/knife.png"
-dest_files=["res://.godot/imported/knife.png-7cbdcaf88ed5ebb8c8fd26dd39be5fcb.ctex"]
+source_file="res://assets/knife.png"
+dest_files=["res://.godot/imported/knife.png-fe86871d33c75ce9d4eb4f1452dfa3c9.ctex"]
 
 [params]
 

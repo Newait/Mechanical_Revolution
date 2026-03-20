@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd7bmyol20nbk"
-path="res://.godot/imported/standin.png-0a74187720a60755d9a66c598974066f.ctex"
+uid="uid://b1gg517uetc8v"
+path="res://.godot/imported/playerprototypecolor.png-773fa9c39caad7b855b35d3abef33404.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/standin.png"
-dest_files=["res://.godot/imported/standin.png-0a74187720a60755d9a66c598974066f.ctex"]
+source_file="res://assets/playerprototypecolor.png"
+dest_files=["res://.godot/imported/playerprototypecolor.png-773fa9c39caad7b855b35d3abef33404.ctex"]
 
 [params]
 
