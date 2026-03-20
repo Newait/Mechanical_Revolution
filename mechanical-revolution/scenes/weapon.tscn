@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpbdmclaej763"]
+[gd_scene load_steps=3 format=3 uid="uid://m6qg76rmhb4x"]
 
-[ext_resource type="Script" path="res://scripts/weapontest.gd" id="1_xasec"]
-[ext_resource type="PackedScene" path="res://scenes/player_projectile.tscn" id="2_uxn4k"]
+[ext_resource type="Script" uid="uid://bomw3km7rsfkn" path="res://scripts/weapontest.gd" id="1_xasec"]
+[ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_uxn4k"]
 
 [node name="Weapon" type="Node2D"]
 scale = Vector2(0.46, 0.46)

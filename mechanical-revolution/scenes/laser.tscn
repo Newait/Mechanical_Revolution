@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://diawr2p2m0vf5"]
+[gd_scene load_steps=3 format=3 uid="uid://bjb5k7eu0d6is"]
 
-[ext_resource type="Script" path="res://scripts/laser.gd" id="1_xmihv"]
-[ext_resource type="Texture2D" uid="uid://dtlk48e87g1r3" path="res://icon.svg" id="2_a7dhc"]
+[ext_resource type="Script" uid="uid://bjo6qkykomm8m" path="res://scripts/laser.gd" id="1_xmihv"]
+[ext_resource type="Texture2D" uid="uid://chnl4rde86nnw" path="res://assets/Laser.png" id="2_a7dhc"]
 
-[node name="Laser" type="RayCast2D"]
+[node name="Laser" type="RayCast2D" node_paths=PackedStringArray("laser_sprite")]
+collision_mask = 20
 script = ExtResource("1_xmihv")
+laser_sprite = NodePath("LaserSprite")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.1920929e-07, 23.000002)
-scale = Vector2(0.037109382, 0.3671875)
+[node name="LaserSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 1)
+rotation = 1.5707964
+scale = Vector2(1, 4)
 texture = ExtResource("2_a7dhc")
