@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://chtyx1ihco2la"]
+[gd_scene load_steps=4 format=3 uid="uid://cr1f4ofbtxkpy"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_cx775"]
+[ext_resource type="Script" uid="uid://bwdgymjdvapon" path="res://scripts/enemy.gd" id="1_cx775"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 

@@ -1,12 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfaqc4wojcyu7"]
+[gd_scene load_steps=8 format=3 uid="uid://dfaqc4wojcyu7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
+[ext_resource type="Script" uid="uid://bwdgymjdvapon" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="Resource" uid="uid://caah1rsiuv84l" path="res://Resource/drops/laserDrop.tres" id="2_4ra3w"]
+[ext_resource type="PackedScene" uid="uid://bsyfxb11phyub" path="res://scenes/droppable.tscn" id="3_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://4be81rkagii0" path="res://Assets/robot 2.png" id="4_5uy6h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
+radius = 26.0
+height = 86.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7p1mj"]
+radius = 318.69263
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+radius = 75.16648
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_md0e3")
+dropped_resource = ExtResource("2_4ra3w")
+droppable_scene = ExtResource("3_5uy6h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.5000005, -3.499999)
+scale = Vector2(1.5666666, 2.3181818)
+texture = ExtResource("4_5uy6h")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_md0e3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_8tegq")
+[node name="DetectBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectBox"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_7p1mj")
+debug_color = Color(0.38449287, 0.5973385, 0.39735264, 0.41960785)
+
+[node name="AttackCycle" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_md0e3")
+debug_color = Color(0.83126897, 0.3657452, 0.3869816, 0.41960785)
