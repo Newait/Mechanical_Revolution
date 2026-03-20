@@ -12,6 +12,7 @@
 script = ExtResource("1_yqjtg")
 
 [node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("WorldBoundaryShape2D_8cj0n")

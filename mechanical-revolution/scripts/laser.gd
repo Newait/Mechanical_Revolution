@@ -20,8 +20,9 @@ func _physics_process(delta: float) -> void:
 		if (get_collider() is Enemy):
 			(get_collider() as Enemy).take_damage(damage)
 		point_direction = get_collision_point() - global_position
-	laser_sprite.position = (target_position/2 + position)
-	laser_sprite.scale.x = target_position.length()/25.0
+		print(point_direction)
+	laser_sprite.position = (point_direction/2 + position)
+	laser_sprite.scale.x = point_direction.length()/25.0
 	laser_sprite.rotation = get_local_mouse_position().angle()
 
 func upd_direction(lookvector:Vector2) -> void:

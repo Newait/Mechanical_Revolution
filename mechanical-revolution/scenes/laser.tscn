@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://chnl4rde86nnw" path="res://assets/Laser.png" id="2_a7dhc"]
 
 [node name="Laser" type="RayCast2D" node_paths=PackedStringArray("laser_sprite")]
+collision_mask = 20
 script = ExtResource("1_xmihv")
 laser_sprite = NodePath("LaserSprite")
 
