@@ -4,25 +4,25 @@ var damage := 5.0
 var direction := Vector2.ZERO
 var range := 1000.0
 
-@onready var laser_sprite: Sprite2D = $LaserSprite
-
-func _init(look: Vector2, dps: float) -> void:
+#@onready var laser_sprite: Sprite2D = %LaserSprite
+@export var laser_sprite: Sprite2D
+func Init(look: Vector2, dps: float) -> void:
 	direction = look
 	damage = dps
 
 func _ready() -> void:
-	
 	pass
 
 func _physics_process(delta: float) -> void:
 	target_position = direction * range
-	print(laser_sprite)
-	laser_sprite.position = (target_position/2 + position)
-	laser_sprite.scale.x = target_position.length()
+	var point_direction := target_position
 	if is_colliding():
-		
 		if (get_collider() is Enemy):
 			(get_collider() as Enemy).take_damage(damage)
+		point_direction = get_collision_point() - global_position
+	laser_sprite.position = (target_position/2 + position)
+	laser_sprite.scale.x = target_position.length()/25.0
+	laser_sprite.rotation = get_local_mouse_position().angle()
 
 func upd_direction(lookvector:Vector2) -> void:
 	direction = lookvector

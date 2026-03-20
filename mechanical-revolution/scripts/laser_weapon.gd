@@ -1,7 +1,7 @@
 class_name LaserWeapon extends Weapon
 @onready var cd_timer: Timer = %CDTimer
 
-@export var laser := Laser
+@export var laser : PackedScene = preload("uid://bjb5k7eu0d6is")
 var laserInstance : Laser
 var damage := 5.0
 var is_firing := false
@@ -27,7 +27,8 @@ func stop_fire() -> void:
 	cd_timer.start()
 func fire(lookVector:Vector2) -> void:
 	if _can_fire:
-		laserInstance = laser.new(lookVector, damage)
+		laserInstance = laser.instantiate()
+		laserInstance.Init(lookVector, damage)
 		add_child(laserInstance)
 		is_firing = true
 	#if _can_fire:

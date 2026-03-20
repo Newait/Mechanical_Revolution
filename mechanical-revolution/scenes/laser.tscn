@@ -3,10 +3,13 @@
 [ext_resource type="Script" uid="uid://bjo6qkykomm8m" path="res://scripts/laser.gd" id="1_xmihv"]
 [ext_resource type="Texture2D" uid="uid://chnl4rde86nnw" path="res://assets/Laser.png" id="2_a7dhc"]
 
-[node name="Laser" type="RayCast2D"]
+[node name="Laser" type="RayCast2D" node_paths=PackedStringArray("laser_sprite")]
 script = ExtResource("1_xmihv")
+laser_sprite = NodePath("LaserSprite")
 
 [node name="LaserSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 1)
 rotation = 1.5707964
-scale = Vector2(1, 32)
+scale = Vector2(1, 4)
 texture = ExtResource("2_a7dhc")
