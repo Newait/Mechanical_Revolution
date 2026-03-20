@@ -1,4 +1,4 @@
-extends Area2D
+class_name WeaponPickup extends Interactable
 
 var attachedDroppable := Droppable.new()
 var within_range := false
@@ -13,8 +13,9 @@ func Init(dropResource:Droppable):
 	pass
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact") and within_range:
-		pick_up()
+	pass
+	#if Input.is_action_just_pressed("interact") and within_range:
+		#pick_up()
 	
 
 func on_body_entered(body:Node2D) -> void:
@@ -25,6 +26,6 @@ func on_body_exited(body: Node2D) -> void:
 	within_range = false
 	interact_text.visible = false
 
-func pick_up() -> void:
+func Interact() -> Droppable:
 	queue_free()
-	pass
+	return attachedDroppable
