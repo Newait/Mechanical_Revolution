@@ -17,6 +17,7 @@ var weapon: Weapon:
 		add_child(weapon)
 @onready var inventory: Node2D = $Inventory
 @export var toolbar : Array[WeaponItem]
+@export var myarr : Array[WeaponItem]
 @export var weaponScns: Dictionary[String, PackedScene]
 var droppable_scene : PackedScene = preload("uid://bsyfxb11phyub")
 #@export var weaponkeybinds : Dictionary
@@ -30,7 +31,9 @@ var health := 100.0:
 		tookDamage.emit(val)
 
 func _ready() -> void:
-	if len(toolbar) > 0 and toolbar[0]:
+	print(toolbar.size())
+	if toolbar.size() > 0 and toolbar[0]:
+		
 		weapon = weaponScns[toolbar[0].WeaponName].instantiate()
 		weapon.visible = true
 		
@@ -39,11 +42,11 @@ func _on_area_entered(area: Node2D) -> void:
 	if area is Interactable:
 		if area is WeaponPickup:
 			var dropped := (area as WeaponPickup).Interact()
-			if len(toolbar) < 4:
-				toolbar.append(WeaponItem.new(dropped))
+			if toolbar.size() < 4:
+				toolbar.append(WeaponItem.new().Init(dropped))
 			else:
 				drop_weapon(current_weapon, toolbar[current_weapon])
-				toolbar[current_weapon] = WeaponItem.new(dropped)
+				toolbar[current_weapon] = WeaponItem.new().Init(dropped)
 		
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
@@ -113,13 +116,14 @@ func heal(healing: float) -> void:
 		health = max_health
 
 func change_weapon(index: int) -> void:
-	if (len(toolbar) > index and toolbar[index]):
+	if (toolbar.size() > index and toolbar[index]):
 		weapon = weaponScns[toolbar[index].WeaponName].instantiate()
 
 func drop_weapon(index: int, weapon_item:WeaponItem) -> void:
 	var dropped_item = droppable_scene.instantiate()
 	dropped_item.Init(Droppable.new().Init(weapon_item))
 	get_tree().root.add_child(dropped_item)
+	print("happened")
 	toolbar[index] = null
 
 func death() -> void:

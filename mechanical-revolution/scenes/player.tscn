@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://crq51rftqb4nm"]
+[gd_scene load_steps=15 format=3 uid="uid://crq51rftqb4nm"]
 
 [ext_resource type="Texture2D" uid="uid://ccqg3qxm67kdo" path="res://assets/Sprite-0001-Sheet.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c1rmemdk1s4ei" path="res://scripts/player.gd" id="1_g2els"]
@@ -10,11 +10,7 @@
 [ext_resource type="Resource" uid="uid://dp5fei1qouh4u" path="res://Resource/toolbarItems/laserItem.tres" id="5_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://bssnelxmi2jvt" path="res://scenes/weaponscenes/unarmed.tscn" id="8_ur7pv"]
 
-[sub_resource type="Resource" id="Resource_y4r1p"]
-script = ExtResource("3_smehm")
-metadata/_custom_type_script = "uid://2mqmm8s3lmee"
-
-[sub_resource type="Resource" id="Resource_d2wvv"]
+[sub_resource type="Resource" id="Resource_ur7pv"]
 script = ExtResource("3_smehm")
 metadata/_custom_type_script = "uid://2mqmm8s3lmee"
 
@@ -42,7 +38,8 @@ radius = 29.427877
 collision_layer = 25
 script = ExtResource("1_g2els")
 Projectile = ExtResource("2_qhqgy")
-toolbar = Array[ExtResource("3_smehm")]([ExtResource("4_ur7pv"), ExtResource("5_y4r1p"), SubResource("Resource_y4r1p"), SubResource("Resource_d2wvv")])
+toolbar = Array[ExtResource("3_smehm")]([ExtResource("5_y4r1p"), ExtResource("4_ur7pv")])
+myarr = Array[ExtResource("3_smehm")]([SubResource("Resource_ur7pv")])
 weaponScns = Dictionary[String, PackedScene]({
 "laser": ExtResource("3_dqkch"),
 "pistol": ExtResource("4_qlg0r"),
