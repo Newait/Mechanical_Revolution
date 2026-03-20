@@ -15,7 +15,6 @@ var weapon: Weapon:
 			weapon.queue_free()
 		weapon = val
 		add_child(weapon)
-@onready var inventory: Node2D = $Inventory
 @export var toolbar : Array[WeaponItem]
 @export var myarr : Array[WeaponItem]
 @export var weaponScns: Dictionary[String, PackedScene]
