@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wkxd4ifoqa14"
-path="res://.godot/imported/standin.png-34270d8d423d49df96de95ca3935d521.ctex"
+uid="uid://b7s1o40iaue6g"
+path="res://.godot/imported/RocketRPG_Bullet.png-148ac9287f45223b7c3d7c1e9e9102e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/standin.png"
-dest_files=["res://.godot/imported/standin.png-34270d8d423d49df96de95ca3935d521.ctex"]
+source_file="res://Assets/RocketRPG_Bullet.png"
+dest_files=["res://.godot/imported/RocketRPG_Bullet.png-148ac9287f45223b7c3d7c1e9e9102e2.ctex"]
 
 [params]
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dknpkj2o8n3l2"]
+
+[ext_resource type="Texture2D" uid="uid://bs1dwvxpdpekm" path="res://Assets/Sprite-stage_selection.png" id="1_3fgfp"]
+
+[node name="SpriteStageSelection" type="Sprite2D"]
+texture = ExtResource("1_3fgfp")

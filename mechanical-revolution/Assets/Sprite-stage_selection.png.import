@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0f4culh8dpg"
-path="res://.godot/imported/robot 1.png-e5d64ef2639ddd38e1f49161622fcbef.ctex"
+uid="uid://bs1dwvxpdpekm"
+path="res://.godot/imported/Sprite-stage_selection.png-4cf3c529bb83290d582d6b1a2c72c0be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/robot 1.png"
-dest_files=["res://.godot/imported/robot 1.png-e5d64ef2639ddd38e1f49161622fcbef.ctex"]
+source_file="res://Assets/Sprite-stage_selection.png"
+dest_files=["res://.godot/imported/Sprite-stage_selection.png-4cf3c529bb83290d582d6b1a2c72c0be.ctex"]
 
 [params]
 
