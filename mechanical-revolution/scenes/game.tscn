@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfdse231xuejh"]
+[gd_scene load_steps=6 format=3 uid="uid://cfdse231xuejh"]
 
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" path="res://scenes/wallrun.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bsyfxb11phyub" path="res://scenes/droppable.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://copky477kjpps" path="res://scenes/wallrun.tscn" id="4_lbhrr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8cj0n"]
 
@@ -59,6 +58,3 @@ position = Vector2(219, -129)
 
 [node name="Wallrun" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(290, -33)
-
-[node name="Droppable" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(162, -18)

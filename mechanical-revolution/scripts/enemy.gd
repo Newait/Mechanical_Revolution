@@ -99,5 +99,5 @@ func _on_death() -> void:
 	_get_player_node().heal(enemyworth)
 	var dropped_item = droppable_scene.instantiate()
 	dropped_item.Init(dropped_resource)
-	get_tree().root.add_child(dropped_item)
+	get_tree().root.call_deferred("add_child", dropped_item)
 	queue_free()

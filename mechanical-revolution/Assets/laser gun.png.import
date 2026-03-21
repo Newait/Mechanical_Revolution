@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d24aucjfunsyc"
-path="res://.godot/imported/knife.png-fe86871d33c75ce9d4eb4f1452dfa3c9.ctex"
+uid="uid://bn21k2hrg4ffq"
+path="res://.godot/imported/laser gun.png-59f65a5e25b2d3ad840461d3f35e1b93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/knife.png"
-dest_files=["res://.godot/imported/knife.png-fe86871d33c75ce9d4eb4f1452dfa3c9.ctex"]
+source_file="res://assets/laser gun.png"
+dest_files=["res://.godot/imported/laser gun.png-59f65a5e25b2d3ad840461d3f35e1b93.ctex"]
 
 [params]
 
