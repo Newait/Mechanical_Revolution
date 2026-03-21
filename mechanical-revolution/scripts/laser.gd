@@ -20,7 +20,6 @@ func _physics_process(delta: float) -> void:
 		if (get_collider() is Enemy):
 			(get_collider() as Enemy).take_damage(damage)
 		point_direction = get_collision_point() - global_position
-		print(point_direction)
 		
 	# Grab the global position of the enemy and convert to local coordinates
 	#var enemy : Node2D

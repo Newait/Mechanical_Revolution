@@ -9,12 +9,14 @@ size = Vector2(56, 52)
 [node name="Droppable" type="Area2D"]
 collision_mask = 8
 script = ExtResource("1_63xtw")
+metadata/_custom_type_script = "uid://clgtbiaxr1n1b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_02gnq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="DropSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(0.265625, 0.234375)
 texture = ExtResource("2_cn0pc")
 

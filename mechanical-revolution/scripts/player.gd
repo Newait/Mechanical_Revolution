@@ -21,8 +21,10 @@ var weapon: Weapon:
 var droppable_scene : PackedScene = preload("uid://bsyfxb11phyub")
 #@export var weaponkeybinds : Dictionary
 var current_weapon := 0
-var is_interactable
+var current_interactable : Interactable
+@onready var interact_range: Area2D = $InteractRange
 
+var is_just_interacted := false
 signal tookDamage
 var max_health := 100.0
 var health := 100.0:
@@ -31,24 +33,22 @@ var health := 100.0:
 		tookDamage.emit(val)
 
 func _ready() -> void:
-	print(toolbar.size())
 	if toolbar.size() > 0 and toolbar[0]:
 		
 		weapon = weaponScns[toolbar[0].WeaponName].instantiate()
 		weapon.visible = true
-		
+	interact_range.area_entered.connect(_on_area_entered)
+	interact_range.area_exited.connect(_on_area_exited)
+	
 		
 func _on_area_entered(area: Node2D) -> void:
-	
-	if area is Interactable and Input.is_action_pressed("interact"):
-		if area is WeaponPickup:
-			var dropped := (area as WeaponPickup).Interact()
-			if toolbar.size() < 4:
-				toolbar.append(WeaponItem.new().Init(dropped))
-			else:
-				drop_weapon(current_weapon, toolbar[current_weapon])
-				toolbar[current_weapon] = WeaponItem.new().Init(dropped)
-		
+	if area is Interactable:
+		current_interactable = area
+
+
+func _on_area_exited(area: Node2D) -> void:
+	if area == current_interactable:
+		current_interactable = null
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	#weapon.rotation = (get_local_mouse_position().normalized() * (-1 if weapon.flippedH else 1)).angle()
@@ -59,6 +59,22 @@ func _physics_process(delta: float) -> void:
 	#if shouldFlip: 
 		#weapon.flipH()
 		#
+	if current_interactable != null and Input.is_action_just_pressed("interact"):
+		
+		if current_interactable is WeaponPickup:
+			var dropItem :Droppable= current_interactable.Interact()
+			var replaced := false
+			for i in range(toolbar.size()):
+				if toolbar[i].WeaponName == "unarmed":
+					toolbar[i] = WeaponItem.new().Init(dropItem)
+					replaced = true
+					change_weapon(i)
+					break
+			if not replaced:
+				drop_weapon(current_weapon, toolbar[current_weapon])
+				toolbar[current_weapon] = WeaponItem.new().Init(dropItem)
+				change_weapon(current_weapon)
+			
 	var desired_velocity : Vector2
 	desired_velocity.x = direction * MAX_SPEED
 	velocity += get_gravity() * delta
@@ -124,7 +140,6 @@ func drop_weapon(index: int, weapon_item:WeaponItem) -> void:
 	var dropped_item = droppable_scene.instantiate()
 	dropped_item.Init(Droppable.new().Init(weapon_item))
 	get_tree().root.add_child(dropped_item)
-	print("happened")
 	toolbar[index] = null
 
 func death() -> void:
