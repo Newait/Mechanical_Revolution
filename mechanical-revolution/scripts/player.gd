@@ -72,6 +72,7 @@ func _physics_process(delta: float) -> void:
 					break
 			if not replaced:
 				drop_weapon(current_weapon, toolbar[current_weapon])
+				print("ran", current_weapon)
 				toolbar[current_weapon] = WeaponItem.new().Init(dropItem)
 				change_weapon(current_weapon)
 			
@@ -135,6 +136,7 @@ func heal(healing: float) -> void:
 func change_weapon(index: int) -> void:
 	if (toolbar.size() > index and toolbar[index]):
 		weapon = weaponScns[toolbar[index].WeaponName].instantiate()
+	current_weapon = index
 
 func drop_weapon(index: int, weapon_item:WeaponItem) -> void:
 	var dropped_item = droppable_scene.instantiate()
