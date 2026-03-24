@@ -142,6 +142,7 @@ func drop_weapon(index: int, weapon_item:WeaponItem) -> void:
 	var dropped_item = droppable_scene.instantiate()
 	dropped_item.Init(Droppable.new().Init(weapon_item))
 	get_tree().root.add_child(dropped_item)
+	dropped_item.position = global_position
 	toolbar[index] = null
 
 func death() -> void:
