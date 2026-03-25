@@ -1,42 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0vvgjjvbytn8"]
+[gd_scene load_steps=3 format=3 uid="uid://b0vvgjjvbytn8"]
 
 [ext_resource type="Script" uid="uid://frpsp54ofiy" path="res://scripts/laser_weapon.gd" id="1_nblfd"]
+[ext_resource type="Texture2D" uid="uid://bn21k2hrg4ffq" path="res://assets/laser gun.png" id="2_dhtfa"]
 
 [node name="LaserWeapon" type="Node2D"]
 scale = Vector2(0.46, 0.46)
 script = ExtResource("1_nblfd")
 
-[node name="Handle" type="ColorRect" parent="."]
+[node name="CDTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[node name="Node" type="Node2D" parent="."]
+visible = false
+
+[node name="Handle" type="ColorRect" parent="Node"]
+unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 32.608696
-offset_right = 43.958694
-offset_bottom = 30.0
+offset_left = -561.0
+offset_top = -324.0
+offset_right = -549.65
+offset_bottom = -294.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.5752221
 metadata/_edit_use_anchors_ = true
 
-[node name="Magazine" type="ColorRect" parent="."]
+[node name="Magazine" type="ColorRect" parent="Node"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 60.869553
-offset_top = -6.521739
-offset_right = 72.31955
-offset_bottom = 19.65826
+offset_left = -548.0
+offset_top = -327.0
+offset_right = -536.55
+offset_bottom = -300.82
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Magazine2" type="ColorRect" parent="Magazine"]
+[node name="Magazine2" type="ColorRect" parent="Node/Magazine"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
@@ -53,86 +65,91 @@ grow_vertical = 2
 rotation = -0.38848957
 metadata/_edit_use_anchors_ = true
 
-[node name="Handrest" type="ColorRect" parent="."]
+[node name="Handrest" type="ColorRect" parent="Node"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 91.30434
-offset_top = -6.521738
-offset_right = 129.94432
-offset_bottom = 9.138262
+offset_left = -534.0
+offset_top = -327.0
+offset_right = -495.36
+offset_bottom = -311.34
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 0)
 color = Color(0.43270373, 0.8903686, 1.3628917, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Barrel" type="ColorRect" parent="."]
+[node name="Barrel" type="ColorRect" parent="Node"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 18.695652
-offset_top = -8.0
-offset_right = 142.52567
-offset_bottom = 5.0
+offset_left = -567.4
+offset_top = -327.68
+offset_right = -443.57004
+offset_bottom = -314.68
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="Muzzle" type="ColorRect" parent="."]
+[node name="Muzzle" type="ColorRect" parent="Node"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 140.43481
-offset_top = -1.4782615
-offset_right = 176.0048
-offset_bottom = 4.4117384
+offset_left = -511.4
+offset_top = -324.68
+offset_right = -475.83
+offset_bottom = -318.78998
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="Sight" type="ColorRect" parent="."]
+[node name="Sight" type="ColorRect" parent="Node"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 41.30432
-offset_top = -10.869564
-offset_right = 79.94432
-offset_bottom = -0.6295643
+offset_left = -557.0
+offset_top = -329.0
+offset_right = -518.36
+offset_bottom = -318.76
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 0)
 color = Color(0.86938787, 0.5318918, 0.15926424, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Stock" type="ColorRect" parent="."]
+[node name="Stock" type="ColorRect" parent="Node"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -31.304344
-offset_top = -3.652176
-offset_right = 20.285656
-offset_bottom = 0.55782413
+offset_left = -590.4
+offset_top = -325.68
+offset_right = -538.81006
+offset_bottom = -321.47
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="Stock2" type="ColorRect" parent="Stock"]
+[node name="Stock2" type="ColorRect" parent="Node/Stock"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -150,7 +167,7 @@ rotation = 1.5707964
 pivot_offset = Vector2(20, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="Stock3" type="ColorRect" parent="Stock"]
+[node name="Stock3" type="ColorRect" parent="Node/Stock"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -168,7 +185,7 @@ rotation = -0.2430005
 pivot_offset = Vector2(20, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="CDTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 0.2
-one_shot = true
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(30.434782, 0)
+texture = ExtResource("2_dhtfa")
