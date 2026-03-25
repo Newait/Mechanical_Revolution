@@ -1,4 +1,29 @@
-[gd_scene format=3 uid="uid://c5c62ofmgaede"]
+[gd_scene load_steps=7 format=3 uid="uid://c5c62ofmgaede"]
+
+[ext_resource type="Theme" uid="uid://dwfcnj44ymif4" path="res://themes/player_stats_theme.tres" id="1_e2rtd"]
+[ext_resource type="Texture2D" uid="uid://d24aucjfunsyc" path="res://assets/knife.png" id="2_75by7"]
+[ext_resource type="Texture2D" uid="uid://e557bv62fh8w" path="res://assets/revolver arm attachment.png" id="3_e8ptb"]
+[ext_resource type="Texture2D" uid="uid://c5if4lsjcqn0l" path="res://assets/rocket launcher.png" id="4_rr165"]
+[ext_resource type="Texture2D" uid="uid://bn21k2hrg4ffq" path="res://assets/laser gun.png" id="5_722pw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2rtd"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.27999997, 0.616, 1, 1)
+draw_center = false
+border_width_left = 15
+border_width_right = 15
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [node name="Toolbar" type="Panel"]
 anchors_preset = -1
@@ -12,8 +37,10 @@ offset_right = 0.1920166
 offset_bottom = -0.28001404
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_e2rtd")
 
 [node name="Items" type="HBoxContainer" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,18 +49,74 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Items"]
+[node name="Tool1" type="Button" parent="Items"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button2" type="Button" parent="Items"]
+[node name="Tool1Img" type="TextureRect" parent="Items/Tool1"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_75by7")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Tool2" type="Button" parent="Items"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button3" type="Button" parent="Items"]
+[node name="Tool2Img" type="TextureRect" parent="Items/Tool2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_e8ptb")
+stretch_mode = 5
+
+[node name="Tool3" type="Button" parent="Items"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button4" type="Button" parent="Items"]
+[node name="Tool3Img" type="TextureRect" parent="Items/Tool3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_rr165")
+stretch_mode = 5
+
+[node name="Tool4" type="Button" parent="Items"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Tool4Img" type="TextureRect" parent="Items/Tool4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_722pw")
+stretch_mode = 5
+
+[node name="ColorRect" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.011976048
+anchor_top = -0.05785124
+anchor_right = 0.25597608
+anchor_bottom = 1.0578512
+offset_right = -0.24401855
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e2rtd")
+theme_override_styles/panel = SubResource("StyleBoxFlat_e2rtd")
+metadata/_edit_use_anchors_ = true
