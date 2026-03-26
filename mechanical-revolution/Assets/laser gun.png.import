@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:mechanical-revolution/Assets/Bullet.png.import
-uid="uid://d2qt0sl1l8uc"
-path="res://.godot/imported/Bullet.png-01cfc6486bd6711d123faf51c40f38d2.ctex"
-========
 uid="uid://bn21k2hrg4ffq"
-path="res://.godot/imported/laser gun.png-59f65a5e25b2d3ad840461d3f35e1b93.ctex"
->>>>>>>> origin/jacky-and-jayden-artist:mechanical-revolution/Assets/laser gun.png.import
+path="res://.godot/imported/laser gun.png-366e61bec025535271cccd3b18d0466c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:mechanical-revolution/Assets/Bullet.png.import
-source_file="res://Assets/Bullet.png"
-dest_files=["res://.godot/imported/Bullet.png-01cfc6486bd6711d123faf51c40f38d2.ctex"]
-========
-source_file="res://assets/laser gun.png"
-dest_files=["res://.godot/imported/laser gun.png-59f65a5e25b2d3ad840461d3f35e1b93.ctex"]
->>>>>>>> origin/jacky-and-jayden-artist:mechanical-revolution/Assets/laser gun.png.import
+source_file="res://Assets/laser gun.png"
+dest_files=["res://.godot/imported/laser gun.png-366e61bec025535271cccd3b18d0466c.ctex"]
 
 [params]
 

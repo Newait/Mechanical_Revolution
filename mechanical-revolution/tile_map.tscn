@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgwtg1uowm1sx"]
+[gd_scene load_steps=4 format=4 uid="uid://bgwtg1uowm1sx"]
 
-[ext_resource type="Texture2D" uid="uid://bys3wck8pmw0x" path="res://Assets/wall1-Sheet.png" id="1_7yhko"]
+[ext_resource type="Texture2D" uid="uid://n71mlen7rwm5" path="res://Assets/wall1-Sheet.png" id="1_7yhko"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1n30v"]
 texture = ExtResource("1_7yhko")
@@ -70,4 +70,5 @@ texture_region_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_1n30v")
 
 [node name="TileMap" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAD+/wAAAAABAAAAAAABAAAAAAABAAAAAAD+/wMAAAABAAAAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAD//wMAAAABAAAAAAACAAMAAAAEAAEAAAD9/wMAAAAEAAEAAAA=")
 tile_set = SubResource("TileSet_35kre")
