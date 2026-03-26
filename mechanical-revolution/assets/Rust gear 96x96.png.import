@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0f4culh8dpg"
-path="res://.godot/imported/robot 1.png-f51b762120d928f49deab7c498fd868e.ctex"
+uid="uid://b4d1rn1hsye3f"
+path="res://.godot/imported/Rust gear 96x96.png-11c6670fb731d368c1acd516a5c4039f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/robot 1.png"
-dest_files=["res://.godot/imported/robot 1.png-f51b762120d928f49deab7c498fd868e.ctex"]
+source_file="res://assets/Rust gear 96x96.png"
+dest_files=["res://.godot/imported/Rust gear 96x96.png-11c6670fb731d368c1acd516a5c4039f.ctex"]
 
 [params]
 
