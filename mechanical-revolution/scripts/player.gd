@@ -152,7 +152,7 @@ func upd_one_tool(index: int, drop_item: Droppable) -> void:
 	updateToolbar.emit(index, drop_item.WeaponName)
 
 func death() -> void:
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
