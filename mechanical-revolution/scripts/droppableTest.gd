@@ -2,6 +2,7 @@ class_name WeaponPickup extends Interactable
 
 var attachedDroppable := Droppable.new()
 var within_range := false
+var readied := false
 @onready var interact_text: Label = %InteractText
 @onready var drop_sprite: Sprite2D = %DropSprite
 static var weapon_textures: Dictionary[String, Texture2D] = {
@@ -10,16 +11,19 @@ static var weapon_textures: Dictionary[String, Texture2D] = {
 }
 
 func _ready() -> void:
+	readied = true
 	body_entered.connect(on_body_entered)
 	body_exited.connect(on_body_exited)
 
 
 func Init(dropResource:Droppable):
 	attachedDroppable = dropResource
-	if drop_sprite == null:
+	if not readied:
 		get_node("%DropSprite").texture = weapon_textures[attachedDroppable.WeaponName]
+		get_node("%InteractText").text = attachedDroppable.WeaponName
 	else:
 		drop_sprite.texture = weapon_textures[attachedDroppable.WeaponName]
+		interact_text.text = attachedDroppable.WeaponName
 	pass
 
 func _physics_process(_delta: float) -> void:

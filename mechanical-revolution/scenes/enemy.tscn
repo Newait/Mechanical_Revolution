@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bwdgymjdvapon" path="res://scripts/enemy.gd" id="1_md0e3"]
 [ext_resource type="Resource" uid="uid://caah1rsiuv84l" path="res://Resource/drops/laserDrop.tres" id="2_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://bsyfxb11phyub" path="res://scenes/droppable.tscn" id="3_5uy6h"]
-[ext_resource type="Texture2D" uid="uid://4be81rkagii0" path="res://Assets/robot 2.png" id="4_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://brma467km4a1h" path="res://assets/robot 2.png" id="4_5uy6h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
 radius = 26.0
@@ -23,8 +23,9 @@ dropped_resource = ExtResource("2_4ra3w")
 droppable_scene = ExtResource("3_5uy6h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(2.5000005, -3.499999)
-scale = Vector2(1.5666666, 2.3181818)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_5uy6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

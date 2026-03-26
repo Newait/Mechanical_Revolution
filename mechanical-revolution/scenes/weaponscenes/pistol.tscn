@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bomw3km7rsfkn" path="res://scripts/weapontest.gd" id="1_xasec"]
 [ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_uxn4k"]
-[ext_resource type="Texture2D" uid="uid://c1aeyk15jhgjd" path="res://Assets/revolver arm attachment.png" id="3_n0kpw"]
+[ext_resource type="Texture2D" uid="uid://e557bv62fh8w" path="res://Assets/revolver arm attachment.png" id="3_n0kpw"]
 
 [node name="Weapon" type="Node2D"]
 scale = Vector2(0.46, 0.46)
@@ -11,6 +11,7 @@ attack = ExtResource("2_uxn4k")
 
 [node name="PistolSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+texture_filter = 1
 position = Vector2(45.652176, -17.391304)
 scale = Vector2(2.052795, 2.1491754)
 texture = ExtResource("3_n0kpw")

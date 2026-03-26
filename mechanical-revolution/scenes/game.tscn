@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfdse231xuejh"]
+[gd_scene load_steps=7 format=3 uid="uid://cfdse231xuejh"]
 
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://scenes/UIscenes/toolbar_UI.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://copky477kjpps" path="res://scenes/wallrun.tscn" id="4_lbhrr"]
 
@@ -52,6 +53,15 @@ offset_right = 0.5519409
 step = 0.1
 value = 100.0
 show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 74.0
+offset_right = 920.0
+offset_bottom = 74.0
+
+[node name="Toolbar" parent="CanvasLayer" instance=ExtResource("3_iywne")]
 
 [node name="Enemy" parent="." instance=ExtResource("3_lnu2h")]
 position = Vector2(219, -129)

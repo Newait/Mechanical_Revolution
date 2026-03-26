@@ -100,4 +100,5 @@ func _on_death() -> void:
 	var dropped_item = droppable_scene.instantiate()
 	dropped_item.Init(dropped_resource)
 	get_tree().root.call_deferred("add_child", dropped_item)
+	dropped_item.position = global_position
 	queue_free()
