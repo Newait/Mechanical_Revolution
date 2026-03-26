@@ -26,6 +26,8 @@ var current_interactable : Interactable
 
 var is_just_interacted := false
 signal tookDamage
+signal changedWeapon
+signal updateToolbar
 var max_health := 100.0
 var health := 100.0:
 	set(val):
@@ -66,14 +68,13 @@ func _physics_process(delta: float) -> void:
 			var replaced := false
 			for i in range(toolbar.size()):
 				if toolbar[i].WeaponName == "unarmed":
-					toolbar[i] = WeaponItem.new().Init(dropItem)
+					upd_one_tool(i, dropItem)
 					replaced = true
 					change_weapon(i)
 					break
 			if not replaced:
 				drop_weapon(current_weapon, toolbar[current_weapon])
-				print("ran", current_weapon)
-				toolbar[current_weapon] = WeaponItem.new().Init(dropItem)
+				upd_one_tool(current_weapon, dropItem)
 				change_weapon(current_weapon)
 			
 	var desired_velocity : Vector2
@@ -137,6 +138,7 @@ func change_weapon(index: int) -> void:
 	if (toolbar.size() > index and toolbar[index]):
 		weapon = weaponScns[toolbar[index].WeaponName].instantiate()
 	current_weapon = index
+	changedWeapon.emit(index)
 
 func drop_weapon(index: int, weapon_item:WeaponItem) -> void:
 	var dropped_item = droppable_scene.instantiate()
@@ -144,6 +146,10 @@ func drop_weapon(index: int, weapon_item:WeaponItem) -> void:
 	get_tree().root.add_child(dropped_item)
 	dropped_item.position = global_position
 	toolbar[index] = null
+
+func upd_one_tool(index: int, drop_item: Droppable) -> void:
+	toolbar[index] = WeaponItem.new().Init(drop_item)
+	updateToolbar.emit(index, drop_item.WeaponName)
 
 func death() -> void:
 	get_tree().reload_current_scene()

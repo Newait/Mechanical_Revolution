@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5c62ofmgaede"]
+[gd_scene load_steps=8 format=3 uid="uid://c5c62ofmgaede"]
 
 [ext_resource type="Theme" uid="uid://dwfcnj44ymif4" path="res://themes/player_stats_theme.tres" id="1_e2rtd"]
 [ext_resource type="Texture2D" uid="uid://d24aucjfunsyc" path="res://assets/knife.png" id="2_75by7"]
+[ext_resource type="Script" uid="uid://cmik4bv3m1141" path="res://scripts/toolbar.gd" id="2_e8ptb"]
 [ext_resource type="Texture2D" uid="uid://e557bv62fh8w" path="res://assets/revolver arm attachment.png" id="3_e8ptb"]
 [ext_resource type="Texture2D" uid="uid://c5if4lsjcqn0l" path="res://assets/rocket launcher.png" id="4_rr165"]
 [ext_resource type="Texture2D" uid="uid://bn21k2hrg4ffq" path="res://assets/laser gun.png" id="5_722pw"]
@@ -38,8 +39,11 @@ offset_bottom = -0.28001404
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_e2rtd")
+script = ExtResource("2_e8ptb")
+metadata/_custom_type_script = "uid://cmik4bv3m1141"
 
 [node name="Items" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -62,7 +66,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_75by7")
-expand_mode = 3
 stretch_mode = 5
 
 [node name="Tool2" type="Button" parent="Items"]
@@ -107,7 +110,8 @@ grow_vertical = 2
 texture = ExtResource("5_722pw")
 stretch_mode = 5
 
-[node name="ColorRect" type="Panel" parent="."]
+[node name="Selected" type="Panel" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.011976048
