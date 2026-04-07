@@ -13,3 +13,4 @@
 	#return warning
 var _can_fire := true
 @abstract func fire(lookVector:Vector2) -> void
+@abstract func flip_sprite() -> void

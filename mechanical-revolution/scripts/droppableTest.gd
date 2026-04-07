@@ -7,7 +7,7 @@ var readied := false
 @onready var drop_sprite: Sprite2D = %DropSprite
 static var weapon_textures: Dictionary[String, Texture2D] = {
 	"laser": preload("uid://bn21k2hrg4ffq"),
-	"pistol": preload("uid://e557bv62fh8w")
+	"pistol": preload("uid://d0llkc87ed6h7")
 }
 
 func _ready() -> void:

@@ -6,7 +6,7 @@ class_name Toolbar extends Panel
 
 var weapon_textures: Dictionary[String, Texture2D] = {
 	"laser": preload("uid://bn21k2hrg4ffq"),
-	"pistol": preload("uid://e557bv62fh8w"),
+	"pistol": preload("uid://d0llkc87ed6h7"),
 	
 }
 
