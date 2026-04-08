@@ -71,3 +71,11 @@ shape = SubResource("CapsuleShape2D_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
 shape = SubResource("CircleShape2D_smehm")
+
+[node name="RightWallCast" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(30, 0)
+
+[node name="LeftWallCast" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(-30, 0)

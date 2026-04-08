@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://assets/toolbar_UI.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://copky477kjpps" path="res://scenes/wallrun.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" path="res://scenes/wallrun.tscn" id="4_lbhrr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8cj0n"]
 
@@ -15,6 +15,14 @@ script = ExtResource("1_yqjtg")
 collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_8cj0n")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(414, -210)
+rotation = -1.5737673
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 shape = SubResource("WorldBoundaryShape2D_8cj0n")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]

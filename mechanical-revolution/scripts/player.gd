@@ -6,6 +6,7 @@ const ACCELERATION := 1500.0
 const DECCELERATION := 1300.0
 const AIR_ACCELERATION := 900.0
 const JUMP_VELOCITY := -800.0
+const WALL_FALL_ACCEL := 50.0
 @export var Projectile : PackedScene
 var playerState = "Running"
 #@onready var weapon: Weapon = $Weapon
@@ -22,7 +23,11 @@ var droppable_scene : PackedScene = preload("uid://bsyfxb11phyub")
 #@export var weaponkeybinds : Dictionary
 var current_weapon := 0
 var current_interactable : Interactable
+var last_direction_wall := 0.0
+var wall_direction := 0.0
 @onready var interact_range: Area2D = $InteractRange
+@onready var right_wall_cast: RayCast2D = %RightWallCast
+@onready var left_wall_cast: RayCast2D = %LeftWallCast
 
 var is_just_interacted := false
 signal tookDamage
@@ -91,6 +96,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Shoot"):
 		weapon.fire(get_local_mouse_position().normalized())
 		take_damage(10.0)
+	#print(playerState)
+	
 	match playerState:
 		"Running":
 			if direction:
@@ -105,20 +112,43 @@ func _physics_process(delta: float) -> void:
 			# Add the gravity.
 			if velocity.y > 0:
 				playerState = "Falling"
+				last_direction_wall = 0.0
 			velocity += get_gravity() * delta
 			if direction:
 				velocity.x = move_toward(velocity.x, desired_velocity.x, AIR_ACCELERATION * delta)
 			else:
 				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
-
+			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
+				if not(direction==last_direction_wall):
+					wall_direction = direction
+					playerState = "Wall Slide"
+		"Wall Slide":
+			if is_on_floor():
+				playerState = "Running"
+				last_direction_wall = 0.0
+			var wallCondition := ((((not left_wall_cast.is_colliding()) or direction > 0.0) and wall_direction < 0.0) or (((not right_wall_cast.is_colliding()) or direction < 0.0) and wall_direction > 0.0))
+			if (wallCondition):
+				playerState = "Falling"
+				print(direction)
+			if (Input.is_action_just_pressed("jump")):
+				last_direction_wall = direction
+				velocity.y = JUMP_VELOCITY * 0.8
+				velocity.x = MAX_SPEED * -direction
+				playerState = "Jump Up"
+			velocity.y = move_toward(velocity.y, 100.0, WALL_FALL_ACCEL)
+			
 		"Falling":
 			if is_on_floor():
 				playerState = "Running"
+				last_direction_wall = 0.0
 			velocity += get_gravity() * delta
 			if direction:
 				velocity.x = move_toward(velocity.x, desired_velocity.x, AIR_ACCELERATION * delta)
 			else:
 				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
+			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
+				if not(direction==last_direction_wall):
+					playerState = "Wall Slide"
 	move_and_slide()
 	
 func knockback(force: Vector2) -> void:
