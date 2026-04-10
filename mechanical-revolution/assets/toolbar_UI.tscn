@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://c5c62ofmgaede"]
 
 [ext_resource type="Theme" uid="uid://dwfcnj44ymif4" path="res://themes/player_stats_theme.tres" id="1_e2rtd"]
-[ext_resource type="Texture2D" uid="uid://d24aucjfunsyc" path="res://assets/knife.png" id="2_75by7"]
+[ext_resource type="Texture2D" uid="uid://c3njvpa2na646" path="res://assets/knife.png" id="2_75by7"]
 [ext_resource type="Script" uid="uid://cmik4bv3m1141" path="res://scripts/toolbar.gd" id="2_e8ptb"]
-[ext_resource type="Texture2D" uid="uid://e557bv62fh8w" path="res://assets/revolver arm attachment.png" id="3_e8ptb"]
-[ext_resource type="Texture2D" uid="uid://c5if4lsjcqn0l" path="res://assets/rocket launcher.png" id="4_rr165"]
+[ext_resource type="Texture2D" uid="uid://d0llkc87ed6h7" path="res://assets/revolver arm attachment.png" id="3_e8ptb"]
+[ext_resource type="Texture2D" uid="uid://dy3a2y4r1bhi2" path="res://assets/rocket launcher.png" id="4_rr165"]
 [ext_resource type="Texture2D" uid="uid://bn21k2hrg4ffq" path="res://assets/laser gun.png" id="5_722pw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2rtd"]

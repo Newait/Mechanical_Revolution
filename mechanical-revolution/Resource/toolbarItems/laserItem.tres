@@ -4,5 +4,4 @@
 
 [resource]
 script = ExtResource("1_qh10d")
-WeaponName = "laser"
 metadata/_custom_type_script = "uid://2mqmm8s3lmee"

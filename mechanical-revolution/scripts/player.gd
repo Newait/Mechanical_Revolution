@@ -8,7 +8,7 @@ const AIR_ACCELERATION := 900.0
 const JUMP_VELOCITY := -800.0
 const WALL_FALL_ACCEL := 2000.0
 const WALL_FALL_SPEED := 100.0
-const WALL_RUN_FALL := 100.0
+const WALL_RUN_FALL := 75.0
 const WALL_RUN_ACCEL := WALL_FALL_ACCEL
 const WALL_RUN_DECCEL := 20.0
 const SLIDE_MULTI := 2.5
@@ -144,6 +144,10 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_released("slide") or abs(velocity.x) < 20.0:
 				playerState = "Running"
 			velocity.x = move_toward(velocity.x, 0, SLIDE_DECCEL * delta)
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				velocity.y = JUMP_VELOCITY
+				velocity.x = minf(abs(velocity.x), MAX_SPEED) * direction * 2.5
+				playerState = "Jump Up"
 		"Wall Run":
 			if (not (direction == wall_run_direction)) or (not can_wall_run) or abs(velocity.x) < 10.0:
 				playerState = "Falling"
