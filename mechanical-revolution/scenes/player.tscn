@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crq51rftqb4nm"]
+[gd_scene load_steps=18 format=3 uid="uid://crq51rftqb4nm"]
 
 [ext_resource type="Script" uid="uid://c1rmemdk1s4ei" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_qhqgy"]
@@ -46,6 +46,9 @@ height = 68.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_smehm"]
 radius = 44.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
+size = Vector2(52, 26)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 25
 script = ExtResource("1_g2els")
@@ -66,6 +69,7 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_g2els")
+debug_color = Color(0.18682253, 0.642623, 0, 0.41960785)
 
 [node name="InteractRange" type="Area2D" parent="."]
 
@@ -79,3 +83,12 @@ target_position = Vector2(30, 0)
 [node name="LeftWallCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 target_position = Vector2(-30, 0)
+
+[node name="WallRunCheck" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRunCheck"]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_ur7pv")
+debug_color = Color(0.90416664, 0.30690408, 0, 0.41960785)
