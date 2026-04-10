@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4d1rn1hsye3f"
-path="res://.godot/imported/Rust gear 96x96.png-a3e369c75e33adcad1fe04d871a2a9d1.ctex"
+path="res://.godot/imported/Rust gear 96x96.png-11c6670fb731d368c1acd516a5c4039f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Rust gear 96x96.png"
-dest_files=["res://.godot/imported/Rust gear 96x96.png-a3e369c75e33adcad1fe04d871a2a9d1.ctex"]
+source_file="res://assets/Rust gear 96x96.png"
+dest_files=["res://.godot/imported/Rust gear 96x96.png-11c6670fb731d368c1acd516a5c4039f.ctex"]
 
 [params]
 

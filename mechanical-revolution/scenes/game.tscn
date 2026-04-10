@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" path="res://assets/toolbar_UI.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://assets/toolbar_UI.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://copky477kjpps" path="res://scenes/wallrun.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" path="res://scenes/tile_map.tscn" id="6_p57ef"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_yqjtg")
