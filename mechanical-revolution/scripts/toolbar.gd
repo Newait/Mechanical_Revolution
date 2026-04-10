@@ -6,7 +6,7 @@ class_name Toolbar extends Panel
 
 var weapon_textures: Dictionary[String, Texture2D] = {
 	"laser": preload("uid://bn21k2hrg4ffq"),
-	"pistol": preload("uid://e557bv62fh8w"),
+	"pistol": preload("uid://d0llkc87ed6h7"),
 	
 }
 
@@ -22,9 +22,14 @@ func _ready() -> void:
 	for ctrl_item:Node in items.get_children(true):
 		if ctrl_item is Button:
 			all_tool_img.append(ctrl_item.get_children()[0])
-			
-	init_x_offset = selected.position.x
-	
+	get_tree().root.size_changed.connect(_on_viewport_resize)
+	await get_tree().process_frame
+	init_x_offset = (all_tools[0] as Button).size.x/2
+
+func _on_viewport_resize() -> void:
+	await get_tree().process_frame
+	init_x_offset = (all_tools[0] as Button).size.x/2
+	change_slot(current_equip)
 func upd_all_tool_imgs(toolbar: Array[WeaponItem]) -> void:
 	for i in range(len(all_tool_img)):
 		print(i, toolbar[i].WeaponName)
@@ -40,4 +45,4 @@ func change_slot(new_slot:int) -> void:
 	if main_tween:
 		main_tween.stop()
 	main_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	main_tween.tween_property(selected, "position:x", all_tools[new_slot].position.x + init_x_offset, TWEEN_TIME)
+	main_tween.tween_property(selected, "position:x", all_tools[new_slot].position.x + init_x_offset - selected.size.x/2, TWEEN_TIME)

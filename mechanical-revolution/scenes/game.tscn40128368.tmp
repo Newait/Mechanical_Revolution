@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://assets/toolbar_UI.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://scenes/UIscenes/toolbar_UI.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://copky477kjpps" path="res://scenes/wallrun.tscn" id="4_lbhrr"]
 
@@ -15,14 +15,6 @@ script = ExtResource("1_yqjtg")
 collision_layer = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("WorldBoundaryShape2D_8cj0n")
-
-[node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2(414, -210)
-rotation = -1.5737673
-collision_layer = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 shape = SubResource("WorldBoundaryShape2D_8cj0n")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
@@ -75,6 +67,4 @@ offset_bottom = 74.0
 position = Vector2(219, -129)
 
 [node name="Wallrun" parent="." instance=ExtResource("4_lbhrr")]
-z_index = -1
-position = Vector2(277, -227)
-scale = Vector2(12.65766, 9.208049)
+position = Vector2(290, -33)

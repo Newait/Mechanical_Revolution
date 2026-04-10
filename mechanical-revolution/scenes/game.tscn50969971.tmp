@@ -17,14 +17,6 @@ collision_layer = 17
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("WorldBoundaryShape2D_8cj0n")
 
-[node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2(414, -210)
-rotation = -1.5737673
-collision_layer = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
-shape = SubResource("WorldBoundaryShape2D_8cj0n")
-
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
 position = Vector2(2, -40)
@@ -75,6 +67,4 @@ offset_bottom = 74.0
 position = Vector2(219, -129)
 
 [node name="Wallrun" parent="." instance=ExtResource("4_lbhrr")]
-z_index = -1
-position = Vector2(277, -227)
-scale = Vector2(12.65766, 9.208049)
+position = Vector2(290, -33)

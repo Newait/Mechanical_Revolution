@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bssnelxmi2jvt"]
+
+[ext_resource type="Script" uid="uid://bh6qyy8jf2clg" path="res://scripts/weapon_blank.gd" id="1_3h70n"]
+
+[node name="Unarmed" type="Node2D"]
+script = ExtResource("1_3h70n")
+metadata/_custom_type_script = "uid://bh6qyy8jf2clg"
+
+[node name="CDTimer" type="Timer" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0f4culh8dpg"
-path="res://.godot/imported/robot 1.png-f51b762120d928f49deab7c498fd868e.ctex"
+uid="uid://b7s1o40iaue6g"
+path="res://.godot/imported/RocketRPG_Bullet.png-01bb395e3a8231c426b782ce9715d1e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/robot 1.png"
-dest_files=["res://.godot/imported/robot 1.png-f51b762120d928f49deab7c498fd868e.ctex"]
+source_file="res://assets/RocketRPG_Bullet.png"
+dest_files=["res://.godot/imported/RocketRPG_Bullet.png-01bb395e3a8231c426b782ce9715d1e2.ctex"]
 
 [params]
 

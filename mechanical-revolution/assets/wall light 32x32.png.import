@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0f4culh8dpg"
-path="res://.godot/imported/robot 1.png-f51b762120d928f49deab7c498fd868e.ctex"
+uid="uid://ba33h26qmmo4r"
+path="res://.godot/imported/wall light 32x32.png-b7ffa3f0fb18f41e8c7ca8a7d5afc957.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/robot 1.png"
-dest_files=["res://.godot/imported/robot 1.png-f51b762120d928f49deab7c498fd868e.ctex"]
+source_file="res://assets/wall light 32x32.png"
+dest_files=["res://.godot/imported/wall light 32x32.png-b7ffa3f0fb18f41e8c7ca8a7d5afc957.ctex"]
 
 [params]
 
