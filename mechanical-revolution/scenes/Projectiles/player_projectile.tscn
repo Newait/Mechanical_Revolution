@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c1nnkcf118bba"]
+
+[node name="PlayerProjectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+metadata/_custom_type_script = "uid://luar0oh7puga"

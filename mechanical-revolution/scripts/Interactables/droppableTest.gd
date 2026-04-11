@@ -5,10 +5,11 @@ var within_range := false
 var readied := false
 @onready var interact_text: Label = %InteractText
 @onready var drop_sprite: Sprite2D = %DropSprite
-static var weapon_textures: Dictionary[String, Texture2D] = {
-	"laser": preload("uid://bn21k2hrg4ffq"),
-	"pistol": preload("uid://d0llkc87ed6h7")
-}
+#static var weapon_textures: Dictionary[String, Texture2D] = {
+	#"laser": preload("uid://bn21k2hrg4ffq"),
+	#"pistol": preload("uid://d0llkc87ed6h7"),
+	#"rocket": preload("uid://dy3a2y4r1bhi2")
+#}
 
 func _ready() -> void:
 	readied = true

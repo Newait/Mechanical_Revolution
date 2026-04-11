@@ -1,4 +1,4 @@
-class_name PlayerProjectileGB extends Area2D
+@abstract class_name Projectile extends Area2D
 
 @export var lifetime:= 5.0
 @export var travel_speed:= 200.0
@@ -10,11 +10,11 @@ func _ready() -> void:
 		queue_free()
 	)
 	body_entered.connect(_on_body_entered)
+	_rotate()
+	
+@abstract func _rotate() -> void
 
-func _on_body_entered(body: Node2D) -> void:
-	if (body is Enemy):
-		(body as Enemy).take_damage(damage)
-	queue_free()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	position += direction * travel_speed * delta
+@abstract func _on_body_entered(body: Node2D) -> void
+	
+
+@abstract func _travel(delta:float) -> void

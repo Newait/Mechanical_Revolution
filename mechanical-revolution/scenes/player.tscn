@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://crq51rftqb4nm"]
 
 [ext_resource type="Script" uid="uid://c1rmemdk1s4ei" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/Projectiles/player_projectile.tscn" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://b0vvgjjvbytn8" path="res://scenes/weaponscenes/laser_weapon.tscn" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://2mqmm8s3lmee" path="res://scripts/resourceScripts/weapon_info.gd" id="3_smehm"]
 [ext_resource type="PackedScene" uid="uid://b7rgtrys6bi5g" path="res://scenes/weaponscenes/pistol.tscn" id="4_qlg0r"]

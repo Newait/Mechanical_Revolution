@@ -4,11 +4,11 @@ class_name Toolbar extends Panel
 @onready var selected: Panel = %Selected
 @onready var items: HBoxContainer = %Items
 
-var weapon_textures: Dictionary[String, Texture2D] = {
-	"laser": preload("uid://bn21k2hrg4ffq"),
-	"pistol": preload("uid://d0llkc87ed6h7"),
-	
-}
+#var weapon_textures: Dictionary[String, Texture2D] = {
+	#"laser": preload("uid://bn21k2hrg4ffq"),
+	#"pistol": preload("uid://d0llkc87ed6h7"),
+	#"rocket": preload("uid://dy3a2y4r1bhi2")
+#}
 
 const TWEEN_TIME := 0.2
 var main_tween : Tween
@@ -33,12 +33,13 @@ func _on_viewport_resize() -> void:
 func upd_all_tool_imgs(toolbar: Array[WeaponItem]) -> void:
 	for i in range(len(all_tool_img)):
 		print(i, toolbar[i].WeaponName)
-		upd_tool_imgs(i, toolbar[i].WeaponName)
+		upd_tool_imgs(i, toolbar[i])
 
-func upd_tool_imgs(index, weapon_name) -> void:
-	if weapon_name == "unarmed":
+func upd_tool_imgs(index, weapon:WeaponItem) -> void:
+	if weapon.WeaponName == "unarmed":
+		
 		return
-	(all_tool_img[index] as TextureRect).texture = weapon_textures[weapon_name]
+	(all_tool_img[index] as TextureRect).texture = weapon.inventory_texture
 
 func change_slot(new_slot:int) -> void:
 	current_equip = new_slot

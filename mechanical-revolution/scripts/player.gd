@@ -13,7 +13,6 @@ const WALL_RUN_ACCEL := WALL_FALL_ACCEL
 const WALL_RUN_DECCEL := 20.0
 const SLIDE_MULTI := 2.5
 const SLIDE_DECCEL := DECCELERATION/3.0
-@export var Projectile : PackedScene
 var playerState := "Running": 
 	set(val):
 		if (val == "Running" or val == "Sliding"):

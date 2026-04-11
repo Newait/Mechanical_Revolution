@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://df0kbnegs525f"]
+
+[ext_resource type="Script" uid="uid://2mqmm8s3lmee" path="res://scripts/resourceScripts/weapon_info.gd" id="1_kwv8n"]
+[ext_resource type="Texture2D" uid="uid://dy3a2y4r1bhi2" path="res://assets/rocket launcher.png" id="1_p5msi"]
+
+[resource]
+script = ExtResource("1_kwv8n")
+WeaponName = "rocket"
+inventory_texture = ExtResource("1_p5msi")
+metadata/_custom_type_script = "uid://2mqmm8s3lmee"

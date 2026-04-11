@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="WeaponItem" load_steps=2 format=3 uid="uid://dp5fei1qouh4u"]
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://dp5fei1qouh4u"]
 
+[ext_resource type="Texture2D" uid="uid://bn21k2hrg4ffq" path="res://assets/laser gun.png" id="1_grw4c"]
 [ext_resource type="Script" uid="uid://2mqmm8s3lmee" path="res://scripts/resourceScripts/weapon_info.gd" id="1_qh10d"]
 
 [resource]
 script = ExtResource("1_qh10d")
 WeaponName = "laser"
+inventory_texture = ExtResource("1_grw4c")
 metadata/_custom_type_script = "uid://2mqmm8s3lmee"
