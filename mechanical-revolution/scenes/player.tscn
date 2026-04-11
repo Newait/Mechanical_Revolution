@@ -12,12 +12,10 @@
 
 [sub_resource type="Resource" id="Resource_y4r1p"]
 script = ExtResource("3_smehm")
-WeaponName = "laser"
 metadata/_custom_type_script = "uid://2mqmm8s3lmee"
 
 [sub_resource type="Resource" id="Resource_d2wvv"]
 script = ExtResource("3_smehm")
-WeaponName = "laser"
 metadata/_custom_type_script = "uid://2mqmm8s3lmee"
 
 [sub_resource type="Resource" id="Resource_ur7pv"]

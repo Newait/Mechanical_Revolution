@@ -38,6 +38,9 @@ func upd_all_tool_imgs(toolbar: Array[WeaponItem]) -> void:
 func upd_tool_imgs(index, weapon:WeaponItem) -> void:
 	if weapon.WeaponName == "unarmed":
 		
+func upd_tool_imgs(index, weapon_name) -> void:
+	if weapon_name == "unarmed":
+		(all_tool_img[index] as TextureRect).texture = null
 		return
 	(all_tool_img[index] as TextureRect).texture = weapon.inventory_texture
 
