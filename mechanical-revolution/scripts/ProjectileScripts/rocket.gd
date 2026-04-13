@@ -14,6 +14,8 @@ func _on_body_entered(body: Node2D) -> void:
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	_travel(delta)
 func _travel(delta: float) -> void:
 	position += direction * travel_speed * delta
 

@@ -241,7 +241,7 @@ func drop_weapon(index: int, weapon_item:WeaponItem) -> void:
 
 func upd_one_tool(index: int, drop_item: Droppable) -> void:
 	toolbar[index] = WeaponItem.new().Init(drop_item)
-	updateToolbar.emit(index, drop_item.WeaponName)
+	updateToolbar.emit(index, toolbar[index])
 
 func death() -> void:
 	get_tree().call_deferred("reload_current_scene")

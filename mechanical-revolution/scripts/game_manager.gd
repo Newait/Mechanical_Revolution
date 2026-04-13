@@ -16,8 +16,8 @@ func _ready() -> void:
 		player.changedWeapon.connect(func (val) -> void:
 			toolbar.change_slot(val)
 		)
-		player.updateToolbar.connect(func (idx, wpn_name) -> void:
-			toolbar.upd_tool_imgs(idx, wpn_name)
+		player.updateToolbar.connect(func (idx, wpn) -> void:
+			toolbar.upd_tool_imgs(idx, wpn)
 		)
 	
 

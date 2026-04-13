@@ -32,16 +32,14 @@ func _on_viewport_resize() -> void:
 	change_slot(current_equip)
 func upd_all_tool_imgs(toolbar: Array[WeaponItem]) -> void:
 	for i in range(len(all_tool_img)):
-		print(i, toolbar[i].WeaponName)
 		upd_tool_imgs(i, toolbar[i])
 
+		
 func upd_tool_imgs(index, weapon:WeaponItem) -> void:
 	if weapon.WeaponName == "unarmed":
-		
-func upd_tool_imgs(index, weapon_name) -> void:
-	if weapon_name == "unarmed":
 		(all_tool_img[index] as TextureRect).texture = null
 		return
+	print(weapon)
 	(all_tool_img[index] as TextureRect).texture = weapon.inventory_texture
 
 func change_slot(new_slot:int) -> void:

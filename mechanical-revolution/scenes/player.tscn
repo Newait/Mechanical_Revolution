@@ -1,22 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://crq51rftqb4nm"]
+[gd_scene load_steps=17 format=3 uid="uid://crq51rftqb4nm"]
 
 [ext_resource type="Script" uid="uid://c1rmemdk1s4ei" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/Projectiles/player_projectile.tscn" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://b0vvgjjvbytn8" path="res://scenes/weaponscenes/laser_weapon.tscn" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://2mqmm8s3lmee" path="res://scripts/resourceScripts/weapon_info.gd" id="3_smehm"]
 [ext_resource type="PackedScene" uid="uid://b7rgtrys6bi5g" path="res://scenes/weaponscenes/pistol.tscn" id="4_qlg0r"]
 [ext_resource type="Resource" uid="uid://dnqkdcw4htpcs" path="res://Resource/toolbarItems/pistolItem.tres" id="4_ur7pv"]
+[ext_resource type="Resource" uid="uid://c5jmyu15g05ks" path="res://Resource/toolbarItems/unarmedItem.tres" id="5_d2wvv"]
 [ext_resource type="Resource" uid="uid://dp5fei1qouh4u" path="res://Resource/toolbarItems/laserItem.tres" id="5_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://bssnelxmi2jvt" path="res://scenes/weaponscenes/unarmed.tscn" id="8_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://bxhk61y4me6u4" path="res://scenes/weaponscenes/rocket_weapon.tscn" id="8_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://b1gg517uetc8v" path="res://assets/playerprototypecolor.png" id="9_ur7pv"]
-
-[sub_resource type="Resource" id="Resource_y4r1p"]
-script = ExtResource("3_smehm")
-metadata/_custom_type_script = "uid://2mqmm8s3lmee"
-
-[sub_resource type="Resource" id="Resource_d2wvv"]
-script = ExtResource("3_smehm")
-metadata/_custom_type_script = "uid://2mqmm8s3lmee"
 
 [sub_resource type="Resource" id="Resource_ur7pv"]
 script = ExtResource("3_smehm")
@@ -50,12 +43,12 @@ size = Vector2(52, 26)
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 25
 script = ExtResource("1_g2els")
-Projectile = ExtResource("2_qhqgy")
-toolbar = Array[ExtResource("3_smehm")]([ExtResource("4_ur7pv"), ExtResource("5_y4r1p"), SubResource("Resource_y4r1p"), SubResource("Resource_d2wvv")])
+toolbar = Array[ExtResource("3_smehm")]([ExtResource("4_ur7pv"), ExtResource("5_y4r1p"), ExtResource("5_d2wvv"), ExtResource("5_d2wvv")])
 myarr = Array[ExtResource("3_smehm")]([SubResource("Resource_ur7pv")])
 weaponScns = Dictionary[String, PackedScene]({
 "laser": ExtResource("3_dqkch"),
 "pistol": ExtResource("4_qlg0r"),
+"rocket": ExtResource("8_y4r1p"),
 "unarmed": ExtResource("8_ur7pv")
 })
 

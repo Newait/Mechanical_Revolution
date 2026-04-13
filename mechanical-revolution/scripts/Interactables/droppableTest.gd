@@ -20,10 +20,10 @@ func _ready() -> void:
 func Init(dropResource:Droppable):
 	attachedDroppable = dropResource
 	if not readied:
-		get_node("%DropSprite").texture = weapon_textures[attachedDroppable.WeaponName]
+		get_node("%DropSprite").texture = attachedDroppable.dropped_texture
 		get_node("%InteractText").text = attachedDroppable.WeaponName
 	else:
-		drop_sprite.texture = weapon_textures[attachedDroppable.WeaponName]
+		drop_sprite.texture = attachedDroppable.dropped_texture
 		interact_text.text = attachedDroppable.WeaponName
 	pass
 
