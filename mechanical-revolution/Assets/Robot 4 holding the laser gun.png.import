@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0f4culh8dpg"
-path="res://.godot/imported/robot 1.png-e5d64ef2639ddd38e1f49161622fcbef.ctex"
+uid="uid://c3hpw71fqt8ft"
+path="res://.godot/imported/Robot 4 holding the laser gun.png-3bc034dd52d517de5c5a9a2567731e74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/robot 1.png"
-dest_files=["res://.godot/imported/robot 1.png-e5d64ef2639ddd38e1f49161622fcbef.ctex"]
+source_file="res://Assets/Robot 4 holding the laser gun.png"
+dest_files=["res://.godot/imported/Robot 4 holding the laser gun.png-3bc034dd52d517de5c5a9a2567731e74.ctex"]
 
 [params]
 

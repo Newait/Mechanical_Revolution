@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0f4culh8dpg"
-path="res://.godot/imported/robot 1.png-e5d64ef2639ddd38e1f49161622fcbef.ctex"
+uid="uid://cqq1356ymvqau"
+path="res://.godot/imported/robot holding a rocket laucher.png-b773a3bcdbbe69b52834e3348205f995.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/robot 1.png"
-dest_files=["res://.godot/imported/robot 1.png-e5d64ef2639ddd38e1f49161622fcbef.ctex"]
+source_file="res://Assets/robot holding a rocket laucher.png"
+dest_files=["res://.godot/imported/robot holding a rocket laucher.png-b773a3bcdbbe69b52834e3348205f995.ctex"]
 
 [params]
 
