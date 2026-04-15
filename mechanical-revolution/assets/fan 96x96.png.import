@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bek8gqosbyp8v"
-path="res://.godot/imported/fan 96x96.png-d610479123236c6a8d1bf8c4e2428151.ctex"
+path="res://.godot/imported/fan 96x96.png-6ef33c79bb3f24f1ea73a52fd5df7799.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fan 96x96.png"
-dest_files=["res://.godot/imported/fan 96x96.png-d610479123236c6a8d1bf8c4e2428151.ctex"]
+source_file="res://Assets/fan 96x96.png"
+dest_files=["res://.godot/imported/fan 96x96.png-6ef33c79bb3f24f1ea73a52fd5df7799.ctex"]
 
 [params]
 
