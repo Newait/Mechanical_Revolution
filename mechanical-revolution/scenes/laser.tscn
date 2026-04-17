@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7dhc"]
 
 [node name="Laser" type="RayCast2D" node_paths=PackedStringArray("laser_sprite")]
-collision_mask = 20
+collision_mask = 52
 script = ExtResource("1_xmihv")
 laser_sprite = NodePath("LaserSprite")
 
