@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjb5k7eu0d6is"]
+[gd_scene load_steps=4 format=3 uid="uid://bjb5k7eu0d6is"]
 
 [ext_resource type="Script" uid="uid://bjo6qkykomm8m" path="res://scripts/laser.gd" id="1_xmihv"]
 [ext_resource type="Texture2D" uid="uid://chnl4rde86nnw" path="res://assets/Laser.png" id="2_a7dhc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7dhc"]
 
 [node name="Laser" type="RayCast2D" node_paths=PackedStringArray("laser_sprite")]
 collision_mask = 20
@@ -14,3 +16,17 @@ position = Vector2(0, 1)
 rotation = 1.5707964
 scale = Vector2(1, 4)
 texture = ExtResource("2_a7dhc")
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+position = Vector2(50, 76)
+points = PackedVector2Array(0, 0, 773, 31)
+width = 50.0
+texture = ExtResource("2_a7dhc")
+texture_mode = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+emitting = false
+one_shot = true
+process_material = SubResource("ShaderMaterial_a7dhc")

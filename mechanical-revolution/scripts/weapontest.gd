@@ -1,7 +1,18 @@
 extends Weapon
 ## This timer's wait_time serves as the cooldown for the weapon
 @onready var pistol_sprite: Sprite2D = %PistolSprite
-
+	
+func _process(delta: float) -> void:
+	var look := (get_global_mouse_position() - global_position).normalized()
+	if look.x < 0.0:
+		flip_sprite(true)
+		look *= -1.0
+	else:
+		flip_sprite(false)
+	rotation = look.angle()
+func flip_sprite(left:bool=false) -> void:
+	pistol_sprite.position.x = absf(pistol_sprite.position.x) * (-1.0 if left else 1.0)
+	pistol_sprite.flip_h = left
 func fire(lookVector:Vector2) -> void:
 	if _can_fire:
 		_can_fire = false
@@ -11,7 +22,7 @@ func fire(lookVector:Vector2) -> void:
 		)
 	else:
 		return
-	pistol_sprite.rotation = get_angle_to(lookVector.orthogonal())
+	
 	var newProjectile : PlayerProjectileGB= attack.instantiate()
 	newProjectile.direction = lookVector
 	get_tree().current_scene.add_child(newProjectile)

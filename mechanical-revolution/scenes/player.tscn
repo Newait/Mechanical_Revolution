@@ -1,28 +1,36 @@
-[gd_scene load_steps=15 format=3 uid="uid://crq51rftqb4nm"]
+[gd_scene load_steps=18 format=3 uid="uid://crq51rftqb4nm"]
 
-[ext_resource type="Texture2D" uid="uid://ccqg3qxm67kdo" path="res://assets/Sprite-0001-Sheet.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c1rmemdk1s4ei" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://5qcaepgahbcv" path="res://scenes/player_projectile.tscn" id="2_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://cq3pkksnq5ke0" path="res://scenes/weaponscenes/laser_weapon.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://b0vvgjjvbytn8" path="res://scenes/weaponscenes/laser_weapon.tscn" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://2mqmm8s3lmee" path="res://scripts/resourceScripts/weapon_info.gd" id="3_smehm"]
 [ext_resource type="PackedScene" uid="uid://b7rgtrys6bi5g" path="res://scenes/weaponscenes/pistol.tscn" id="4_qlg0r"]
 [ext_resource type="Resource" uid="uid://dnqkdcw4htpcs" path="res://Resource/toolbarItems/pistolItem.tres" id="4_ur7pv"]
 [ext_resource type="Resource" uid="uid://dp5fei1qouh4u" path="res://Resource/toolbarItems/laserItem.tres" id="5_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://bssnelxmi2jvt" path="res://scenes/weaponscenes/unarmed.tscn" id="8_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://b1gg517uetc8v" path="res://assets/playerprototypecolor.png" id="9_ur7pv"]
+
+[sub_resource type="Resource" id="Resource_y4r1p"]
+script = ExtResource("3_smehm")
+metadata/_custom_type_script = "uid://2mqmm8s3lmee"
+
+[sub_resource type="Resource" id="Resource_d2wvv"]
+script = ExtResource("3_smehm")
+metadata/_custom_type_script = "uid://2mqmm8s3lmee"
 
 [sub_resource type="Resource" id="Resource_ur7pv"]
 script = ExtResource("3_smehm")
 metadata/_custom_type_script = "uid://2mqmm8s3lmee"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
-atlas = ExtResource("1_4flbx")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("9_ur7pv")
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i3pqv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_onrkg")
+"texture": SubResource("AtlasTexture_y4r1p")
 }],
 "loop": true,
 "name": &"idle",
@@ -30,15 +38,20 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
+radius = 21.0
+height = 68.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smehm"]
-radius = 29.427877
+radius = 44.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur7pv"]
+size = Vector2(52, 26)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 25
 script = ExtResource("1_g2els")
 Projectile = ExtResource("2_qhqgy")
-toolbar = Array[ExtResource("3_smehm")]([ExtResource("5_y4r1p"), ExtResource("4_ur7pv")])
+toolbar = Array[ExtResource("3_smehm")]([ExtResource("4_ur7pv"), ExtResource("5_y4r1p"), SubResource("Resource_y4r1p"), SubResource("Resource_d2wvv")])
 myarr = Array[ExtResource("3_smehm")]([SubResource("Resource_ur7pv")])
 weaponScns = Dictionary[String, PackedScene]({
 "laser": ExtResource("3_dqkch"),
@@ -46,30 +59,34 @@ weaponScns = Dictionary[String, PackedScene]({
 "unarmed": ExtResource("8_ur7pv")
 })
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.70588696, 0.7058867, 0.70588654, 1)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i3pqv")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_g2els")
+debug_color = Color(0.18682253, 0.642623, 0, 0.41960785)
 
 [node name="InteractRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
 shape = SubResource("CircleShape2D_smehm")
+
+[node name="RightWallCast" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(30, 0)
+
+[node name="LeftWallCast" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(-30, 0)
+
+[node name="WallRunCheck" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRunCheck"]
+position = Vector2(0, 23)
+shape = SubResource("RectangleShape2D_ur7pv")
+debug_color = Color(0.90416664, 0.30690408, 0, 0.41960785)
