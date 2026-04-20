@@ -12,6 +12,9 @@ class_name Explosion extends Area2D
 func _ready() -> void:
 	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(explosion_area.shape,"radius",final_radius, expand_time)
+	tween.finished.connect(func () -> void:
+		queue_free()
+	)
 	body_entered.connect(_on_body_entered)
 	area_entered.connect(_on_area_entered)
 	pass # Replace with function body.
