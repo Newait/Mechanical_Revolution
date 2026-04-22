@@ -39,7 +39,8 @@ func stop_fire() -> void:
 	laserInstance.queue_free()
 	is_firing = false
 	cd_timer.start()
-func fire(lookVector:Vector2) -> void:
+func fire(lookVector:Vector2, _speed:float) -> void:
+	#_speed does not apply to lasers
 	if _can_fire:
 		laserInstance = laser.instantiate()
 		laserInstance.Init(lookVector, damage)

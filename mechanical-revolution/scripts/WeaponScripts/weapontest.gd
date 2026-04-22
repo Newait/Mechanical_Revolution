@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 func flip_sprite(left:bool=false) -> void:
 	pistol_sprite.position.x = absf(pistol_sprite.position.x) * (-1.0 if left else 1.0)
 	pistol_sprite.flip_h = left
-func fire(lookVector:Vector2) -> void:
+func fire(lookVector:Vector2,add_speed:= 0.0) -> void:
 	if _can_fire:
 		_can_fire = false
 		timer.start()
@@ -24,6 +24,7 @@ func fire(lookVector:Vector2) -> void:
 		return
 	print(typeof(attack.instantiate()))
 	var newProjectile : Projectile= attack.instantiate()
+	newProjectile.travel_speed += add_speed
 	newProjectile.direction = lookVector
 	get_tree().current_scene.add_child(newProjectile)
 	if (get_parent() is Node2D ):

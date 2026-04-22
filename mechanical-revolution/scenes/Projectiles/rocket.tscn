@@ -8,6 +8,8 @@
 [sub_resource type="Resource" id="Resource_r4wva"]
 script = ExtResource("2_aawao")
 final_radius = 100.0
+max_knockback = 2000.0
+player_kb_multi = 1.5
 metadata/_custom_type_script = "uid://dr442aw2r2gmm"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkv7l"]

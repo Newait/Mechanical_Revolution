@@ -13,6 +13,9 @@ const WALL_RUN_ACCEL := WALL_FALL_ACCEL
 const WALL_RUN_DECCEL := 20.0
 const SLIDE_MULTI := 2.5
 const SLIDE_DECCEL := DECCELERATION/3.0
+const MAX_BOOST_SPEED := 1000.0
+const BOOST_FACTOR := 0.9
+
 var playerState := "Running": 
 	set(val):
 		if (val == "Running" or val == "Sliding"):
@@ -21,6 +24,9 @@ var playerState := "Running":
 			wall_direction = 0.0
 			wall_run_direction = 0.0
 		playerState = val
+		if (val == "Running" and absf(velocity.x) > MAX_BOOST_SPEED/2.0):
+			playerState = "Boosting"
+		
 #@onready var weapon: Weapon = $Weapon
 var weapon: Weapon:
 	set(val):
@@ -41,6 +47,11 @@ var wall_direction := 0.0
 var wall_run_direction := 0.0
 var last_wall_run_direction:= 0.0
 var can_wall_run := false
+
+var slide_boost_cd := 1.0
+var can_slide_boost := true
+
+
 @onready var interact_range: Area2D = $InteractRange
 @onready var right_wall_cast: RayCast2D = %RightWallCast
 @onready var left_wall_cast: RayCast2D = %LeftWallCast
@@ -118,8 +129,9 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_key_pressed(KEY_4):
 		change_weapon(3)
 	if Input.is_action_just_pressed("Shoot"):
-		weapon.fire(get_local_mouse_position().normalized())
-		take_damage(10.0)
+		weapon.fire(get_local_mouse_position().normalized(), velocity.length())
+		
+		#take_damage(10.0)
 	#print(playerState)
 	
 	match playerState:
@@ -134,8 +146,41 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
 				playerState = "Jump Up"
+			if Input.is_action_just_pressed("dash") and absf(velocity.x) > 200.0:
+				playerState = "Boosting"
 			if Input.is_action_just_pressed("slide") and absf(velocity.x) > 100.0:
-				velocity.x *= SLIDE_MULTI
+				if can_slide_boost:
+					velocity.x *= SLIDE_MULTI
+					can_slide_boost = false
+					get_tree().create_timer(slide_boost_cd).timeout.connect(func () -> void:
+						can_slide_boost = true
+					)
+				
+				playerState = "Sliding"
+		"Boosting":
+			if absf(direction)  > 0.0: 
+				var newVel = lerpf(velocity.x,MAX_BOOST_SPEED * direction, BOOST_FACTOR * delta)
+				velocity.x = ceilf(absf(newVel)) * signf(newVel)
+				
+				print(velocity.x)
+			elif (direction == 0.0) or absf(velocity.x) < MAX_BOOST_SPEED/2.0 :
+				print("killed")
+				print(direction)
+				print(absf(velocity.x))
+				playerState = "Running"
+			if not is_on_floor():
+				playerState = "Falling"
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				velocity.y = JUMP_VELOCITY * 1.2
+				playerState = "Jump Up"
+			if Input.is_action_just_pressed("slide") and absf(velocity.x) > 100.0:
+				if can_slide_boost:
+					velocity.x *= SLIDE_MULTI
+					can_slide_boost = false
+					get_tree().create_timer(slide_boost_cd).timeout.connect(func () -> void:
+						can_slide_boost = true
+					)
+				
 				playerState = "Sliding"
 		"Sliding":
 			if not is_on_floor():

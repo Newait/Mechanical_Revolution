@@ -12,5 +12,5 @@
 		#warning.append("You need a timer named 'CDTimer' for weapons.")
 	#return warning
 var _can_fire := true
-@abstract func fire(lookVector:Vector2) -> void
+@abstract func fire(lookVector:Vector2,add_speed:float) -> void
 @abstract func flip_sprite() -> void

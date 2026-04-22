@@ -3,7 +3,7 @@ class_name Explosion extends Area2D
 @export var final_radius := 100.0
 @export var expand_time := 0.8
 @export var max_knockback := 3000.0
-@export var player_kb_multi := 2.0
+@export var player_kb_multi := 1.5
 @export var max_damage := 100.0
 @export var min_damage := 20.0
 @onready var explosion_area: CollisionShape2D = %ExplosionArea
@@ -24,7 +24,7 @@ func _on_body_entered(body:Node2D) -> void:
 		if body is Player:
 			
 			fling_character(body, true)
-			(body as Player).take_damage(min_damage)
+			(body as Player).take_damage(calc_damage(body))
 		elif body is Enemy:
 			fling_character(body)
 			(body as Enemy).take_damage(calc_damage(body))
@@ -35,12 +35,17 @@ func _on_area_entered(area:Node2D) -> void:
 func fling_character(obj:CharacterBody2D, player:bool=false) -> void:
 	var direction = global_position.direction_to(obj.global_position)
 	var dist = global_position.distance_to(obj.global_position)
+
 	var magnitude = maxf(1.0 - dist/final_radius, 0.1) * max_knockback * (player_kb_multi if player else 1.0)
 	obj.velocity = obj.velocity + direction * magnitude
 
 func calc_damage(obj:CharacterBody2D) -> float:
 	var dist = global_position.distance_to(obj.global_position)
-	return maxf(min_damage, (1.0 - dist/final_radius) * max_damage)
+	if (obj is Enemy or dist/final_radius < 0.3):
+		print("did")
+		return maxf(min_damage, (1.0 - dist/final_radius) * max_damage)
+	print("min")
+	return min_damage
 
 func InitInfo(info:ExplosionInfo) -> void:
 	final_radius = info.final_radius
