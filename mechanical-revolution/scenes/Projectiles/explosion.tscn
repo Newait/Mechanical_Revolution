@@ -1,6 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://piew3tl7825o"]
+[gd_scene load_steps=5 format=3 uid="uid://piew3tl7825o"]
 
 [ext_resource type="Script" uid="uid://vjtef5474un" path="res://scripts/explosion.gd" id="1_6rud1"]
+
+[sub_resource type="Curve" id="Curve_6rud1"]
+_data = [Vector2(0, 0), 0.0, 2.8919542, 0, 0, Vector2(0.98378384, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7xd3t"]
+_data = [Vector2(0, 0.5786207), 0.0, 0.79148215, 0, 0, Vector2(0.11621623, 0.751954), 0.9568965, 0.9568965, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6rud1"]
 radius = 0.01
@@ -9,6 +17,8 @@ radius = 0.01
 collision_layer = 4
 collision_mask = 44
 script = ExtResource("1_6rud1")
+damage_curve = SubResource("Curve_6rud1")
+kb_curve = SubResource("Curve_7xd3t")
 metadata/_custom_type_script = "uid://vjtef5474un"
 
 [node name="ExplosionArea" type="CollisionShape2D" parent="."]

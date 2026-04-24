@@ -25,7 +25,7 @@ func _ready() -> void:
 	)
 
 func contFire(lookVector:Vector2) -> void:
-	laserInstance.upd_direction(lookVector)	
+	laserInstance.upd_direction(lookVector)
 
 func fire(lookVector:Vector2, add_speed:=0.0) -> void:
 	

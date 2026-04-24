@@ -24,7 +24,7 @@ var playerState := "Running":
 			wall_direction = 0.0
 			wall_run_direction = 0.0
 		playerState = val
-		if (val == "Running" and absf(velocity.x) > MAX_BOOST_SPEED/2.0):
+		if (val == "Running" and absf(velocity.x) > MAX_BOOST_SPEED/2.0) and big_boosting:
 			playerState = "Boosting"
 		
 #@onready var weapon: Weapon = $Weapon
@@ -51,6 +51,7 @@ var can_wall_run := false
 var slide_boost_cd := 1.0
 var can_slide_boost := true
 
+var big_boosting := false
 
 @onready var interact_range: Area2D = $InteractRange
 @onready var right_wall_cast: RayCast2D = %RightWallCast
@@ -158,6 +159,7 @@ func _physics_process(delta: float) -> void:
 				
 				playerState = "Sliding"
 		"Boosting":
+			big_boosting = true
 			if absf(direction)  > 0.0: 
 				var newVel = lerpf(velocity.x,MAX_BOOST_SPEED * direction, BOOST_FACTOR * delta)
 				velocity.x = ceilf(absf(newVel)) * signf(newVel)
