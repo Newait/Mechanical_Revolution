@@ -1,7 +1,7 @@
 class_name Explosion extends Area2D
 
 @export var final_radius := 100.0
-@export var expand_time := 0.8
+@export var expand_time := 0.5
 @export var max_knockback := 3000.0
 @export var player_kb_multi := 1.5
 @export var max_damage := 100.0
@@ -12,9 +12,10 @@ class_name Explosion extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	explosion_area.shape.radius = 0
 	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(explosion_area.shape,"radius",final_radius, expand_time)
-	tween.finished.connect(func () -> void:
+	get_tree().create_timer(expand_time).timeout.connect(func () -> void:
 		queue_free()
 	)
 	body_entered.connect(_on_body_entered)
