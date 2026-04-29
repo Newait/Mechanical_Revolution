@@ -23,9 +23,9 @@ var playerState := "Running":
 			last_wall_run_direction = 0.0
 			wall_direction = 0.0
 			wall_run_direction = 0.0
+		if (playerState == "Wall Slide" and (not grace_timer.is_stopped())):
+			grace_timer.stop()
 		playerState = val
-		if (val == "Running" and absf(velocity.x) > MAX_BOOST_SPEED/2.0) and big_boosting:
-			playerState = "Boosting"
 		
 #@onready var weapon: Weapon = $Weapon
 var weapon: Weapon:
@@ -41,15 +41,18 @@ var droppable_scene : PackedScene = preload("uid://bsyfxb11phyub")
 #@export var weaponkeybinds : Dictionary
 var current_weapon := 0
 var current_interactable : Interactable
+
 var last_direction_wall := 0.0
 var wall_direction := 0.0
+@onready var grace_timer: Timer = %GraceTimer
+
 
 var wall_run_direction := 0.0
 var last_wall_run_direction:= 0.0
 var can_wall_run := false
 
 var slide_boost_cd := 1.0
-var can_slide_boost := true
+var can_slide_boost := true;
 
 var big_boosting := false
 
@@ -78,6 +81,9 @@ func _ready() -> void:
 	interact_range.area_exited.connect(_on_area_exited)
 	wall_run_check.area_entered.connect(_on_wall_run_area_entered)
 	wall_run_check.area_exited.connect(_on_wall_run_area_exited)
+	grace_timer.timeout.connect(func () -> void:
+		big_boosting = false
+	)
 
 func _on_wall_run_area_entered(_area: Node2D) -> void:
 	can_wall_run = true
@@ -119,7 +125,7 @@ func _physics_process(delta: float) -> void:
 				change_weapon(current_weapon)
 			
 	var desired_velocity : Vector2
-	desired_velocity.x = direction * MAX_SPEED
+	desired_velocity.x = direction * (MAX_BOOST_SPEED if big_boosting else MAX_SPEED)
 	velocity += get_gravity() * delta
 	if Input.is_key_pressed(KEY_1):
 		change_weapon(0)
@@ -134,7 +140,8 @@ func _physics_process(delta: float) -> void:
 		
 		#take_damage(10.0)
 	#print(playerState)
-	
+	if Input.is_action_just_pressed("dash") and absf(velocity.x) > 200.0:
+		big_boosting = true
 	match playerState:
 		"Running":
 			if direction:
@@ -147,10 +154,9 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
 				playerState = "Jump Up"
-			if Input.is_action_just_pressed("dash") and absf(velocity.x) > 200.0:
-				playerState = "Boosting"
+
 			if Input.is_action_just_pressed("slide") and absf(velocity.x) > 100.0:
-				if can_slide_boost:
+				if can_slide_boost and (not big_boosting):
 					velocity.x *= SLIDE_MULTI
 					can_slide_boost = false
 					get_tree().create_timer(slide_boost_cd).timeout.connect(func () -> void:
@@ -158,32 +164,7 @@ func _physics_process(delta: float) -> void:
 					)
 				
 				playerState = "Sliding"
-		"Boosting":
-			big_boosting = true
-			if absf(direction)  > 0.0: 
-				var newVel = lerpf(velocity.x,MAX_BOOST_SPEED * direction, BOOST_FACTOR * delta)
-				velocity.x = ceilf(absf(newVel)) * signf(newVel)
-				
-				print(velocity.x)
-			elif (direction == 0.0) or absf(velocity.x) < MAX_BOOST_SPEED/2.0 :
-				print("killed")
-				print(direction)
-				print(absf(velocity.x))
-				playerState = "Running"
-			if not is_on_floor():
-				playerState = "Falling"
-			if Input.is_action_just_pressed("jump") and is_on_floor():
-				velocity.y = JUMP_VELOCITY * 1.2
-				playerState = "Jump Up"
-			if Input.is_action_just_pressed("slide") and absf(velocity.x) > 100.0:
-				if can_slide_boost:
-					velocity.x *= SLIDE_MULTI
-					can_slide_boost = false
-					get_tree().create_timer(slide_boost_cd).timeout.connect(func () -> void:
-						can_slide_boost = true
-					)
-				
-				playerState = "Sliding"
+		
 		"Sliding":
 			if not is_on_floor():
 				playerState = "Falling"
@@ -233,12 +214,17 @@ func _physics_process(delta: float) -> void:
 			if (wallCondition):
 				playerState = "Falling"
 			if (Input.is_action_just_pressed("jump")):
+				print("happ")
 				last_direction_wall = direction
-				velocity.y = JUMP_VELOCITY * 0.8
-				velocity.x = MAX_SPEED * -direction
+				velocity.y = JUMP_VELOCITY * (1.5 if big_boosting else 0.8)
+				velocity.x = (MAX_BOOST_SPEED * 1.5 if big_boosting else MAX_SPEED) * -direction
 				playerState = "Jump Up"
-			velocity.y = move_toward(velocity.y, WALL_FALL_SPEED, WALL_FALL_ACCEL * delta)
-			print(velocity.y)
+			if not big_boosting:
+				velocity.y = move_toward(velocity.y, WALL_FALL_SPEED, WALL_FALL_ACCEL * delta)
+			else:
+				velocity = Vector2.ZERO
+				if grace_timer.is_stopped():
+					grace_timer.start()
 				
 		"Falling":
 			if is_on_floor():
@@ -255,6 +241,8 @@ func _physics_process(delta: float) -> void:
 			if check_wall_run(direction):
 				wall_run_direction = direction
 				playerState = "Wall Run"
+	if (velocity.length() < 200.0 and not(playerState == "Wall Slide")):
+		big_boosting= false
 	move_and_slide()
 	
 func knockback(force: Vector2) -> void:
