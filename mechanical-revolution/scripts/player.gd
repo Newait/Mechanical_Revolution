@@ -25,6 +25,11 @@ var playerState := "Running":
 			wall_run_direction = 0.0
 		if (playerState == "Wall Slide" and (not grace_timer.is_stopped())):
 			grace_timer.stop()
+		if (val == "Wall Slide"):
+
+			save_vel = velocity
+			print(velocity.x, "bum")
+			
 		playerState = val
 		
 #@onready var weapon: Weapon = $Weapon
@@ -44,6 +49,7 @@ var current_interactable : Interactable
 
 var last_direction_wall := 0.0
 var wall_direction := 0.0
+var save_vel :Vector2
 @onready var grace_timer: Timer = %GraceTimer
 
 
@@ -83,6 +89,7 @@ func _ready() -> void:
 	wall_run_check.area_exited.connect(_on_wall_run_area_exited)
 	grace_timer.timeout.connect(func () -> void:
 		big_boosting = false
+		take_damage(20.0)
 	)
 
 func _on_wall_run_area_entered(_area: Node2D) -> void:
@@ -213,18 +220,20 @@ func _physics_process(delta: float) -> void:
 			var wallCondition := ((((not left_wall_cast.is_colliding()) or direction > 0.0) and wall_direction < 0.0) or (((not right_wall_cast.is_colliding()) or direction < 0.0) and wall_direction > 0.0))
 			if (wallCondition):
 				playerState = "Falling"
-			if (Input.is_action_just_pressed("jump")):
-				print("happ")
-				last_direction_wall = direction
-				velocity.y = JUMP_VELOCITY * (1.5 if big_boosting else 0.8)
-				velocity.x = (MAX_BOOST_SPEED * 1.5 if big_boosting else MAX_SPEED) * -direction
-				playerState = "Jump Up"
 			if not big_boosting:
 				velocity.y = move_toward(velocity.y, WALL_FALL_SPEED, WALL_FALL_ACCEL * delta)
 			else:
 				velocity = Vector2.ZERO
 				if grace_timer.is_stopped():
 					grace_timer.start()
+			if (Input.is_action_just_pressed("jump")):
+				print(big_boosting)
+				last_direction_wall = direction
+				velocity.y = JUMP_VELOCITY * ((1.2 * absf(save_vel.x)/MAX_BOOST_SPEED ) if big_boosting else 0.8)
+				velocity.x = (-save_vel.x * 1.5 if big_boosting else MAX_SPEED) * -direction
+				print((-save_vel.x * 1.5 if big_boosting else MAX_SPEED) * -direction)
+				playerState = "Jump Up"
+
 				
 		"Falling":
 			if is_on_floor():

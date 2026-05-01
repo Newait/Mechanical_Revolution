@@ -87,5 +87,5 @@ debug_color = Color(0.90416664, 0.30690408, 0, 0.41960785)
 
 [node name="GraceTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 3.0
+wait_time = 0.3
 one_shot = true
