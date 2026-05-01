@@ -16,20 +16,21 @@ const SLIDE_DECCEL := DECCELERATION/3.0
 const MAX_BOOST_SPEED := 1000.0
 const BOOST_FACTOR := 0.9
 
-var playerState := "Running": 
+var playerState := "Running":
 	set(val):
 		if (val == "Running" or val == "Sliding"):
 			last_direction_wall = 0.0
-			last_wall_run_direction = 0.0
 			wall_direction = 0.0
+			last_wall_run_direction = 0.0
 			wall_run_direction = 0.0
-		if (playerState == "Wall Slide" and (not grace_timer.is_stopped())):
-			grace_timer.stop()
-		if (val == "Wall Slide"):
-
-			save_vel = velocity
-			print(velocity.x, "bum")
-			
+			if (val == "Sliding"):
+				slide_physics_box.disabled = false
+				stand_physics_box.disabled = true
+			else:
+				slide_physics_box.disabled = true
+				stand_physics_box.disabled = false
+		if (playerState == "Wall Slide" and  (not grace_timer.is_stopped())):
+				grace_timer.stop()
 		playerState = val
 		
 #@onready var weapon: Weapon = $Weapon
@@ -49,7 +50,6 @@ var current_interactable : Interactable
 
 var last_direction_wall := 0.0
 var wall_direction := 0.0
-var save_vel :Vector2
 @onready var grace_timer: Timer = %GraceTimer
 
 
@@ -66,6 +66,8 @@ var big_boosting := false
 @onready var right_wall_cast: RayCast2D = %RightWallCast
 @onready var left_wall_cast: RayCast2D = %LeftWallCast
 @onready var wall_run_check: Area2D = %WallRunCheck
+@onready var stand_physics_box: CollisionShape2D = %StandPhysicsBox
+@onready var slide_physics_box: CollisionShape2D = %SlidePhysicsBox
 
 
 var is_just_interacted := false
@@ -193,7 +195,6 @@ func _physics_process(delta: float) -> void:
 				velocity.x = MAX_SPEED * direction
 				playerState = "Jump Up"
 			velocity.y = move_toward(velocity.y, WALL_RUN_FALL, WALL_RUN_ACCEL * delta)
-			print(velocity.y)
 			velocity.x = move_toward(velocity.x, 0, WALL_RUN_DECCEL * delta)
 		"Jump Up":
 			# Add the gravity.
@@ -206,18 +207,18 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
 			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
-				if not(direction==last_direction_wall):
-					wall_direction = direction
-					playerState = "Wall Slide"
+				#if not(direction==last_direction_wall):
+				wall_direction = direction
+				playerState = "Wall Slide"
 			if check_wall_run(direction):
 				wall_run_direction = direction
 				playerState = "Wall Run"
-				
+			print ("jump velocity: " + str(velocity))
 		"Wall Slide":
 			if is_on_floor():
 				playerState = "Running"
 				last_direction_wall = 0.0
-			var wallCondition := ((((not left_wall_cast.is_colliding()) or direction > 0.0) and wall_direction < 0.0) or (((not right_wall_cast.is_colliding()) or direction < 0.0) and wall_direction > 0.0))
+			var wallCondition := (((direction > 0.0) and wall_direction < 0.0) or ((direction < 0.0) and wall_direction > 0.0)) or ((not right_wall_cast.is_colliding()) and (not left_wall_cast.is_colliding()))
 			if (wallCondition):
 				playerState = "Falling"
 			if not big_boosting:
@@ -227,11 +228,13 @@ func _physics_process(delta: float) -> void:
 				if grace_timer.is_stopped():
 					grace_timer.start()
 			if (Input.is_action_just_pressed("jump")):
-				print(big_boosting)
 				last_direction_wall = direction
-				velocity.y = JUMP_VELOCITY * ((1.2 * absf(save_vel.x)/MAX_BOOST_SPEED ) if big_boosting else 0.8)
-				velocity.x = (-save_vel.x * 1.5 if big_boosting else MAX_SPEED) * -direction
-				print((-save_vel.x * 1.5 if big_boosting else MAX_SPEED) * -direction)
+				velocity.y = JUMP_VELOCITY * (1.2 if big_boosting else 0.8)
+				velocity.x = (MAX_BOOST_SPEED * 0.9 if big_boosting else MAX_SPEED) * -direction
+				#print(velocity.x)
+				#print("save_vel" + str(save_vel))
+				#print("is boosting: " + str(big_boosting))
+
 				playerState = "Jump Up"
 
 				
@@ -250,7 +253,7 @@ func _physics_process(delta: float) -> void:
 			if check_wall_run(direction):
 				wall_run_direction = direction
 				playerState = "Wall Run"
-	if (velocity.length() < 200.0 and not(playerState == "Wall Slide")):
+	if (velocity.length() < 275.0 and not(playerState == "Wall Slide")):
 		big_boosting= false
 	move_and_slide()
 	

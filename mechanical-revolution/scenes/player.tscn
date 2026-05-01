@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crq51rftqb4nm"]
+[gd_scene load_steps=18 format=3 uid="uid://crq51rftqb4nm"]
 
 [ext_resource type="Script" uid="uid://c1rmemdk1s4ei" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://b0vvgjjvbytn8" path="res://scenes/weaponscenes/laser_weapon.tscn" id="3_dqkch"]
@@ -34,6 +34,9 @@ animations = [{
 radius = 21.0
 height = 68.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y4r1p"]
+radius = 15.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_smehm"]
 radius = 44.0
 
@@ -58,9 +61,17 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i3pqv")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StandPhysicsBox" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_g2els")
+debug_color = Color(0.18682253, 0.642623, 0, 0.41960785)
+
+[node name="SlidePhysicsBox" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 19)
+shape = SubResource("CapsuleShape2D_y4r1p")
+disabled = true
 debug_color = Color(0.18682253, 0.642623, 0, 0.41960785)
 
 [node name="InteractRange" type="Area2D" parent="."]
