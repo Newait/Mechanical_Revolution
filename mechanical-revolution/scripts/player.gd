@@ -52,6 +52,8 @@ var last_direction_wall := 0.0
 var wall_direction := 0.0
 @onready var grace_timer: Timer = %GraceTimer
 
+var tether_position := Vector2.ZERO
+var tether_length :float
 
 var wall_run_direction := 0.0
 var last_wall_run_direction:= 0.0
