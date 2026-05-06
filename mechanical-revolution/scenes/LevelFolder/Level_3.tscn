@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_fo0tu"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_08gtc"]
-[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://Assets/wall1-Sheet-Sheet-export.png" id="3_bf4ao"]
+[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://assets/wall1-Sheet-Sheet-export.png" id="3_bf4ao"]
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="4_qer2u"]
-[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="5_10aku"]
+[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://assets/toolbar_UI.tscn" id="5_10aku"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
 texture = ExtResource("3_bf4ao")
@@ -296,7 +296,6 @@ offset_right = 97.0
 offset_bottom = -1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -331,4 +330,3 @@ offset_bottom = 74.0
 [node name="Toolbar" parent="CanvasLayer" instance=ExtResource("5_10aku")]
 
 [node name="EnemyHolder" type="Node2D" parent="."]
-visible = false

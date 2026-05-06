@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd4d5qx8bdxxe"]
+[gd_scene load_steps=3 format=3 uid="uid://cp8vvlka3f6iu"]
 
 [ext_resource type="Script" uid="uid://b7ihabec6ifis" path="res://scripts/invisible_teleport_block.gd" id="1_bxh2f"]
 
