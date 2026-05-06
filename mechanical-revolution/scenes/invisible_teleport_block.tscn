@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp8vvlka3f6iu"]
+
+[ext_resource type="Script" uid="uid://b7ihabec6ifis" path="res://scripts/invisible_teleport_block.gd" id="1_bxh2f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdmc2"]
+size = Vector2(596, 286)
+
+[node name="invisible_teleport_block" type="Area2D"]
+collision_mask = 8
+script = ExtResource("1_bxh2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(283, 143)
+shape = SubResource("RectangleShape2D_wdmc2")

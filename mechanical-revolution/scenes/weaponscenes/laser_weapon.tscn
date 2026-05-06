@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0vvgjjvbytn8"]
 
-[ext_resource type="Script" uid="uid://frpsp54ofiy" path="res://scripts/laser_weapon.gd" id="1_nblfd"]
+[ext_resource type="Script" uid="uid://frpsp54ofiy" path="res://scripts/WeaponScripts/laser_weapon.gd" id="1_nblfd"]
 [ext_resource type="Texture2D" uid="uid://bn21k2hrg4ffq" path="res://assets/laser gun.png" id="2_dhtfa"]
 
 [node name="LaserWeapon" type="Node2D"]
