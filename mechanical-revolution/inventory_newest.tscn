@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://e8n8a5xpr12f"]
+
+[ext_resource type="Texture2D" uid="uid://bs3s0w204fv8l" path="res://Assets/Inventory_newest.png" id="1_t7w32"]
+
+[node name="InventoryNewest" type="Sprite2D"]
+position = Vector2(644, 643)
+texture = ExtResource("1_t7w32")
