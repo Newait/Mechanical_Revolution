@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddgsupy5qjh2s"
-path="res://.godot/imported/sidewaysmain player sprite-Sheet.png-45a3abcf5ac1dd6be8f7e57af9e1a11a.ctex"
+path="res://.godot/imported/sidewaysmain player sprite-Sheet.png-688860f5ec5b9f8f18f261fddaa07fb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sidewaysmain player sprite-Sheet.png"
-dest_files=["res://.godot/imported/sidewaysmain player sprite-Sheet.png-45a3abcf5ac1dd6be8f7e57af9e1a11a.ctex"]
+source_file="res://Assets/sidewaysmain player sprite-Sheet.png"
+dest_files=["res://.godot/imported/sidewaysmain player sprite-Sheet.png-688860f5ec5b9f8f18f261fddaa07fb6.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cp6fvekkvcpqj"]
+[gd_scene load_steps=11 format=4 uid="uid://cp6fvekkvcpqj"]
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_1n7cm"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_kgqac"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="4_oyhbj"]
 [ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="5_lgjvw"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="6_n8hyc"]
+[ext_resource type="PackedScene" uid="uid://cp8vvlka3f6iu" path="res://scenes/invisible_teleport_block.tscn" id="7_vx6px"]
+[ext_resource type="PackedScene" uid="uid://bkdrtwwrsvekh" path="res://Level_3.tscn" id="8_oyhbj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjrqm"]
 texture = ExtResource("3_vx6px")
@@ -386,7 +388,6 @@ position = Vector2(2, -40)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -421,7 +422,6 @@ offset_bottom = 74.0
 [node name="Toolbar" parent="CanvasLayer" instance=ExtResource("5_lgjvw")]
 
 [node name="Enemyholder" type="Node2D" parent="."]
-visible = false
 
 [node name="Enemy" parent="Enemyholder" instance=ExtResource("6_n8hyc")]
 position = Vector2(1211, 656)
@@ -440,3 +440,7 @@ position = Vector2(763, -258)
 
 [node name="Enemy6" parent="Enemyholder" instance=ExtResource("6_n8hyc")]
 position = Vector2(1283, 128)
+
+[node name="invisible_teleport_block" parent="." instance=ExtResource("7_vx6px")]
+position = Vector2(5682, 378)
+tp_scene = ExtResource("8_oyhbj")

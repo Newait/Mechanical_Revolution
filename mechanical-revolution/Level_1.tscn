@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://byhicckysapkl"]
+[gd_scene load_steps=11 format=4 uid="uid://byhicckysapkl"]
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_u16a4"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_smwyr"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="4_gyeet"]
 [ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="5_2wi7h"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="6_4s4xf"]
+[ext_resource type="PackedScene" uid="uid://cp8vvlka3f6iu" path="res://scenes/invisible_teleport_block.tscn" id="7_tedvs"]
+[ext_resource type="PackedScene" uid="uid://cp6fvekkvcpqj" path="res://Level_2.tscn" id="8_gyeet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjrqm"]
 texture = ExtResource("3_tedvs")
@@ -366,9 +368,6 @@ terrain_set_0/terrain_0/name = "Stairs"
 terrain_set_0/terrain_0/color = Color(0.2574339, 0.42191732, 0.5319134, 1)
 sources/0 = SubResource("TileSetAtlasSource_kjrqm")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6w1m"]
-size = Vector2(405, 101)
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u16a4")
 
@@ -388,7 +387,6 @@ position = Vector2(2, -40)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -442,9 +440,6 @@ position = Vector2(3851, -65)
 [node name="Enemy6" parent="Enemyholder" instance=ExtResource("6_4s4xf")]
 position = Vector2(4838, -65)
 
-[node name="LevelTrigger" type="Area2D" parent="."]
-unique_name_in_owner = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTrigger"]
-position = Vector2(5252, 84.5)
-shape = SubResource("RectangleShape2D_d6w1m")
+[node name="invisible_teleport_block" parent="." instance=ExtResource("7_tedvs")]
+position = Vector2(5004, 35)
+tp_scene = ExtResource("8_gyeet")
