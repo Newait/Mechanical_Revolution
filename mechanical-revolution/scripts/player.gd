@@ -213,7 +213,7 @@ func _physics_process(delta: float) -> void:
 			if check_wall_run(direction):
 				wall_run_direction = direction
 				playerState = "Wall Run"
-			print ("jump velocity: " + str(velocity))
+			#print ("jump velocity: " + str(velocity))
 		"Wall Slide":
 			if is_on_floor():
 				playerState = "Running"
@@ -250,10 +250,12 @@ func _physics_process(delta: float) -> void:
 			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
 				if not(direction==last_direction_wall):
 					playerState = "Wall Slide"
+				else:
+					print(direction, last_direction_wall)
 			if check_wall_run(direction):
 				wall_run_direction = direction
 				playerState = "Wall Run"
-	if (velocity.length() < 275.0 and not(playerState == "Wall Slide")):
+	if (velocity.length() < 300.0 and not(playerState == "Wall Slide")):
 		big_boosting= false
 	move_and_slide()
 	

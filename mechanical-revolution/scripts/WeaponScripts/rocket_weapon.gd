@@ -40,6 +40,7 @@ func fire(lookVector:Vector2, add_speed:=0.0) -> void:
 	
 	var newProjectile : Projectile= attack.instantiate()
 	newProjectile.direction = lookVector
+	print(add_speed)
 	newProjectile.travel_speed += add_speed
 	get_tree().current_scene.add_child(newProjectile)
 	if (get_parent() is Node2D ):
