@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://cfdse231xuejh"]
+[gd_scene load_steps=11 format=4 uid="uid://cfdse231xuejh"]
 
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://assets/toolbar_UI.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://copky477kjpps" path="res://scenes/wallrun.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="6_p57ef"]
-[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://Assets/wall1-Sheet-Sheet-export.png" id="7_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://assets/wall1-Sheet-Sheet-export.png" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dd4d5qx8bdxxe" path="res://scenes/invisible_teleport_block.tscn" id="8_gee14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
 texture = ExtResource("7_u5sy4")
@@ -286,9 +287,10 @@ tile_set = SubResource("TileSet_0tnpc")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 unique_name_in_owner = true
-position = Vector2(2, -40)
+position = Vector2(3161, -823)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-5, 40)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -298,7 +300,6 @@ offset_right = 97.0
 offset_bottom = -1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -333,7 +334,6 @@ offset_bottom = 74.0
 [node name="Toolbar" parent="CanvasLayer" instance=ExtResource("3_iywne")]
 
 [node name="EnemyHolder" type="Node2D" parent="."]
-visible = false
 
 [node name="Enemy" parent="EnemyHolder" instance=ExtResource("3_lnu2h")]
 position = Vector2(2456, -415)
@@ -357,3 +357,6 @@ position = Vector2(3161, -30)
 z_index = -1
 position = Vector2(1890.0001, -354)
 scale = Vector2(-16.65422, -6.8150663)
+
+[node name="invisible_teleport_block" parent="." instance=ExtResource("8_gee14")]
+position = Vector2(3118, -153)

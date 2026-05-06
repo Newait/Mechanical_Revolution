@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_dh5pg"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_8ooph"]
-[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://Assets/wall1-Sheet-Sheet-export.png" id="3_ljg1v"]
+[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://assets/wall1-Sheet-Sheet-export.png" id="3_ljg1v"]
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="4_ugu7q"]
-[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="5_unxju"]
+[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://assets/toolbar_UI.tscn" id="5_unxju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjrqm"]
 texture = ExtResource("3_ljg1v")
@@ -894,7 +894,7 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_dh5pg")
 
-[node name="Game" type="Node2D"]
+[node name="Elevator" type="Node2D"]
 script = ExtResource("1_dh5pg")
 
 [node name="TileMapBackground" parent="." instance=ExtResource("2_8ooph")]
