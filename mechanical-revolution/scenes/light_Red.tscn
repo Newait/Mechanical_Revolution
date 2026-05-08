@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjjbt1dp4hi3w"]
+
+[ext_resource type="Texture2D" uid="uid://dhc0o2gac6acp" path="res://Assets/alarm light.png" id="1_6d3ox"]
+
+[sub_resource type="Gradient" id="Gradient_24oxn"]
+offsets = PackedFloat32Array(0.076576576, 0.32882884, 0.7072072, 1)
+colors = PackedColorArray(0.6842308, 0, 0.14006242, 1, 0.6000066, 6.612094e-06, 0.13412425, 1, 1.65302e-05, 1.6530232e-05, 1.6530208e-05, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2e2gu"]
+gradient = SubResource("Gradient_24oxn")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.96, 0.111428574)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6d3ox"]
+
+[node name="Light" type="Node2D"]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6d3ox")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(2.861023e-06, 9.536743e-07)
+energy = 4.07
+shadow_enabled = true
+shadow_color = Color(1.3912795e-08, 0.072933264, 0.00035535535, 0)
+texture = SubResource("GradientTexture2D_2e2gu")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_6d3ox")

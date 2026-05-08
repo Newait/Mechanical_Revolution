@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cxjmvttdxuftd"
-path="res://.godot/imported/PistolLaunch.wav-af2f2751fbdbd5c48ee541b474766fb3.sample"
+path="res://.godot/imported/PistolLaunch.wav-dc8576d843ec56a5d0319eebcf6663be.sample"
 
 [deps]
 
-source_file="res://assets/SFX/PistolLaunch.wav"
-dest_files=["res://.godot/imported/PistolLaunch.wav-af2f2751fbdbd5c48ee541b474766fb3.sample"]
+source_file="res://Assets/SFX/PistolLaunch.wav"
+dest_files=["res://.godot/imported/PistolLaunch.wav-dc8576d843ec56a5d0319eebcf6663be.sample"]
 
 [params]
 

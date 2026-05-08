@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://grru7weely6c"]
+
+[ext_resource type="Texture2D" uid="uid://ba33h26qmmo4r" path="res://Assets/wall light 32x32.png" id="1_24oxn"]
+
+[sub_resource type="Gradient" id="Gradient_24oxn"]
+offsets = PackedFloat32Array(0.076576576, 0.44144145, 0.7072072, 1)
+colors = PackedColorArray(0.92941177, 0.9137255, 0.22352941, 1, 0.39169014, 0.3850795, 0.09421122, 1, 1.65302e-05, 1.6530232e-05, 1.6530208e-05, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2e2gu"]
+gradient = SubResource("Gradient_24oxn")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.96, 0.111428574)
+
+[node name="Light" type="Node2D"]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_24oxn")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(2.861023e-06, 9.536743e-07)
+shadow_enabled = true
+shadow_color = Color(1.3912795e-08, 0.072933264, 0.00035535535, 0)
+texture = SubResource("GradientTexture2D_2e2gu")

@@ -440,3 +440,9 @@ position = Vector2(763, -258)
 
 [node name="Enemy6" parent="Enemyholder" instance=ExtResource("6_n8hyc")]
 position = Vector2(1283, 128)
+
+[node name="LightingSystem" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="LightingSystem"]
+color = Color(0.2285108, 0.2285108, 0.2285108, 1)
+energy = 1.2
