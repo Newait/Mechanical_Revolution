@@ -41,7 +41,6 @@ var weapon: Weapon:
 		weapon = val
 		add_child(weapon)
 @export var toolbar : Array[WeaponItem]
-@export var myarr : Array[WeaponItem]
 @export var weaponScns: Dictionary[String, PackedScene]
 var droppable_scene : PackedScene = preload("uid://bsyfxb11phyub")
 #@export var weaponkeybinds : Dictionary
@@ -54,6 +53,12 @@ var wall_direction := 0.0
 
 var tether_position := Vector2.ZERO
 var tether_length :float
+var is_grappling := false:
+	set(val):
+		if val:
+			grapple_start_time = Time.get_ticks_msec()
+var grapple_start_time : int
+@export var grapple_limit := 200.0
 
 var wall_run_direction := 0.0
 var last_wall_run_direction:= 0.0
@@ -70,6 +75,8 @@ var big_boosting := false
 @onready var wall_run_check: Area2D = %WallRunCheck
 @onready var stand_physics_box: CollisionShape2D = %StandPhysicsBox
 @onready var slide_physics_box: CollisionShape2D = %SlidePhysicsBox
+@onready var grapple_line: Line2D = %GrappleLine
+@onready var grapple_ray: RayCast2D = %GrappleRay
 
 
 var is_just_interacted := false
@@ -134,7 +141,17 @@ func _physics_process(delta: float) -> void:
 				drop_weapon(current_weapon, toolbar[current_weapon])
 				upd_one_tool(current_weapon, dropItem)
 				change_weapon(current_weapon)
-			
+	if Input.is_action_just_pressed("grapple") and (not is_grappling):
+		grapple_ray.target_position = (grapple_limit + 5.0) * get_local_mouse_position().normalized()
+		if (grapple_ray.is_colliding()):
+			is_grappling = true
+			attach_tether()
+	if Input.is_action_just_released("grapple") and is_grappling:
+		
+		if (Time.get_ticks_msec() - grapple_start_time < 300) and (not is_grappling):
+			reel_grapple()
+		else:
+			is_grappling = false
 	var desired_velocity : Vector2
 	desired_velocity.x = direction * (MAX_BOOST_SPEED if big_boosting else MAX_SPEED)
 	velocity += get_gravity() * delta
@@ -294,6 +311,17 @@ func upd_one_tool(index: int, drop_item: Droppable) -> void:
 	toolbar[index] = WeaponItem.new().Init(drop_item)
 	updateToolbar.emit(index, toolbar[index])
 
+func reel_grapple() -> void:
+	var tween:= create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween.tween_property(self,"tether_length", 1.0,1.0)
+	tween.finished.connect(func()-> void:
+		is_grappling = false
+	)
+func attach_tether() -> void:
+	tether_position = grapple_ray.get_collision_point()
+	tether_length = position.distance_to(tether_position)
+	var tween:= create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT_IN)
+	
 func death() -> void:
 	get_tree().call_deferred("reload_current_scene")
 	# Get the input direction and handle the movement/deceleration.
