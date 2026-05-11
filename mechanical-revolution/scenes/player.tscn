@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://crq51rftqb4nm"]
+[gd_scene load_steps=37 format=3 uid="uid://crq51rftqb4nm"]
 
 [ext_resource type="Script" uid="uid://c1rmemdk1s4ei" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://b0vvgjjvbytn8" path="res://scenes/weaponscenes/laser_weapon.tscn" id="3_dqkch"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bssnelxmi2jvt" path="res://scenes/weaponscenes/unarmed.tscn" id="8_ur7pv"]
 [ext_resource type="PackedScene" uid="uid://bxhk61y4me6u4" path="res://scenes/weaponscenes/rocket_weapon.tscn" id="8_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://ckeegaktgt4mc" path="res://assets/main player animated idle-Sheet.png" id="9_ur7pv"]
+[ext_resource type="Script" uid="uid://cjlamt6jb7ky0" path="res://scripts/grapple.gd" id="11_d2wvv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
 atlas = ExtResource("9_ur7pv")
@@ -231,13 +232,6 @@ unique_name_in_owner = true
 wait_time = 0.2
 one_shot = true
 
-[node name="GrappleLine" type="Line2D" parent="."]
-unique_name_in_owner = true
-points = PackedVector2Array(0, 0)
-width = 5.0
-default_color = Color(0, 0, 0, 1)
-texture_mode = 2
-
-[node name="GrappleRay" type="RayCast2D" parent="."]
-unique_name_in_owner = true
-collision_mask = 17
+[node name="Grapple" type="RayCast2D" parent="."]
+script = ExtResource("11_d2wvv")
+metadata/_custom_type_script = "uid://cjlamt6jb7ky0"
