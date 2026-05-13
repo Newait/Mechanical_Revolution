@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj0f4culh8dpg"
-path="res://.godot/imported/robot 1.png-f51b762120d928f49deab7c498fd868e.ctex"
+uid="uid://c582wt0js7cvd"
+path="res://.godot/imported/mpspritewallrun-Sheet.png-2ffd58498707cbbe5ce93a65676e9b30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/robot 1.png"
-dest_files=["res://.godot/imported/robot 1.png-f51b762120d928f49deab7c498fd868e.ctex"]
+source_file="res://assets/playeranims/mpspritewallrun-Sheet.png"
+dest_files=["res://.godot/imported/mpspritewallrun-Sheet.png-2ffd58498707cbbe5ce93a65676e9b30.ctex"]
 
 [params]
 
