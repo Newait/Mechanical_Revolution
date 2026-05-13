@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddgyfi5iskwop"
-path="res://.godot/imported/robot revolver.png-f7a4c72f0101c4395ddfe7ac22e5aa9c.ctex"
+uid="uid://d07v3p1ly87nk"
+path="res://.godot/imported/walking animation-Sheet.png-dad6b1112ac2b926c622dfd88f4412e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/robot revolver.png"
-dest_files=["res://.godot/imported/robot revolver.png-f7a4c72f0101c4395ddfe7ac22e5aa9c.ctex"]
+source_file="res://Assets/walking animation-Sheet.png"
+dest_files=["res://.godot/imported/walking animation-Sheet.png-dad6b1112ac2b926c622dfd88f4412e0.ctex"]
 
 [params]
 
