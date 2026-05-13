@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt212r22nlc3n"]
+[gd_scene load_steps=7 format=3 uid="uid://bt212r22nlc3n"]
 
 [ext_resource type="Texture2D" uid="uid://dhc0o2gac6acp" path="res://Assets/alarm light.png" id="1_h2wgr"]
+[ext_resource type="Script" uid="uid://bi86lwtwnukro" path="res://scenes/light_2.gd" id="1_rha1a"]
 
 [sub_resource type="Gradient" id="Gradient_24oxn"]
 offsets = PackedFloat32Array(0.054054055, 0.3918919, 0.7072072, 1)
@@ -22,6 +23,9 @@ polygon = PackedVector2Array(-44, 82, 29, 82, 0, 0)
 
 [node name="Light" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_rha1a")
+speed = null
+progress = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_h2wgr")
@@ -40,11 +44,12 @@ texture = SubResource("GradientTexture2D_h2wgr")
 position = Vector2(0, -2)
 occluder = SubResource("OccluderPolygon2D_h2wgr")
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+[node name="OccluderLeft" type="LightOccluder2D" parent="."]
 unique_name_in_owner = true
 rotation = 1.5707964
 occluder = SubResource("OccluderPolygon2D_rha1a")
 
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
+[node name="OccluderRight" type="LightOccluder2D" parent="."]
+unique_name_in_owner = true
 rotation = 4.712389
 occluder = SubResource("OccluderPolygon2D_rha1a")
