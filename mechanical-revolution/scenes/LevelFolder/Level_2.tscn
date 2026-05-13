@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://1s8ikuel8yb6"]
+[gd_scene load_steps=16 format=4 uid="uid://1s8ikuel8yb6"]
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_an0to"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_7w0ij"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cp8vvlka3f6iu" path="res://scenes/invisible_teleport_block.tscn" id="7_00rag"]
 [ext_resource type="PackedScene" uid="uid://ch2u27wfobbgm" path="res://scenes/LevelFolder/Level_3.tscn" id="8_4j5t3"]
 [ext_resource type="PackedScene" uid="uid://grru7weely6c" path="res://scenes/light.tscn" id="9_4j5t3"]
+[ext_resource type="PackedScene" uid="uid://bt212r22nlc3n" path="res://scenes/light2.tscn" id="11_h66cb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjrqm"]
 texture = ExtResource("3_00rag")
@@ -370,6 +371,15 @@ terrain_set_0/terrain_0/name = "Stairs"
 terrain_set_0/terrain_0/color = Color(0.2574339, 0.42191732, 0.5319134, 1)
 sources/0 = SubResource("TileSetAtlasSource_kjrqm")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_op8f7"]
+polygon = PackedVector2Array(3361, 256, 3394, 255, 3585, 159, 3394, 255)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h66cb"]
+polygon = PackedVector2Array(3585, 162, 4065, 161, 4255, 64, 4704, 66, 4255, 65, 4063, 162)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ghxur"]
+polygon = PackedVector2Array(2274, 735, 2591, 576, 2336, 704)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_an0to")
 
@@ -448,11 +458,36 @@ tp_scene = ExtResource("8_4j5t3")
 
 [node name="LightingStuff" type="Node2D" parent="."]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="LightingStuff"]
-color = Color(0.15622568, 0.2263473, 0.13181362, 1)
-energy = 0.29
-blend_mode = 2
-shadow_enabled = true
-
 [node name="Light" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
-position = Vector2(3674, 362)
+position = Vector2(3594, 196)
+
+[node name="Light2" parent="LightingStuff" instance=ExtResource("11_h66cb")]
+position = Vector2(2338.0002, 588.00006)
+rotation = 3.12975
+
+[node name="Light3" parent="LightingStuff" instance=ExtResource("11_h66cb")]
+position = Vector2(2008.0002, 591.00006)
+rotation = 3.12975
+
+[node name="Light4" parent="LightingStuff" instance=ExtResource("11_h66cb")]
+position = Vector2(1670.0001, 588)
+rotation = 3.12975
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="LightingStuff"]
+position = Vector2(-149, 33)
+color = Color(0.2231029, 0.2231029, 0.22310284, 1)
+blend_mode = 2
+
+[node name="LightOcculaderStuff" type="Node2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="LightOcculaderStuff"]
+occluder = SubResource("OccluderPolygon2D_op8f7")
+occluder_light_mask = 2
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="LightOcculaderStuff"]
+occluder = SubResource("OccluderPolygon2D_h66cb")
+occluder_light_mask = 2
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="LightOcculaderStuff"]
+occluder = SubResource("OccluderPolygon2D_ghxur")
+occluder_light_mask = 2

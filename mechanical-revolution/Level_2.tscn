@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cp6fvekkvcpqj"]
+[gd_scene load_steps=11 format=4 uid="uid://cp6fvekkvcpqj"]
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_1n7cm"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_kgqac"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="4_oyhbj"]
 [ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="5_lgjvw"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="6_n8hyc"]
+[ext_resource type="PackedScene" uid="uid://grru7weely6c" path="res://scenes/light.tscn" id="7_kgqac"]
+[ext_resource type="PackedScene" uid="uid://bjjbt1dp4hi3w" path="res://scenes/light_Red.tscn" id="8_vx6px"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjrqm"]
 texture = ExtResource("3_vx6px")
@@ -445,4 +447,11 @@ position = Vector2(1283, 128)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="LightingSystem"]
 color = Color(0.2285108, 0.2285108, 0.2285108, 1)
-energy = 1.2
+energy = 1.49
+blend_mode = 1
+
+[node name="Light" parent="LightingSystem" instance=ExtResource("7_kgqac")]
+position = Vector2(4329, 337)
+
+[node name="Light2" parent="LightingSystem" instance=ExtResource("8_vx6px")]
+position = Vector2(4490, 413)
