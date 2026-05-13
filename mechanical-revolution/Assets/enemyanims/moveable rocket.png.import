@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ooenbyc1riml"
-path="res://.godot/imported/running animation-Sheet.png-3ffd97d51cb6b6c4f8af25f2a88d2289.ctex"
+uid="uid://cj6x43k1erc2e"
+path="res://.godot/imported/moveable rocket.png-2dcf09a46eec84abc59bec90a0a301fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/running animation-Sheet.png"
-dest_files=["res://.godot/imported/running animation-Sheet.png-3ffd97d51cb6b6c4f8af25f2a88d2289.ctex"]
+source_file="res://Assets/enemyanims/moveable rocket.png"
+dest_files=["res://.godot/imported/moveable rocket.png-2dcf09a46eec84abc59bec90a0a301fd.ctex"]
 
 [params]
 
