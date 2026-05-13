@@ -13,15 +13,26 @@ const WALL_RUN_ACCEL := WALL_FALL_ACCEL
 const WALL_RUN_DECCEL := 20.0
 const SLIDE_MULTI := 2.5
 const SLIDE_DECCEL := DECCELERATION/3.0
-@export var Projectile : PackedScene
-var playerState := "Running": 
+const MAX_BOOST_SPEED := 1000.0
+const BOOST_FACTOR := 0.9
+
+var playerState := "Running":
 	set(val):
 		if (val == "Running" or val == "Sliding"):
 			last_direction_wall = 0.0
-			last_wall_run_direction = 0.0
 			wall_direction = 0.0
+			last_wall_run_direction = 0.0
 			wall_run_direction = 0.0
+			if (val == "Sliding"):
+				slide_physics_box.disabled = false
+				stand_physics_box.disabled = true
+			else:
+				slide_physics_box.disabled = true
+				stand_physics_box.disabled = false
+		if (playerState == "Wall Slide" and  (not grace_timer.is_stopped())):
+				grace_timer.stop()
 		playerState = val
+		
 #@onready var weapon: Weapon = $Weapon
 var weapon: Weapon:
 	set(val):
@@ -36,16 +47,29 @@ var droppable_scene : PackedScene = preload("uid://bsyfxb11phyub")
 #@export var weaponkeybinds : Dictionary
 var current_weapon := 0
 var current_interactable : Interactable
+
 var last_direction_wall := 0.0
 var wall_direction := 0.0
+@onready var grace_timer: Timer = %GraceTimer
+
+var tether_position := Vector2.ZERO
+var tether_length :float
 
 var wall_run_direction := 0.0
 var last_wall_run_direction:= 0.0
 var can_wall_run := false
+
+var slide_boost_cd := 1.0
+var can_slide_boost := true;
+
+var big_boosting := false
+
 @onready var interact_range: Area2D = $InteractRange
 @onready var right_wall_cast: RayCast2D = %RightWallCast
 @onready var left_wall_cast: RayCast2D = %LeftWallCast
 @onready var wall_run_check: Area2D = %WallRunCheck
+@onready var stand_physics_box: CollisionShape2D = %StandPhysicsBox
+@onready var slide_physics_box: CollisionShape2D = %SlidePhysicsBox
 
 
 var is_just_interacted := false
@@ -67,6 +91,10 @@ func _ready() -> void:
 	interact_range.area_exited.connect(_on_area_exited)
 	wall_run_check.area_entered.connect(_on_wall_run_area_entered)
 	wall_run_check.area_exited.connect(_on_wall_run_area_exited)
+	grace_timer.timeout.connect(func () -> void:
+		big_boosting = false
+		take_damage(20.0)
+	)
 
 func _on_wall_run_area_entered(_area: Node2D) -> void:
 	can_wall_run = true
@@ -108,7 +136,7 @@ func _physics_process(delta: float) -> void:
 				change_weapon(current_weapon)
 			
 	var desired_velocity : Vector2
-	desired_velocity.x = direction * MAX_SPEED
+	desired_velocity.x = direction * (MAX_BOOST_SPEED if big_boosting else MAX_SPEED)
 	velocity += get_gravity() * delta
 	if Input.is_key_pressed(KEY_1):
 		change_weapon(0)
@@ -119,10 +147,12 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_key_pressed(KEY_4):
 		change_weapon(3)
 	if Input.is_action_just_pressed("Shoot"):
-		weapon.fire(get_local_mouse_position().normalized())
-		take_damage(10.0)
+		weapon.fire(get_local_mouse_position().normalized(), velocity.length())
+		
+		#take_damage(10.0)
 	#print(playerState)
-	
+	if Input.is_action_just_pressed("dash") and absf(velocity.x) > 200.0:
+		big_boosting = true
 	match playerState:
 		"Running":
 			if direction:
@@ -135,9 +165,17 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
 				playerState = "Jump Up"
+
 			if Input.is_action_just_pressed("slide") and absf(velocity.x) > 100.0:
-				velocity.x *= SLIDE_MULTI
+				if can_slide_boost and (not big_boosting):
+					velocity.x *= SLIDE_MULTI
+					can_slide_boost = false
+					get_tree().create_timer(slide_boost_cd).timeout.connect(func () -> void:
+						can_slide_boost = true
+					)
+				
 				playerState = "Sliding"
+		
 		"Sliding":
 			if not is_on_floor():
 				playerState = "Falling"
@@ -159,7 +197,6 @@ func _physics_process(delta: float) -> void:
 				velocity.x = MAX_SPEED * direction
 				playerState = "Jump Up"
 			velocity.y = move_toward(velocity.y, WALL_RUN_FALL, WALL_RUN_ACCEL * delta)
-			print(velocity.y)
 			velocity.x = move_toward(velocity.x, 0, WALL_RUN_DECCEL * delta)
 		"Jump Up":
 			# Add the gravity.
@@ -172,27 +209,36 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
 			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
-				if not(direction==last_direction_wall):
-					wall_direction = direction
-					playerState = "Wall Slide"
+				#if not(direction==last_direction_wall):
+				wall_direction = direction
+				playerState = "Wall Slide"
 			if check_wall_run(direction):
 				wall_run_direction = direction
 				playerState = "Wall Run"
-				
+			#print ("jump velocity: " + str(velocity))
 		"Wall Slide":
 			if is_on_floor():
 				playerState = "Running"
 				last_direction_wall = 0.0
-			var wallCondition := ((((not left_wall_cast.is_colliding()) or direction > 0.0) and wall_direction < 0.0) or (((not right_wall_cast.is_colliding()) or direction < 0.0) and wall_direction > 0.0))
+			var wallCondition := (((direction > 0.0) and wall_direction < 0.0) or ((direction < 0.0) and wall_direction > 0.0)) or ((not right_wall_cast.is_colliding()) and (not left_wall_cast.is_colliding()))
 			if (wallCondition):
 				playerState = "Falling"
+			if not big_boosting:
+				velocity.y = move_toward(velocity.y, WALL_FALL_SPEED, WALL_FALL_ACCEL * delta)
+			else:
+				velocity = Vector2.ZERO
+				if grace_timer.is_stopped():
+					grace_timer.start()
 			if (Input.is_action_just_pressed("jump")):
 				last_direction_wall = direction
-				velocity.y = JUMP_VELOCITY * 0.8
-				velocity.x = MAX_SPEED * -direction
+				velocity.y = JUMP_VELOCITY * (1.2 if big_boosting else 0.8)
+				velocity.x = (MAX_BOOST_SPEED * 0.9 if big_boosting else MAX_SPEED) * -direction
+				#print(velocity.x)
+				#print("save_vel" + str(save_vel))
+				#print("is boosting: " + str(big_boosting))
+
 				playerState = "Jump Up"
-			velocity.y = move_toward(velocity.y, WALL_FALL_SPEED, WALL_FALL_ACCEL * delta)
-			print(velocity.y)
+
 				
 		"Falling":
 			if is_on_floor():
@@ -206,9 +252,13 @@ func _physics_process(delta: float) -> void:
 			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
 				if not(direction==last_direction_wall):
 					playerState = "Wall Slide"
+				else:
+					print(direction, last_direction_wall)
 			if check_wall_run(direction):
 				wall_run_direction = direction
 				playerState = "Wall Run"
+	if (velocity.length() < 300.0 and not(playerState == "Wall Slide")):
+		big_boosting= false
 	move_and_slide()
 	
 func knockback(force: Vector2) -> void:
@@ -242,7 +292,7 @@ func drop_weapon(index: int, weapon_item:WeaponItem) -> void:
 
 func upd_one_tool(index: int, drop_item: Droppable) -> void:
 	toolbar[index] = WeaponItem.new().Init(drop_item)
-	updateToolbar.emit(index, drop_item.WeaponName)
+	updateToolbar.emit(index, toolbar[index])
 
 func death() -> void:
 	get_tree().call_deferred("reload_current_scene")

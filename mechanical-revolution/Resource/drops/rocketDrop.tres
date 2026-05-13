@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Droppable" load_steps=3 format=3 uid="uid://cr1406cqawawt"]
+
+[ext_resource type="Texture2D" uid="uid://dy3a2y4r1bhi2" path="res://assets/rocket launcher.png" id="1_4fdtu"]
+[ext_resource type="Script" uid="uid://c1n3yixg27n4l" path="res://scripts/resourceScripts/droppable.gd" id="1_o7i15"]
+
+[resource]
+script = ExtResource("1_o7i15")
+WeaponName = "rocket"
+dropped_texture = ExtResource("1_4fdtu")
+metadata/_custom_type_script = "uid://c1n3yixg27n4l"

@@ -5,10 +5,11 @@ var within_range := false
 var readied := false
 @onready var interact_text: Label = %InteractText
 @onready var drop_sprite: Sprite2D = %DropSprite
-static var weapon_textures: Dictionary[String, Texture2D] = {
-	"laser": preload("uid://bn21k2hrg4ffq"),
-	"pistol": preload("uid://d0llkc87ed6h7")
-}
+#static var weapon_textures: Dictionary[String, Texture2D] = {
+	#"laser": preload("uid://bn21k2hrg4ffq"),
+	#"pistol": preload("uid://d0llkc87ed6h7"),
+	#"rocket": preload("uid://dy3a2y4r1bhi2")
+#}
 
 func _ready() -> void:
 	readied = true
@@ -19,10 +20,10 @@ func _ready() -> void:
 func Init(dropResource:Droppable):
 	attachedDroppable = dropResource
 	if not readied:
-		get_node("%DropSprite").texture = weapon_textures[attachedDroppable.WeaponName]
+		get_node("%DropSprite").texture = attachedDroppable.dropped_texture
 		get_node("%InteractText").text = attachedDroppable.WeaponName
 	else:
-		drop_sprite.texture = weapon_textures[attachedDroppable.WeaponName]
+		drop_sprite.texture = attachedDroppable.dropped_texture
 		interact_text.text = attachedDroppable.WeaponName
 	pass
 

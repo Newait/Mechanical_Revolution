@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0v3m7sex0cef"]
+
+[ext_resource type="Texture2D" uid="uid://b7s1o40iaue6g" path="res://assets/RocketRPG_Bullet.png" id="1_3aohs"]
+[ext_resource type="Script" uid="uid://dk1d5y1dhxwkc" path="res://scripts/ProjectileScripts/rocket.gd" id="1_p1wyp"]
+[ext_resource type="Script" uid="uid://dr442aw2r2gmm" path="res://scripts/resourceScripts/explosion_info.gd" id="2_aawao"]
+[ext_resource type="PackedScene" uid="uid://piew3tl7825o" path="res://scenes/Projectiles/explosion.tscn" id="3_r4wva"]
+
+[sub_resource type="Resource" id="Resource_r4wva"]
+script = ExtResource("2_aawao")
+final_radius = 150.0
+expand_time = 0.15
+max_knockback = 1500.0
+player_kb_multi = 1.5
+metadata/_custom_type_script = "uid://dr442aw2r2gmm"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dkv7l"]
+radius = 27.073973
+
+[node name="Rocket" type="Area2D"]
+collision_layer = 4
+collision_mask = 52
+script = ExtResource("1_p1wyp")
+explosionRes = SubResource("Resource_r4wva")
+explosionScn = ExtResource("3_r4wva")
+travel_speed = 1250.0
+damage = 50.0
+metadata/_custom_type_script = "uid://dk1d5y1dhxwkc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dkv7l")
+
+[node name="RocketSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+texture = ExtResource("1_3aohs")

@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="WeaponItem" load_steps=2 format=3 uid="uid://dnqkdcw4htpcs"]
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://dnqkdcw4htpcs"]
 
 [ext_resource type="Script" uid="uid://2mqmm8s3lmee" path="res://scripts/resourceScripts/weapon_info.gd" id="1_7he4e"]
+[ext_resource type="Texture2D" uid="uid://d0llkc87ed6h7" path="res://assets/revolver arm attachment.png" id="1_q06fu"]
 
 [resource]
 script = ExtResource("1_7he4e")
 WeaponName = "pistol"
+inventory_texture = ExtResource("1_q06fu")
 metadata/_custom_type_script = "uid://2mqmm8s3lmee"

@@ -25,9 +25,10 @@ func _ready() -> void:
 	)
 
 func contFire(lookVector:Vector2) -> void:
-	laserInstance.upd_direction(lookVector)	
+	laserInstance.upd_direction(lookVector)
 
-func fire(lookVector:Vector2) -> void:
+func fire(lookVector:Vector2, add_speed:=0.0) -> void:
+	
 	if _can_fire:
 		_can_fire = false
 		timer.start()
@@ -37,8 +38,10 @@ func fire(lookVector:Vector2) -> void:
 	else:
 		return
 	
-	var newProjectile : PlayerProjectileGB= attack.instantiate()
+	var newProjectile : Projectile= attack.instantiate()
 	newProjectile.direction = lookVector
+	print(add_speed)
+	newProjectile.travel_speed += add_speed
 	get_tree().current_scene.add_child(newProjectile)
 	if (get_parent() is Node2D ):
 		newProjectile.global_position = get_parent().global_position
