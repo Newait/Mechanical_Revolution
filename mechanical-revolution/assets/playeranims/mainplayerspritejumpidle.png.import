@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlebic4pajnm3"
-path="res://.godot/imported/mainplayerspritejumpidle.png-3c40dfe22afda29838cd64f43c0af126.ctex"
+path="res://.godot/imported/mainplayerspritejumpidle.png-15924881c89efd2dcbdc23cdf739dbd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/playeranims/mainplayerspritejumpidle.png"
-dest_files=["res://.godot/imported/mainplayerspritejumpidle.png-3c40dfe22afda29838cd64f43c0af126.ctex"]
+source_file="res://Assets/playeranims/mainplayerspritejumpidle.png"
+dest_files=["res://.godot/imported/mainplayerspritejumpidle.png-15924881c89efd2dcbdc23cdf739dbd3.ctex"]
 
 [params]
 
