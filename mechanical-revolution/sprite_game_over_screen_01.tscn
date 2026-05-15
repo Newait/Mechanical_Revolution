@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b84rhlvrtlpot"]
+
+[ext_resource type="Texture2D" uid="uid://8ng4sbe8v6bd" path="res://Sprite-GameOverScreen01.png" id="1_qnv1i"]
+
+[node name="SpriteGameOverScreen01" type="Sprite2D"]
+position = Vector2(817, 620)
+scale = Vector2(1.2796875, 0.9765625)
+texture = ExtResource("1_qnv1i")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -559.5116
+offset_top = -517.12
+offset_right = 715.4884
+offset_bottom = -88.119995
+theme_override_colors/font_color = Color(0.6073017, 0.60730165, 0.60730165, 1)
+theme_override_font_sizes/font_size = 156
+text = "WAS THAT...
+    EVEN LEGAL?"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -504.0
+offset_top = 102.0
+offset_right = 526.0
+offset_bottom = 342.0
+theme_override_font_sizes/font_size = 84
+text = "Tap to continue"
