@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddgsupy5qjh2s"
-path="res://.godot/imported/sidewaysmain player sprite-Sheet.png-688860f5ec5b9f8f18f261fddaa07fb6.ctex"
+uid="uid://bjlibd1xfgd5j"
+path="res://.godot/imported/moveable laser gun-export.png-f88d698193c38c5769d2f4486066c31c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sidewaysmain player sprite-Sheet.png"
-dest_files=["res://.godot/imported/sidewaysmain player sprite-Sheet.png-688860f5ec5b9f8f18f261fddaa07fb6.ctex"]
+source_file="res://Assets/enemyanims/moveable laser gun-export.png"
+dest_files=["res://.godot/imported/moveable laser gun-export.png-f88d698193c38c5769d2f4486066c31c.ctex"]
 
 [params]
 
