@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bssnelxmi2jvt" path="res://scenes/weaponscenes/unarmed.tscn" id="8_ur7pv"]
 [ext_resource type="PackedScene" uid="uid://bxhk61y4me6u4" path="res://scenes/weaponscenes/rocket_weapon.tscn" id="8_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://ckeegaktgt4mc" path="res://assets/main player animated idle-Sheet.png" id="9_ur7pv"]
-[ext_resource type="Script" uid="uid://cjlamt6jb7ky0" path="res://scripts/grapple.gd" id="11_d2wvv"]
+[ext_resource type="PackedScene" uid="uid://cyyqq4law6skj" path="res://scenes/grapple.tscn" id="11_d2wvv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
 atlas = ExtResource("9_ur7pv")
@@ -232,6 +232,4 @@ unique_name_in_owner = true
 wait_time = 0.2
 one_shot = true
 
-[node name="Grapple" type="RayCast2D" parent="."]
-script = ExtResource("11_d2wvv")
-metadata/_custom_type_script = "uid://cjlamt6jb7ky0"
+[node name="Grapple" parent="." instance=ExtResource("11_d2wvv")]

@@ -12,3 +12,4 @@ points = PackedVector2Array(0, 0)
 width = 5.0
 default_color = Color(0, 0, 0, 1)
 texture_mode = 2
+joint_mode = 2

@@ -141,17 +141,17 @@ func _physics_process(delta: float) -> void:
 				drop_weapon(current_weapon, toolbar[current_weapon])
 				upd_one_tool(current_weapon, dropItem)
 				change_weapon(current_weapon)
-	if Input.is_action_just_pressed("grapple") and (not is_grappling):
-		grapple_ray.target_position = (grapple_limit + 5.0) * get_local_mouse_position().normalized()
-		if (grapple_ray.is_colliding()):
-			is_grappling = true
-			attach_tether()
-	if Input.is_action_just_released("grapple") and is_grappling:
-		
-		if (Time.get_ticks_msec() - grapple_start_time < 300) and (not is_grappling):
-			reel_grapple()
-		else:
-			is_grappling = false
+	#if Input.is_action_just_pressed("grapple") and (not is_grappling):
+		#grapple_ray.target_position = (grapple_limit + 5.0) * get_local_mouse_position().normalized()
+		#if (grapple_ray.is_colliding()):
+			#is_grappling = true
+			#attach_tether()
+	#if Input.is_action_just_released("grapple") and is_grappling:
+		#
+		#if (Time.get_ticks_msec() - grapple_start_time < 300) and (not is_grappling):
+			#reel_grapple()
+		#else:
+			#is_grappling = false
 	var desired_velocity : Vector2
 	desired_velocity.x = direction * (MAX_BOOST_SPEED if big_boosting else MAX_SPEED)
 	velocity += get_gravity() * delta
