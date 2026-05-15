@@ -4,6 +4,7 @@
 
 [node name="Grapple" type="RayCast2D"]
 script = ExtResource("1_d3daa")
+max_dist = 550.0
 metadata/_custom_type_script = "uid://cjlamt6jb7ky0"
 
 [node name="GrappleLine" type="Line2D" parent="."]
@@ -13,3 +14,4 @@ width = 5.0
 default_color = Color(0, 0, 0, 1)
 texture_mode = 2
 joint_mode = 2
+round_precision = 20
