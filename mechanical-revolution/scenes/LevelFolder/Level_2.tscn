@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://1s8ikuel8yb6"]
+[gd_scene load_steps=17 format=4 uid="uid://1s8ikuel8yb6"]
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_an0to"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_7w0ij"]
@@ -380,6 +380,9 @@ polygon = PackedVector2Array(3585, 162, 4065, 161, 4255, 64, 4704, 66, 4255, 65,
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ghxur"]
 polygon = PackedVector2Array(2274, 735, 2591, 576, 2336, 704)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_aquvp"]
+polygon = PackedVector2Array(1826, 160, 1951, 96, 2015, 96, 1951, 96)
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_an0to")
 
@@ -456,28 +459,6 @@ position = Vector2(1283, 128)
 position = Vector2(5913, 365)
 tp_scene = ExtResource("8_4j5t3")
 
-[node name="LightingStuff" type="Node2D" parent="."]
-
-[node name="Light" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
-position = Vector2(3594, 196)
-
-[node name="Light2" parent="LightingStuff" instance=ExtResource("11_h66cb")]
-position = Vector2(2338.0002, 588.00006)
-rotation = 3.12975
-
-[node name="Light3" parent="LightingStuff" instance=ExtResource("11_h66cb")]
-position = Vector2(2008.0002, 591.00006)
-rotation = 3.12975
-
-[node name="Light4" parent="LightingStuff" instance=ExtResource("11_h66cb")]
-position = Vector2(1670.0001, 588)
-rotation = 3.12975
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="LightingStuff"]
-position = Vector2(-149, 33)
-color = Color(0.2231029, 0.2231029, 0.22310284, 1)
-blend_mode = 2
-
 [node name="LightOcculaderStuff" type="Node2D" parent="."]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="LightOcculaderStuff"]
@@ -491,3 +472,84 @@ occluder_light_mask = 2
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="LightOcculaderStuff"]
 occluder = SubResource("OccluderPolygon2D_ghxur")
 occluder_light_mask = 2
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="LightOcculaderStuff"]
+occluder = SubResource("OccluderPolygon2D_aquvp")
+occluder_light_mask = 2
+
+[node name="LightingStuff" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="LightingStuff"]
+position = Vector2(-149, 33)
+color = Color(0.2231029, 0.2231029, 0.22310284, 1)
+energy = 0.6
+blend_mode = 2
+
+[node name="Light" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(3586, 191)
+
+[node name="Light2" parent="LightingStuff" instance=ExtResource("11_h66cb")]
+position = Vector2(2338.0002, 588.00006)
+rotation = 3.12975
+
+[node name="Light3" parent="LightingStuff" instance=ExtResource("11_h66cb")]
+position = Vector2(2008.0002, 591.00006)
+rotation = 3.12975
+
+[node name="Light4" parent="LightingStuff" instance=ExtResource("11_h66cb")]
+position = Vector2(1670.0001, 588)
+rotation = 3.12975
+
+[node name="Light6" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(-15, -113)
+
+[node name="Light5" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(3387, -203)
+
+[node name="Light7" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(2385, -452)
+
+[node name="Light8" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(490, 105)
+
+[node name="Light9" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(521, -225)
+
+[node name="Light10" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(1087, -267)
+
+[node name="Light11" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(4108, 75)
+
+[node name="Light12" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(4486, -1)
+
+[node name="Light13" parent="LightingStuff" instance=ExtResource("11_h66cb")]
+position = Vector2(5797, 341)
+
+[node name="Light14" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(3081, -541)
+
+[node name="Light15" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(1519, -336)
+
+[node name="Light16" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(1555, 115)
+
+[node name="Light17" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(3968, 497)
+
+[node name="Light18" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(4687, 570)
+
+[node name="Light19" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(5243, 523)
+
+[node name="Light20" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(3874, -434)
+
+[node name="Light21" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(2516, 82)
+
+[node name="Light22" parent="LightingStuff" instance=ExtResource("9_4j5t3")]
+position = Vector2(1927, 142)

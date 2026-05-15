@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://assets/toolbar_UI.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://copky477kjpps" path="res://scenes/wallrun.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="6_p57ef"]
-[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://assets/wall1-Sheet-Sheet-export.png" id="7_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://Assets/wall1-Sheet-Sheet-export.png" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://cp8vvlka3f6iu" path="res://scenes/invisible_teleport_block.tscn" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://cu37lno6njmvm" path="res://scenes/LevelFolder/Level_1.tscn" id="9_0tnpc"]
 
@@ -366,3 +366,8 @@ tile_map_data = PackedByteArray("AAD5/wAAAAADAAUAAAD6/wAAAAADAAUAAAD7/wAAAAADAAU
 [node name="invisible_teleport_block" parent="." instance=ExtResource("8_gee14")]
 position = Vector2(3118, -153)
 tp_scene = ExtResource("9_0tnpc")
+
+[node name="LightingStuff" type="Node2D" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="LightingStuff"]
+color = Color(0.89411765, 0.9411765, 0.5411765, 0.9254902)

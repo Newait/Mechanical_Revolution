@@ -23,7 +23,7 @@ texture = ExtResource("1_24oxn")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 1
 position = Vector2(2.861023e-06, 9.536743e-07)
+scale = Vector2(3, 3)
 shadow_enabled = true
-shadow_color = Color(1.3912795e-08, 0.072933264, 0.00035535535, 0)
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_2e2gu")
