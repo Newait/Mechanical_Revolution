@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckeegaktgt4mc"
-path="res://.godot/imported/main player animated idle-Sheet.png-67d05a1d62f6c63d58366e493aa8c3a5.ctex"
+uid="uid://cj6x43k1erc2e"
+path="res://.godot/imported/moveable rocket.png-2dcf09a46eec84abc59bec90a0a301fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/main player animated idle-Sheet.png"
-dest_files=["res://.godot/imported/main player animated idle-Sheet.png-67d05a1d62f6c63d58366e493aa8c3a5.ctex"]
+source_file="res://Assets/enemyanims/moveable rocket.png"
+dest_files=["res://.godot/imported/moveable rocket.png-2dcf09a46eec84abc59bec90a0a301fd.ctex"]
 
 [params]
 

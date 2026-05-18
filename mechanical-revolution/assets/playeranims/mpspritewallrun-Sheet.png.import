@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwq13q1kh44gd"
-path="res://.godot/imported/robot revolver.png-36a9ae5ef04c1f4b56be5bedefb149c2.ctex"
+uid="uid://c582wt0js7cvd"
+path="res://.godot/imported/mpspritewallrun-Sheet.png-98fa03c4c62bc6ce1ec80a8d7f39e75f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/robot revolver.png"
-dest_files=["res://.godot/imported/robot revolver.png-36a9ae5ef04c1f4b56be5bedefb149c2.ctex"]
+source_file="res://Assets/playeranims/mpspritewallrun-Sheet.png"
+dest_files=["res://.godot/imported/mpspritewallrun-Sheet.png-98fa03c4c62bc6ce1ec80a8d7f39e75f.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj1d6h6hv638b"
-path="res://.godot/imported/wall1-Sheet-Sheet-export.png-f1d806880a4c8ad02a85136ba8f72d2c.ctex"
+uid="uid://dmr0gbq3opscc"
+path="res://.godot/imported/moveable revolver.png-3ab889ff4ed35ef7eb105d91478c55a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/wall1-Sheet-Sheet-export.png"
-dest_files=["res://.godot/imported/wall1-Sheet-Sheet-export.png-f1d806880a4c8ad02a85136ba8f72d2c.ctex"]
+source_file="res://Assets/enemyanims/moveable revolver.png"
+dest_files=["res://.godot/imported/moveable revolver.png-3ab889ff4ed35ef7eb105d91478c55a0.ctex"]
 
 [params]
 

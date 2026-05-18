@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj1d6h6hv638b"
-path="res://.godot/imported/wall1-Sheet-Sheet-export.png-f1d806880a4c8ad02a85136ba8f72d2c.ctex"
+uid="uid://ddvemm8u536w4"
+path="res://.godot/imported/mainplayerspritesliding.png-e35e6be07e8d746001388eea8ee7a4b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/wall1-Sheet-Sheet-export.png"
-dest_files=["res://.godot/imported/wall1-Sheet-Sheet-export.png-f1d806880a4c8ad02a85136ba8f72d2c.ctex"]
+source_file="res://Assets/playeranims/mainplayerspritesliding.png"
+dest_files=["res://.godot/imported/mainplayerspritesliding.png-e35e6be07e8d746001388eea8ee7a4b3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj1d6h6hv638b"
-path="res://.godot/imported/wall1-Sheet-Sheet-export.png-f1d806880a4c8ad02a85136ba8f72d2c.ctex"
+uid="uid://576q7rdyi0kk"
+path="res://.godot/imported/walking animation-Sheet.png-7f8e383e0679eaa40bdf317258c25b61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/wall1-Sheet-Sheet-export.png"
-dest_files=["res://.godot/imported/wall1-Sheet-Sheet-export.png-f1d806880a4c8ad02a85136ba8f72d2c.ctex"]
+source_file="res://Assets/enemyanims/walking animation-Sheet.png"
+dest_files=["res://.godot/imported/walking animation-Sheet.png-7f8e383e0679eaa40bdf317258c25b61.ctex"]
 
 [params]
 
