@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bt212r22nlc3n"]
 
 [ext_resource type="Texture2D" uid="uid://dhc0o2gac6acp" path="res://Assets/alarm light.png" id="1_h2wgr"]
-[ext_resource type="Script" uid="uid://bi86lwtwnukro" path="res://light_2.gd" id="1_rha1a"]
+[ext_resource type="Script" uid="uid://bi86lwtwnukro" path="res://scripts/light_2.gd" id="1_rha1a"]
+[ext_resource type="Texture2D" uid="uid://nivo4ybyc7ii" path="res://Assets/LightPolygon.png" id="3_81vqa"]
 
 [sub_resource type="Gradient" id="Gradient_24oxn"]
 offsets = PackedFloat32Array(0.054054055, 0.3918919, 0.7072072, 1)
@@ -15,9 +16,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.96, 0.111428574)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rha1a"]
-polygon = PackedVector2Array(-72, -27, -62, -24, -55, -21, -49, -18, -43, -15, -37, -13, -30, -11, -23, -9, -17, -7, -1, 0, -11, 3, -17, 4, -27, 6, -35, 9, -43, 12, -51, 15, -57, 18, -63, 20, -72, 23, -76, 15, -76, 6, -76, -4, -74, -17)
-
 [node name="Light" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_rha1a")
@@ -28,7 +26,7 @@ texture = ExtResource("1_h2wgr")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 1
 position = Vector2(1.4305115e-06, -0.99999857)
-scale = Vector2(0.82, 0.47)
+scale = Vector2(3, 3)
 color = Color(0.96862745, 0.003921569, 0.039215688, 1)
 energy = 6.0
 shadow_enabled = true
@@ -38,12 +36,18 @@ shadow_filter_smooth = 20.0
 shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_h2wgr")
 
-[node name="OccluderLeft" type="LightOccluder2D" parent="."]
+[node name="LightConnectors" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 1)
-occluder = SubResource("OccluderPolygon2D_rha1a")
 
-[node name="OccluderRight" type="LightOccluder2D" parent="."]
+[node name="OccluderLeft" type="PointLight2D" parent="LightConnectors"]
 unique_name_in_owner = true
-rotation = 3.1415927
-occluder = SubResource("OccluderPolygon2D_rha1a")
+position = Vector2(-76, -5)
+rotation = -3.1415925
+scale = Vector2(2.363, 0.351)
+texture = ExtResource("3_81vqa")
+
+[node name="OccluderRight" type="PointLight2D" parent="LightConnectors"]
+unique_name_in_owner = true
+position = Vector2(76, -3)
+scale = Vector2(2.363, 0.351)
+texture = ExtResource("3_81vqa")

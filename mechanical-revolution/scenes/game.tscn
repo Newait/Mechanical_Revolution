@@ -183,7 +183,7 @@ position = Vector2(1890.0001, -354)
 scale = Vector2(-16.65422, -6.8150663)
 
 [node name="invisible_teleport_block" parent="." instance=ExtResource("8_gee14")]
-position = Vector2(3118, -153)
+position = Vector2(3473, -141)
 tp_scene = ExtResource("9_0tnpc")
 
 [node name="LightingStuff" type="Node2D" parent="."]
