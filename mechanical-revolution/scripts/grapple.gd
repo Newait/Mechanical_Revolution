@@ -93,7 +93,7 @@ func larp_points(delta:float) -> void:
 	var ogPoints := []
 	for i in range(slack_points.size() - 2, -1, -1):
 		#ogPoints.append(i/ (slack_points.size() as float) )
-		slack_points[i] = lerpf(slack_points[i],slack_points[i+1], 6.0 * delta) 
+		slack_points[i] = lerpf(slack_points[i],slack_points[i+1], 10.0 * delta) 
 
 func detach_tether() -> void:
 	peak_counts = 0.0
