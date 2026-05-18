@@ -185,6 +185,11 @@ weaponScns = Dictionary[String, PackedScene]({
 "unarmed": ExtResource("8_ur7pv")
 })
 
+[node name="Grapple" parent="." instance=ExtResource("11_d2wvv")]
+unique_name_in_owner = true
+collision_mask = 16
+max_dist = 450.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i3pqv")
@@ -231,7 +236,3 @@ debug_color = Color(0.90416664, 0.30690408, 0, 0.41960785)
 unique_name_in_owner = true
 wait_time = 0.2
 one_shot = true
-
-[node name="Grapple" parent="." instance=ExtResource("11_d2wvv")]
-unique_name_in_owner = true
-collision_mask = 16
