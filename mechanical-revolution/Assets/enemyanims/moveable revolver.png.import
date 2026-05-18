@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmr0gbq3opscc"
-path="res://.godot/imported/moveable revolver.png-3ab889ff4ed35ef7eb105d91478c55a0.ctex"
+path="res://.godot/imported/moveable revolver.png-fee2a12125cbe708c20cc38fbff990db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/enemyanims/moveable revolver.png"
-dest_files=["res://.godot/imported/moveable revolver.png-3ab889ff4ed35ef7eb105d91478c55a0.ctex"]
+source_file="res://assets/enemyanims/moveable revolver.png"
+dest_files=["res://.godot/imported/moveable revolver.png-fee2a12125cbe708c20cc38fbff990db.ctex"]
 
 [params]
 
