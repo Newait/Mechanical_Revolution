@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsyfxb11phyub"]
+[gd_scene load_steps=6 format=3 uid="uid://bsyfxb11phyub"]
 
 [ext_resource type="Script" uid="uid://clgtbiaxr1n1b" path="res://scripts/Interactables/droppableTest.gd" id="1_63xtw"]
+[ext_resource type="Shader" uid="uid://cq4c1t7ofplk5" path="res://assets/shader/outline.gdshader" id="2_62kli"]
 [ext_resource type="Texture2D" uid="uid://dtlk48e87g1r3" path="res://icon.svg" id="2_cn0pc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02gnq"]
 size = Vector2(56, 52)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocarv"]
+shader = ExtResource("2_62kli")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 4.0
+shader_parameter/viewport_scale = Vector2(1, 1)
 
 [node name="Droppable" type="Area2D"]
 collision_mask = 8
@@ -15,9 +22,13 @@ metadata/_custom_type_script = "uid://clgtbiaxr1n1b"
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_02gnq")
 
-[node name="DropSprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_ocarv")
 scale = Vector2(0.265625, 0.234375)
+
+[node name="DropSprite" type="Sprite2D" parent="CanvasGroup"]
+unique_name_in_owner = true
+scale = Vector2(1.0000001, 1)
 texture = ExtResource("2_cn0pc")
 
 [node name="InteractText" type="Label" parent="."]

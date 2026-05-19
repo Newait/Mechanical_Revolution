@@ -3,7 +3,7 @@ class_name RocketWeapon extends Weapon
 var laserInstance : Laser
 var damage := 5.0
 var is_firing := false
-@onready var rocket_sprite: Sprite2D = $RocketSprite
+@onready var rocket_sprite: Sprite2D = %RocketSprite
 
 
 

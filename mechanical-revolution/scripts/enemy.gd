@@ -3,7 +3,11 @@ class_name Enemy extends CharacterBody2D
 var enemyhealth := 100.0
 var enemyworth := 50.0
 var max_speed := 250.0
-var enemystate := "idle"
+var enemystate := "idle":
+	set(val):
+		if (val == "idle"):
+			animated_sprite_2d.play("idle")
+		enemystate = val
 var acceleration := 100.0
 var contact_damage := 10.0
 var kb_force := 1000.0
@@ -11,6 +15,7 @@ var kb_force := 1000.0
 @export var droppable_scene : PackedScene
 @onready var detect_box: Area2D = %DetectBox
 @onready var hitbox: Area2D = %Hitbox
+@onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 
 #@onready var raycastright: RayCast2D = %Raycastright
 #@onready var raycastleft: RayCast2D = %Raycastleft
@@ -34,10 +39,12 @@ func _physics_process(delta: float) -> void:
 	var direction:= 0.0
 	var playerdirection := global_position.direction_to(_get_player_position())
 
-	var desired_velocity : Vector2
+
+
 	match enemystate:
 		"idle":
-			direction = 0.0
+			pass
+			#direction = 0.0
 			#AnimationPlayer.play("idle_animation")
 		"wander":
 			#if raycastright.is_colliding():
@@ -47,6 +54,17 @@ func _physics_process(delta: float) -> void:
 				direction = 1.0
 				#AnimatedSprite2d.flip_h = false
 		"pursuit":
+			if playerdirection.x > 0.0:
+				animated_sprite_2d.flip_h = false
+			elif playerdirection.x < 0.0:
+				animated_sprite_2d.flip_h = true
+			var walking_factor := 0.6
+			animated_sprite_2d.speed_scale = absf(velocity.x/max_speed) if velocity.x > walking_factor * max_speed else absf(velocity.x/(max_speed * walking_factor))
+			if animated_sprite_2d.animation != &"pursuit" and absf(velocity.x) > walking_factor * max_speed:
+				animated_sprite_2d.play("pursuit")
+			elif animated_sprite_2d.animation != &"walking" and absf(velocity.x) < walking_factor * max_speed:
+				animated_sprite_2d.play("walking")
+			print(velocity.x, max_speed)
 			if _get_player_position():
 				if playerdirection.x > 0.0:
 					direction = 1.0
@@ -59,6 +77,7 @@ func _physics_process(delta: float) -> void:
 			#enemyspeed == 0
 			##AnimationPlayer2d.play("stunned_animation")
 			##spawn_weapon()
+	var desired_velocity : Vector2
 	desired_velocity.x = direction * max_speed
 	velocity.x = move_toward(velocity.x, desired_velocity.x, acceleration * delta)
 	velocity += get_gravity() * delta 

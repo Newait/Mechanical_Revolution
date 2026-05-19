@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxhk61y4me6u4"]
+[gd_scene load_steps=6 format=3 uid="uid://bxhk61y4me6u4"]
 
 [ext_resource type="Script" uid="uid://cl0dkh85cn5mn" path="res://scripts/WeaponScripts/rocket_weapon.gd" id="1_757p5"]
 [ext_resource type="Texture2D" uid="uid://dy3a2y4r1bhi2" path="res://assets/rocket launcher.png" id="2_h4lji"]
 [ext_resource type="PackedScene" uid="uid://b0v3m7sex0cef" path="res://scenes/Projectiles/rocket.tscn" id="2_r36wl"]
+[ext_resource type="Shader" uid="uid://cq4c1t7ofplk5" path="res://assets/shader/outline.gdshader" id="3_r36wl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8jdxy"]
+shader = ExtResource("3_r36wl")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 4.0
+shader_parameter/viewport_scale = Vector2(1, 1)
 
 [node name="RocketWeapon" type="Node2D"]
 script = ExtResource("1_757p5")
@@ -14,7 +21,11 @@ unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
-[node name="RocketSprite" type="Sprite2D" parent="."]
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_8jdxy")
+
+[node name="RocketSprite" type="Sprite2D" parent="CanvasGroup"]
+unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(30.434782, 0)
 texture = ExtResource("2_h4lji")
