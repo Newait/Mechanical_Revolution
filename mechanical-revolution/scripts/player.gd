@@ -26,11 +26,20 @@ var playerState := "Running":
 			if (val == "Sliding"):
 				slide_physics_box.disabled = false
 				stand_physics_box.disabled = true
+				
 			else:
 				slide_physics_box.disabled = true
 				stand_physics_box.disabled = false
 		if (playerState == "Wall Slide" and  (not grace_timer.is_stopped())):
 				grace_timer.stop()
+		if val == "Jump Up" or val == "Falling":
+			if absf(velocity.y) < 20.0:
+				animated_sprite_2d.play("peak_jump")
+			else:
+				animated_sprite_2d.play(state_to_anims[val])
+		else:
+			animated_sprite_2d.play(state_to_anims[val])
+		#animated_sprite_2d.flip_h = (val == "Wall Slide")
 		playerState = val
 		
 #@onready var weapon: Weapon = $Weapon
@@ -42,6 +51,7 @@ var weapon: Weapon:
 		add_child(weapon)
 @export var toolbar : Array[WeaponItem]
 @export var weaponScns: Dictionary[String, PackedScene]
+@export var state_to_anims : Dictionary[String, String]
 var droppable_scene : PackedScene = preload("uid://bsyfxb11phyub")
 #@export var weaponkeybinds : Dictionary
 var current_weapon := 0
@@ -50,6 +60,9 @@ var current_interactable : Interactable
 var last_direction_wall := 0.0
 var wall_direction := 0.0
 @onready var grace_timer: Timer = %GraceTimer
+
+
+@onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 
 
 var is_grappling := false
@@ -115,6 +128,11 @@ func _on_area_exited(area: Node2D) -> void:
 		current_interactable = null
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
+	if playerState != "Wall Slide":
+		if (direction != 0.0):
+			animated_sprite_2d.flip_h = direction < 0.0
+	else:
+		animated_sprite_2d.flip_h = direction < 0.0
 	#weapon.rotation = (get_local_mouse_position().normalized() * (-1 if weapon.flippedH else 1)).angle()
 	#var shouldFlip = (
 		#((not weapon.flippedH) and (get_local_mouse_position().x < 0.0))
@@ -170,6 +188,11 @@ func _physics_process(delta: float) -> void:
 		big_boosting = true
 	match playerState:
 		"Running":
+			animated_sprite_2d.speed_scale = absf(velocity.x/desired_velocity.x)
+			if (big_boosting and animated_sprite_2d.animation == &"run"):
+				animated_sprite_2d.play("dash")
+			elif (not big_boosting) and animated_sprite_2d.animation == &"dash":
+				animated_sprite_2d.play("run")
 			if direction:
 				velocity.x = move_toward(velocity.x, desired_velocity.x, ACCELERATION * delta)
 			else:
@@ -202,6 +225,7 @@ func _physics_process(delta: float) -> void:
 				velocity.x = minf(abs(velocity.x), MAX_SPEED) * direction * 2.5
 				playerState = "Jump Up"
 		"Wall Run":
+			animated_sprite_2d.speed_scale = absf(velocity.x/MAX_SPEED)
 			if (not (direction == wall_run_direction)) or (not can_wall_run) or abs(velocity.x) < 100.0:
 				playerState = "Falling"
 			if is_on_floor():

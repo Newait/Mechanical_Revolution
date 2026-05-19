@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dyxer4ehgcid5"
-path="res://.godot/imported/running animation-Sheet.png-3ffd97d51cb6b6c4f8af25f2a88d2289.ctex"
+path="res://.godot/imported/running animation-Sheet.png-1d6a9964d887eeb256e496908c90646b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/running animation-Sheet.png"
-dest_files=["res://.godot/imported/running animation-Sheet.png-3ffd97d51cb6b6c4f8af25f2a88d2289.ctex"]
+source_file="res://assets/running animation-Sheet.png"
+dest_files=["res://.godot/imported/running animation-Sheet.png-1d6a9964d887eeb256e496908c90646b.ctex"]
 
 [params]
 
