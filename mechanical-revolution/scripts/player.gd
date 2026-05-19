@@ -5,7 +5,7 @@ const MAX_SPEED := 300.0
 const ACCELERATION := 1500.0
 const DECCELERATION := 1300.0
 const AIR_ACCELERATION := 900.0
-const JUMP_VELOCITY := -800.0
+const JUMP_VELOCITY := -600.0
 const WALL_FALL_ACCEL := 2000.0
 const WALL_FALL_SPEED := 100.0
 const WALL_RUN_FALL := 75.0
@@ -41,7 +41,6 @@ var weapon: Weapon:
 		weapon = val
 		add_child(weapon)
 @export var toolbar : Array[WeaponItem]
-@export var myarr : Array[WeaponItem]
 @export var weaponScns: Dictionary[String, PackedScene]
 var droppable_scene : PackedScene = preload("uid://bsyfxb11phyub")
 #@export var weaponkeybinds : Dictionary
@@ -52,8 +51,9 @@ var last_direction_wall := 0.0
 var wall_direction := 0.0
 @onready var grace_timer: Timer = %GraceTimer
 
-var tether_position := Vector2.ZERO
-var tether_length :float
+
+var is_grappling := false
+#var grapple_start_time : int
 
 var wall_run_direction := 0.0
 var last_wall_run_direction:= 0.0
@@ -70,6 +70,7 @@ var big_boosting := false
 @onready var wall_run_check: Area2D = %WallRunCheck
 @onready var stand_physics_box: CollisionShape2D = %StandPhysicsBox
 @onready var slide_physics_box: CollisionShape2D = %SlidePhysicsBox
+@onready var grapple : Grapple = %Grapple
 
 
 var is_just_interacted := false
@@ -91,6 +92,9 @@ func _ready() -> void:
 	interact_range.area_exited.connect(_on_area_exited)
 	wall_run_check.area_entered.connect(_on_wall_run_area_entered)
 	wall_run_check.area_exited.connect(_on_wall_run_area_exited)
+	grapple.attach_grapple.connect(attach_grapple)
+	grapple.detach_grapple.connect(detach_grapple)
+	grapple.reel_grapple.connect(reel_grapple)
 	grace_timer.timeout.connect(func () -> void:
 		big_boosting = false
 		take_damage(20.0)
@@ -134,10 +138,21 @@ func _physics_process(delta: float) -> void:
 				drop_weapon(current_weapon, toolbar[current_weapon])
 				upd_one_tool(current_weapon, dropItem)
 				change_weapon(current_weapon)
-			
+	#if Input.is_action_just_pressed("grapple") and (not is_grappling):
+		#grapple_ray.target_position = (grapple_limit + 5.0) * get_local_mouse_position().normalized()
+		#if (grapple_ray.is_colliding()):
+			#is_grappling = true
+			#attach_tether()
+	#if Input.is_action_just_released("grapple") and is_grappling:
+		#
+		#if (Time.get_ticks_msec() - grapple_start_time < 300) and (not is_grappling):
+			#reel_grapple()
+		#else:
+			#is_grappling = false
 	var desired_velocity : Vector2
 	desired_velocity.x = direction * (MAX_BOOST_SPEED if big_boosting else MAX_SPEED)
-	velocity += get_gravity() * delta
+	if not is_grappling:
+		velocity += get_gravity() * delta
 	if Input.is_key_pressed(KEY_1):
 		change_weapon(0)
 	elif Input.is_key_pressed(KEY_2):
@@ -166,7 +181,7 @@ func _physics_process(delta: float) -> void:
 				velocity.y = JUMP_VELOCITY
 				playerState = "Jump Up"
 
-			if Input.is_action_just_pressed("slide") and absf(velocity.x) > 100.0:
+			if Input.is_action_pressed("slide") and absf(velocity.x) > 100.0:
 				if can_slide_boost and (not big_boosting):
 					velocity.x *= SLIDE_MULTI
 					can_slide_boost = false
@@ -183,18 +198,18 @@ func _physics_process(delta: float) -> void:
 				playerState = "Running"
 			velocity.x = move_toward(velocity.x, 0, SLIDE_DECCEL * delta)
 			if Input.is_action_just_pressed("jump") and is_on_floor():
-				velocity.y = JUMP_VELOCITY
+				velocity.y = JUMP_VELOCITY * 1.2
 				velocity.x = minf(abs(velocity.x), MAX_SPEED) * direction * 2.5
 				playerState = "Jump Up"
 		"Wall Run":
-			if (not (direction == wall_run_direction)) or (not can_wall_run) or abs(velocity.x) < 10.0:
+			if (not (direction == wall_run_direction)) or (not can_wall_run) or abs(velocity.x) < 100.0:
 				playerState = "Falling"
 			if is_on_floor():
 				playerState = "Running"
 			if Input.is_action_just_pressed("jump"):
 				last_wall_run_direction = direction
 				velocity.y = JUMP_VELOCITY * 0.8
-				velocity.x = MAX_SPEED * direction
+				velocity.x = (absf(velocity.x) if big_boosting else MAX_SPEED) * direction
 				playerState = "Jump Up"
 			velocity.y = move_toward(velocity.y, WALL_RUN_FALL, WALL_RUN_ACCEL * delta)
 			velocity.x = move_toward(velocity.x, 0, WALL_RUN_DECCEL * delta)
@@ -220,24 +235,25 @@ func _physics_process(delta: float) -> void:
 			if is_on_floor():
 				playerState = "Running"
 				last_direction_wall = 0.0
-			var wallCondition := (((direction > 0.0) and wall_direction < 0.0) or ((direction < 0.0) and wall_direction > 0.0)) or ((not right_wall_cast.is_colliding()) and (not left_wall_cast.is_colliding()))
+			var wallCondition := (((direction >= 0.0) and wall_direction <= 0.0) or ((direction <= 0.0) and wall_direction >= 0.0)) or ((not right_wall_cast.is_colliding()) and (not left_wall_cast.is_colliding()))
 			if (wallCondition):
 				playerState = "Falling"
-			if not big_boosting:
-				velocity.y = move_toward(velocity.y, WALL_FALL_SPEED, WALL_FALL_ACCEL * delta)
-			else:
-				velocity = Vector2.ZERO
-				if grace_timer.is_stopped():
-					grace_timer.start()
-			if (Input.is_action_just_pressed("jump")):
-				last_direction_wall = direction
-				velocity.y = JUMP_VELOCITY * (1.2 if big_boosting else 0.8)
-				velocity.x = (MAX_BOOST_SPEED * 0.9 if big_boosting else MAX_SPEED) * -direction
-				#print(velocity.x)
-				#print("save_vel" + str(save_vel))
-				#print("is boosting: " + str(big_boosting))
+			if playerState == "Wall Slide":
+				if not big_boosting:
+					velocity.y = move_toward(velocity.y, WALL_FALL_SPEED, WALL_FALL_ACCEL * delta)
+				else:
+					velocity = Vector2.ZERO
+					if grace_timer.is_stopped():
+						grace_timer.start()
+				if (Input.is_action_just_pressed("jump")):
+					last_direction_wall = direction
+					velocity.y = JUMP_VELOCITY * (1.2 if big_boosting else 1.1)
+					velocity.x = (MAX_BOOST_SPEED * 0.9 if big_boosting else MAX_SPEED) * -direction
+					#print(velocity.x)
+					#print("save_vel" + str(save_vel))
+					#print("is boosting: " + str(big_boosting))
 
-				playerState = "Jump Up"
+					playerState = "Jump Up"
 
 				
 		"Falling":
@@ -251,12 +267,29 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
 			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
 				if not(direction==last_direction_wall):
+					wall_direction = direction
 					playerState = "Wall Slide"
 				else:
 					print(direction, last_direction_wall)
 			if check_wall_run(direction):
 				wall_run_direction = direction
 				playerState = "Wall Run"
+	if is_grappling:
+		var excess_dist := maxf(grapple.tether_position.distance_to(global_position) - grapple.tether_length, 0.0)
+		if excess_dist > 1.5 * grapple.tether_length:
+			grapple.detach_tether()
+		else:
+			var direct_to_tether := global_position.direction_to(grapple.tether_position)
+			var calc_dot_vel := velocity.dot(direct_to_tether)
+			var calc_accel_mag := maxf(excess_dist - (calc_dot_vel/2.0), 0)*32.0
+			
+			var r := grapple.tether_length
+			var v := velocity.dot(direct_to_tether.orthogonal().normalized())
+			
+			var spring := calc_accel_mag * direct_to_tether
+			var centripetal := v * v/r * direct_to_tether
+			velocity += (centripetal + spring) * delta
+			velocity.x += maxf(velocity.y *2.0,0.0) * sign(velocity.x) * delta
 	if (velocity.length() < 300.0 and not(playerState == "Wall Slide")):
 		big_boosting= false
 	move_and_slide()
@@ -294,6 +327,25 @@ func upd_one_tool(index: int, drop_item: Droppable) -> void:
 	toolbar[index] = WeaponItem.new().Init(drop_item)
 	updateToolbar.emit(index, toolbar[index])
 
+func attach_grapple() -> void:
+	set_grappling(true)
+	print("attached")
+func detach_grapple() -> void:
+	set_grappling(false)
+func set_grappling(val):
+		#if val:
+			#grapple_start_time = Time.get_ticks_msec()
+		is_grappling = val
+#func reel_grapple() -> void:
+	#var tween:= create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	#tween.tween_property(self,"tether_length", 1.0,1.0)
+	#tween.finished.connect(func()-> void:
+		#is_grappling = false
+	#)
+func reel_grapple() -> void:
+	print("reeling")
+	velocity += grapple.tether_length * global_position.direction_to(grapple.tether_position) * 4.0
+	detach_grapple()
 func death() -> void:
 	get_tree().call_deferred("reload_current_scene")
 	# Get the input direction and handle the movement/deceleration.

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyyqq4law6skj"]
+
+[ext_resource type="Script" uid="uid://cjlamt6jb7ky0" path="res://scripts/grapple.gd" id="1_d3daa"]
+
+[node name="Grapple" type="RayCast2D"]
+script = ExtResource("1_d3daa")
+max_dist = 550.0
+metadata/_custom_type_script = "uid://cjlamt6jb7ky0"
+
+[node name="GrappleLine" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
+texture_mode = 2
+joint_mode = 2
+round_precision = 20

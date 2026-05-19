@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckeegaktgt4mc"
-path="res://.godot/imported/main player animated idle-Sheet.png-bf13ace421cf33ecd6f4e01b80427a5e.ctex"
+uid="uid://dj0f4culh8dpg"
+path="res://.godot/imported/robot 1.png-0ca579e34590a23bc63833b5517546d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/main player animated idle-Sheet.png"
-dest_files=["res://.godot/imported/main player animated idle-Sheet.png-bf13ace421cf33ecd6f4e01b80427a5e.ctex"]
+source_file="res://assets/enemyanims/robot 1.png"
+dest_files=["res://.godot/imported/robot 1.png-0ca579e34590a23bc63833b5517546d8.ctex"]
 
 [params]
 

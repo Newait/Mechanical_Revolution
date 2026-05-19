@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddgsupy5qjh2s"
-path="res://.godot/imported/sidewaysmain player sprite-Sheet.png-688860f5ec5b9f8f18f261fddaa07fb6.ctex"
+uid="uid://cqq1356ymvqau"
+path="res://.godot/imported/robot holding a rocket laucher.png-78b7e7d9a6b9cb2e764ddb7ad4bb63fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sidewaysmain player sprite-Sheet.png"
-dest_files=["res://.godot/imported/sidewaysmain player sprite-Sheet.png-688860f5ec5b9f8f18f261fddaa07fb6.ctex"]
+source_file="res://assets/enemyanims/robot holding a rocket laucher.png"
+dest_files=["res://.godot/imported/robot holding a rocket laucher.png-78b7e7d9a6b9cb2e764ddb7ad4bb63fa.ctex"]
 
 [params]
 

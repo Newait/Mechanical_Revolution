@@ -9,7 +9,7 @@
 script = ExtResource("2_aawao")
 final_radius = 150.0
 expand_time = 0.15
-max_knockback = 1500.0
+max_knockback = 1000.0
 player_kb_multi = 1.5
 metadata/_custom_type_script = "uid://dr442aw2r2gmm"
 

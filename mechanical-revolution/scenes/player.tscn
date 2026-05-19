@@ -9,12 +9,8 @@
 [ext_resource type="Resource" uid="uid://dp5fei1qouh4u" path="res://Resource/toolbarItems/laserItem.tres" id="5_y4r1p"]
 [ext_resource type="PackedScene" uid="uid://bssnelxmi2jvt" path="res://scenes/weaponscenes/unarmed.tscn" id="8_ur7pv"]
 [ext_resource type="PackedScene" uid="uid://bxhk61y4me6u4" path="res://scenes/weaponscenes/rocket_weapon.tscn" id="8_y4r1p"]
-[ext_resource type="Texture2D" uid="uid://b1gg517uetc8v" path="res://assets/playerprototypecolor.png" id="9_ur7pv"]
-[ext_resource type="Texture2D" uid="uid://ckeegaktgt4mc" path="res://Assets/main player animated idle-Sheet.png" id="9_ur7pv"]
-
-[sub_resource type="Resource" id="Resource_ur7pv"]
-script = ExtResource("3_smehm")
-metadata/_custom_type_script = "uid://2mqmm8s3lmee"
+[ext_resource type="Texture2D" uid="uid://ckeegaktgt4mc" path="res://assets/main player animated idle-Sheet.png" id="9_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://cyyqq4law6skj" path="res://scenes/grapple.tscn" id="11_d2wvv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
 atlas = ExtResource("9_ur7pv")
@@ -182,13 +178,17 @@ collision_layer = 9
 collision_mask = 17
 script = ExtResource("1_g2els")
 toolbar = Array[ExtResource("3_smehm")]([ExtResource("4_ur7pv"), ExtResource("5_y4r1p"), ExtResource("5_d2wvv"), ExtResource("5_d2wvv")])
-myarr = Array[ExtResource("3_smehm")]([SubResource("Resource_ur7pv")])
 weaponScns = Dictionary[String, PackedScene]({
 "laser": ExtResource("3_dqkch"),
 "pistol": ExtResource("4_qlg0r"),
 "rocket": ExtResource("8_y4r1p"),
 "unarmed": ExtResource("8_ur7pv")
 })
+
+[node name="Grapple" parent="." instance=ExtResource("11_d2wvv")]
+unique_name_in_owner = true
+collision_mask = 16
+max_dist = 450.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

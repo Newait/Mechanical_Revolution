@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqq1356ymvqau"
-path="res://.godot/imported/robot holding a rocket laucher.png-b773a3bcdbbe69b52834e3348205f995.ctex"
+uid="uid://jvkf22gfx23w"
+path="res://.godot/imported/mainplayersprite-ascend.png-adf0bdfe7465ca8571da2c7b665be4a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/robot holding a rocket laucher.png"
-dest_files=["res://.godot/imported/robot holding a rocket laucher.png-b773a3bcdbbe69b52834e3348205f995.ctex"]
+source_file="res://assets/playeranims/mainplayersprite-ascend.png"
+dest_files=["res://.godot/imported/mainplayersprite-ascend.png-adf0bdfe7465ca8571da2c7b665be4a1.ctex"]
 
 [params]
 
