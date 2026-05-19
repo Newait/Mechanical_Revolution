@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj1d6h6hv638b"
-path="res://.godot/imported/wall1-Sheet-Sheet-export.png-f1d806880a4c8ad02a85136ba8f72d2c.ctex"
+uid="uid://dj0f4culh8dpg"
+path="res://.godot/imported/robot 1.png-44151ed662cea427578c966e798c7973.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/wall1-Sheet-Sheet-export.png"
-dest_files=["res://.godot/imported/wall1-Sheet-Sheet-export.png-f1d806880a4c8ad02a85136ba8f72d2c.ctex"]
+source_file="res://Assets/enemyanims/robot 1.png"
+dest_files=["res://.godot/imported/robot 1.png-44151ed662cea427578c966e798c7973.ctex"]
 
 [params]
 
