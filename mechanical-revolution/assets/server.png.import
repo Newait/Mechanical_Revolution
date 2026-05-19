@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwq13q1kh44gd"
-path="res://.godot/imported/robot revolver.png-900d336988f0b22faebfaecff431e0e3.ctex"
+uid="uid://bpiqfrksbtfjv"
+path="res://.godot/imported/server.png-caa943200d36aa349701c3a38c3c1874.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemyanims/robot revolver.png"
-dest_files=["res://.godot/imported/robot revolver.png-900d336988f0b22faebfaecff431e0e3.ctex"]
+source_file="res://assets/server.png"
+dest_files=["res://.godot/imported/server.png-caa943200d36aa349701c3a38c3c1874.ctex"]
 
 [params]
 
