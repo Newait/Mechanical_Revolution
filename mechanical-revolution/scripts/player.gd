@@ -37,7 +37,9 @@ var playerState := "Running":
 				animated_sprite_2d.play("peak_jump")
 			else:
 				animated_sprite_2d.play(state_to_anims[val])
-		else:
+		elif val == "Crouching":
+			animated_sprite_2d.play("slide")
+		elif state_to_anims[val] != null:
 			animated_sprite_2d.play(state_to_anims[val])
 		#animated_sprite_2d.flip_h = (val == "Wall Slide")
 		playerState = val
@@ -80,6 +82,7 @@ var big_boosting := false
 @onready var interact_range: Area2D = $InteractRange
 @onready var right_wall_cast: RayCast2D = %RightWallCast
 @onready var left_wall_cast: RayCast2D = %LeftWallCast
+@onready var standing_check: RayCast2D = %StandingCheck
 @onready var wall_run_check: Area2D = %WallRunCheck
 @onready var stand_physics_box: CollisionShape2D = %StandPhysicsBox
 @onready var slide_physics_box: CollisionShape2D = %SlidePhysicsBox
@@ -204,26 +207,52 @@ func _physics_process(delta: float) -> void:
 				velocity.y = JUMP_VELOCITY
 				playerState = "Jump Up"
 
-			if Input.is_action_pressed("slide") and absf(velocity.x) > 100.0:
-				if can_slide_boost and (not big_boosting):
-					velocity.x *= SLIDE_MULTI
-					can_slide_boost = false
-					get_tree().create_timer(slide_boost_cd).timeout.connect(func () -> void:
-						can_slide_boost = true
-					)
-				
-				playerState = "Sliding"
+			if Input.is_action_pressed("slide"):
+				if absf(velocity.x) > 100.0:
+					if can_slide_boost and (not big_boosting):
+						velocity.x *= SLIDE_MULTI
+						can_slide_boost = false
+						get_tree().create_timer(slide_boost_cd).timeout.connect(func () -> void:
+							can_slide_boost = true
+						)
+					
+					playerState = "Sliding"
+				else:
+					playerState = "Crouching"
 		
 		"Sliding":
 			if not is_on_floor():
 				playerState = "Falling"
-			if Input.is_action_just_released("slide") or abs(velocity.x) < 20.0:
-				playerState = "Running"
+			if Input.is_action_just_released("slide"):
+				if standing_check.is_colliding():
+					playerState = "Crouching"
+				else:
+					playerState = "Running"
+			if abs(velocity.x) < 20.0:
+				playerState = "Crouching"
+			
 			velocity.x = move_toward(velocity.x, 0, SLIDE_DECCEL * delta)
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY * 1.2
 				velocity.x = minf(abs(velocity.x), MAX_SPEED) * direction * 2.5
 				playerState = "Jump Up"
+		"Crouching":
+			if direction:
+				velocity.x = move_toward(velocity.x, desired_velocity.x * 0.5, ACCELERATION * delta)
+			else:
+				velocity.x = move_toward(velocity.x, 0, DECCELERATION * delta)
+				# Handle jump.
+			if not is_on_floor():
+				playerState = "Falling"
+			
+			if not Input.is_action_pressed("slide") :
+				if (not standing_check.is_colliding()):
+					playerState = "Running"
+				
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				velocity.y = JUMP_VELOCITY * 1.2
+				playerState = "Jump Up"
+			
 		"Wall Run":
 			animated_sprite_2d.speed_scale = absf(velocity.x/MAX_SPEED)
 			if (not (direction == wall_run_direction)) or (not can_wall_run) or abs(velocity.x) < 100.0:

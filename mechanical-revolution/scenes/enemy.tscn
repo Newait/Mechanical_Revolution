@@ -264,4 +264,4 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_78kod")
 animation = &"walking"
 autoplay = "idle"
-frame_progress = 0.45758688
+frame_progress = 0.0549228

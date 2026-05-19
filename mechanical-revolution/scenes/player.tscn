@@ -25,6 +25,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_60mlk"]
 gradient = SubResource("Gradient_4r5pv")
+width = 32
+height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
@@ -430,7 +432,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i3pqv")
 animation = &"slide"
 autoplay = "idle"
-frame_progress = 0.8706952
+frame_progress = 0.3670508
 
 [node name="StandPhysicsBox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -471,3 +473,8 @@ debug_color = Color(0.90416664, 0.30690408, 0, 0.41960785)
 unique_name_in_owner = true
 wait_time = 0.2
 one_shot = true
+
+[node name="StandingCheck" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(0, -33)
+collision_mask = 51
