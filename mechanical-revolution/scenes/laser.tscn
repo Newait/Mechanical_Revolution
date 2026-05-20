@@ -5,21 +5,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7dhc"]
 
-[node name="Laser" type="RayCast2D" node_paths=PackedStringArray("laser_sprite")]
+[node name="Laser" type="RayCast2D" node_paths=PackedStringArray("laser_line")]
+position = Vector2(63.043472, -8.695652)
 collision_mask = 52
 script = ExtResource("1_xmihv")
-laser_sprite = NodePath("LaserSprite")
-
-[node name="LaserSprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, 1)
-rotation = 1.5707964
-scale = Vector2(1, 4)
-texture = ExtResource("2_a7dhc")
+laser_line = NodePath("Line2D")
 
 [node name="Line2D" type="Line2D" parent="."]
-visible = false
-position = Vector2(50, 76)
 points = PackedVector2Array(0, 0, 773, 31)
 width = 50.0
 texture = ExtResource("2_a7dhc")

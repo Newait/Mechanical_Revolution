@@ -5,7 +5,7 @@ var direction := Vector2.ZERO
 var range := 1000.0
 
 #@onready var laser_sprite: Sprite2D = %LaserSprite
-@export var laser_sprite: Sprite2D
+@export var laser_line: Line2D
 func Init(look: Vector2, dps: float) -> void:
 	direction = look
 	damage = dps
@@ -25,9 +25,10 @@ func _physics_process(delta: float) -> void:
 	#var enemy : Node2D
 	#to_local
 	
-	laser_sprite.position = (point_direction/2 + position)
-	laser_sprite.scale.x = point_direction.length()/25.0
-	laser_sprite.rotation = get_local_mouse_position().angle()
+	laser_line.clear_points()
+	
+	laser_line.add_point(Vector2.ZERO)
+	laser_line.add_point(point_direction)
 
 func upd_direction(lookvector:Vector2) -> void:
 	direction = lookvector

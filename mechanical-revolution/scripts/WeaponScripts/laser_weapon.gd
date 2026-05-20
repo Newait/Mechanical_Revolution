@@ -6,7 +6,8 @@ var laserInstance : Laser
 var damage := 5.0
 var is_firing := false
 @onready var laser_sprite: Sprite2D = %Sprite2D
-
+@onready var muzzle_fx: GPUParticles2D = %MuzzleFX
+@export var process_material : ParticleProcessMaterial
 
 func _process(delta: float) -> void:
 	var look := (get_global_mouse_position() - global_position).normalized()
@@ -18,7 +19,7 @@ func _process(delta: float) -> void:
 	rotation = look.angle()
 func flip_sprite(left:bool=false) -> void:
 	laser_sprite.position.x = absf(laser_sprite.position.x) * (-1.0 if left else 1.0)
-	laser_sprite.flip_h = left
+	laser_sprite.flip_h = true
 
 func _ready() -> void:
 	cd_timer.timeout.connect(func () -> void:
@@ -45,6 +46,7 @@ func fire(lookVector:Vector2, _speed:float) -> void:
 		laserInstance = laser.instantiate()
 		laserInstance.Init(lookVector, damage)
 		add_child(laserInstance)
+		
 		is_firing = true
 	#if _can_fire:
 		#_can_fire = false
