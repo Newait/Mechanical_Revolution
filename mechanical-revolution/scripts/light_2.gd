@@ -19,7 +19,6 @@ func _ready() -> void:
 	
 	tween.tween_property(self,"progress",1.0,speed)
 	tween.set_loops()
-	tween.finished.connect(func () -> void:
+	tween.loop_finished.connect(func (_loop_count:int) -> void:
 		progress = 0.0
-		print("done loop")
 	)

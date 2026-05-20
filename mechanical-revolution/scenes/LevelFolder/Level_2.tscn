@@ -378,6 +378,9 @@ position = Vector2(1927, 142)
 visible = false
 position = Vector2(282, -58)
 
+[node name="Light24" parent="LightingStuff" instance=ExtResource("11_h66cb")]
+position = Vector2(109, -78)
+
 [node name="Wallrun" parent="." instance=ExtResource("11_ghxur")]
 position = Vector2(1471.0001, -272)
 scale = Vector2(14.44, 4)

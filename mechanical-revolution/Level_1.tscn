@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://byhicckysapkl"]
+[gd_scene load_steps=14 format=4 uid="uid://byhicckysapkl"]
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_u16a4"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_smwyr"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="4_gyeet"]
 [ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="5_2wi7h"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="6_4s4xf"]
+[ext_resource type="PackedScene" uid="uid://grru7weely6c" path="res://scenes/light.tscn" id="7_smwyr"]
+[ext_resource type="PackedScene" uid="uid://bt212r22nlc3n" path="res://scenes/light2.tscn" id="8_tedvs"]
+[ext_resource type="Texture2D" uid="uid://dbr1uwxmut1dp" path="res://Assets/Background.png" id="9_gyeet"]
+[ext_resource type="PackedScene" uid="uid://cp8vvlka3f6iu" path="res://scenes/invisible_teleport_block.tscn" id="10_4s4xf"]
+[ext_resource type="PackedScene" uid="uid://1s8ikuel8yb6" path="res://scenes/LevelFolder/Level_2.tscn" id="11_p7bnq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kjrqm"]
 texture = ExtResource("3_tedvs")
@@ -366,9 +371,6 @@ terrain_set_0/terrain_0/name = "Stairs"
 terrain_set_0/terrain_0/color = Color(0.2574339, 0.42191732, 0.5319134, 1)
 sources/0 = SubResource("TileSetAtlasSource_kjrqm")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6w1m"]
-size = Vector2(405, 101)
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u16a4")
 
@@ -442,9 +444,49 @@ position = Vector2(3851, -65)
 [node name="Enemy6" parent="Enemyholder" instance=ExtResource("6_4s4xf")]
 position = Vector2(4838, -65)
 
-[node name="LevelTrigger" type="Area2D" parent="."]
-unique_name_in_owner = true
+[node name="LightingStuff" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelTrigger"]
-position = Vector2(5252, 84.5)
-shape = SubResource("RectangleShape2D_d6w1m")
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="LightingStuff"]
+color = Color(0, 0, 0, 1)
+energy = 0.5
+blend_mode = 2
+
+[node name="Light" parent="LightingStuff" instance=ExtResource("7_smwyr")]
+position = Vector2(277, -260)
+
+[node name="Light2" parent="LightingStuff" instance=ExtResource("7_smwyr")]
+position = Vector2(1070, -437)
+
+[node name="Light3" parent="LightingStuff" instance=ExtResource("7_smwyr")]
+position = Vector2(2029, -146)
+
+[node name="Light4" parent="LightingStuff" instance=ExtResource("7_smwyr")]
+position = Vector2(2905, -442)
+
+[node name="Light5" parent="LightingStuff" instance=ExtResource("7_smwyr")]
+position = Vector2(3487, -140)
+
+[node name="Light6" parent="LightingStuff" instance=ExtResource("7_smwyr")]
+position = Vector2(4266, -448)
+
+[node name="Light7" parent="LightingStuff" instance=ExtResource("7_smwyr")]
+position = Vector2(5093, -191)
+
+[node name="Light8" parent="LightingStuff" instance=ExtResource("8_tedvs")]
+position = Vector2(5334.9995, -64)
+rotation = -1.5749118
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(639, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(14.000015, -722)
+scale = Vector2(1.9107982, 2.1078432)
+texture = ExtResource("9_gyeet")
+centered = false
+
+[node name="invisible_teleport_block" parent="." instance=ExtResource("10_4s4xf")]
+position = Vector2(4949, 35)
+tp_scene = ExtResource("11_p7bnq")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://grru7weely6c"]
+[gd_scene load_steps=5 format=3 uid="uid://grru7weely6c"]
 
+[ext_resource type="Script" uid="uid://gkcb5dnmx7nt" path="res://scripts/light.gd" id="1_2e2gu"]
 [ext_resource type="Texture2D" uid="uid://ba33h26qmmo4r" path="res://Assets/wall light 32x32.png" id="1_24oxn"]
 
 [sub_resource type="Gradient" id="Gradient_24oxn"]
@@ -16,11 +17,13 @@ fill_to = Vector2(0.96, 0.111428574)
 
 [node name="Light" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_2e2gu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_24oxn")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(2.861023e-06, 9.536743e-07)
 scale = Vector2(3, 3)
