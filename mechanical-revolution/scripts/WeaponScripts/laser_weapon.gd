@@ -6,7 +6,7 @@ var laserInstance : Laser
 var damage := 5.0
 var is_firing := false:
 	set(val):
-		muzzle_fx.visible = val
+		muzzle_fx.emitting = val
 		
 		is_firing = val
 @onready var laser_sprite: Sprite2D = %Sprite2D
@@ -23,7 +23,10 @@ func _process(delta: float) -> void:
 	rotation = look.angle()
 func flip_sprite(left:bool=false) -> void:
 	laser_sprite.position.x = absf(laser_sprite.position.x) * (-1.0 if left else 1.0)
-	laser_sprite.flip_h = true
+	laser_sprite.flip_h = left
+	if laserInstance != null:
+		laserInstance.position.x = absf(laserInstance.position.x) * (-1.0 if left else 1.0)
+	
 
 func _ready() -> void:
 	cd_timer.timeout.connect(func () -> void:
@@ -50,6 +53,7 @@ func fire(lookVector:Vector2, _speed:float) -> void:
 		laserInstance = laser.instantiate()
 		laserInstance.Init(lookVector, damage)
 		add_child(laserInstance)
+		move_child(laserInstance,0)
 		
 		is_firing = true
 	#if _can_fire:
