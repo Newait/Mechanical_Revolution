@@ -5,7 +5,7 @@ class_name LaserWeapon extends Weapon
 var laserInstance : Laser
 var damage := 5.0
 var is_firing := false
-@onready var laser_sprite: Sprite2D = $Sprite2D
+@onready var laser_sprite: Sprite2D = %Sprite2D
 
 
 func _process(delta: float) -> void:

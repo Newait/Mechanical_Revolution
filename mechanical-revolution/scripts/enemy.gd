@@ -64,7 +64,6 @@ func _physics_process(delta: float) -> void:
 				animated_sprite_2d.play("pursuit")
 			elif animated_sprite_2d.animation != &"walking" and absf(velocity.x) < walking_factor * max_speed:
 				animated_sprite_2d.play("walking")
-			print(velocity.x, max_speed)
 			if _get_player_position():
 				if playerdirection.x > 0.0:
 					direction = 1.0

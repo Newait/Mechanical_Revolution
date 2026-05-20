@@ -18,6 +18,8 @@ var is_slack := false
 var grapple_offset: float= 0.0
 var anim_tween :Tween
 var grapple_start_time : int
+var can_reel := true
+var reel_cd := 1.0
 
 func end_tween() -> void:
 	if anim_tween != null:
@@ -42,11 +44,9 @@ func _process(delta: float) -> void:
 			attach_tether(get_collision_point())
 	if (Input.is_action_just_released("grapple") and is_tethering):
 		detach_tether()
-		print("detached")
 	grapple_line.clear_points()
 	if (is_tethering):
 		if (is_slack):
-			print("happen")
 			larp_points(delta)
 		if not is_detaching:
 			target_position = tether_position - global_position
@@ -100,7 +100,11 @@ func detach_tether() -> void:
 	is_detaching = true
 	var detach_time := 0.5
 	print(Time.get_ticks_msec() - grapple_start_time)
-	if (Time.get_ticks_msec() - grapple_start_time < 300):
+	if (Time.get_ticks_msec() - grapple_start_time < 300) and can_reel:
+		can_reel = false
+		get_tree().create_timer(reel_cd).timeout.connect(func () -> void:
+			can_reel = true
+		)
 		reel_grapple.emit()
 		anim_tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 		detach_time = 0.25
