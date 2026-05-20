@@ -278,6 +278,8 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, desired_velocity.x, AIR_ACCELERATION * delta)
 			else:
 				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
+			right_wall_cast.force_raycast_update()
+			left_wall_cast.force_raycast_update()
 			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
 				#if not(direction==last_direction_wall):
 				wall_direction = direction
@@ -325,6 +327,8 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, desired_velocity.x, AIR_ACCELERATION * delta)
 			else:
 				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
+			right_wall_cast.force_raycast_update()
+			left_wall_cast.force_raycast_update()
 			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
 				if not(direction==last_direction_wall):
 					wall_direction = direction

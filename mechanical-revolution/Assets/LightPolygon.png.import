@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bek8gqosbyp8v"
-path="res://.godot/imported/fan 96x96.png-6ef33c79bb3f24f1ea73a52fd5df7799.ctex"
+uid="uid://nivo4ybyc7ii"
+path="res://.godot/imported/LightPolygon.png-bb8e360fe53f0496c7c5e078814f636c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/fan 96x96.png"
-dest_files=["res://.godot/imported/fan 96x96.png-6ef33c79bb3f24f1ea73a52fd5df7799.ctex"]
+source_file="res://Assets/LightPolygon.png"
+dest_files=["res://.godot/imported/LightPolygon.png-bb8e360fe53f0496c7c5e078814f636c.ctex"]
 
 [params]
 
