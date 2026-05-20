@@ -43,6 +43,7 @@ process_material = SubResource("ParticleProcessMaterial_ne2wy")
 
 [node name="MuzzleFX" type="GPUParticles2D" parent="."]
 unique_name_in_owner = true
+visible = false
 position = Vector2(93.478264, -8.695652)
 amount = 2
 texture = ExtResource("2_ne2wy")

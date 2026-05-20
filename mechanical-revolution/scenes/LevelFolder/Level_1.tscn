@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_5snvh"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_kbgrh"]
-[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://Assets/wall1-Sheet-Sheet-export.png" id="3_us7bo"]
-[ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="4_g4evb"]
-[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="5_2taem"]
+[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://assets/wall1-Sheet-Sheet-export.png" id="3_us7bo"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="4_g4evb"]
+[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://assets/toolbar_UI.tscn" id="5_2taem"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="6_0agb5"]
-[ext_resource type="PackedScene" uid="uid://grru7weely6c" path="res://scenes/light.tscn" id="7_0agb5"]
+[ext_resource type="PackedScene" path="res://scenes/light.tscn" id="7_0agb5"]
 [ext_resource type="PackedScene" uid="uid://cp8vvlka3f6iu" path="res://scenes/invisible_teleport_block.tscn" id="7_us7bo"]
-[ext_resource type="PackedScene" uid="uid://bt212r22nlc3n" path="res://scenes/light2.tscn" id="8_fik6u"]
+[ext_resource type="PackedScene" path="res://scenes/light2.tscn" id="8_fik6u"]
 [ext_resource type="PackedScene" uid="uid://1s8ikuel8yb6" path="res://scenes/LevelFolder/Level_2.tscn" id="8_g4evb"]
-[ext_resource type="Texture2D" uid="uid://dbr1uwxmut1dp" path="res://Assets/Background.png" id="11_idqol"]
-[ext_resource type="Shader" uid="uid://co8577lomdqo5" path="res://Assets/shader/repeatTexture.gdshader" id="12_idqol"]
-[ext_resource type="Texture2D" uid="uid://cj1dtqitudsy5" path="res://Assets/server.png" id="13_cdv85"]
+[ext_resource type="Texture2D" uid="uid://dbr1uwxmut1dp" path="res://assets/Background.png" id="11_idqol"]
+[ext_resource type="Shader" path="res://Assets/shader/repeatTexture.gdshader" id="12_idqol"]
+[ext_resource type="Texture2D" uid="uid://cj1dtqitudsy5" path="res://assets/server.png" id="13_cdv85"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dkk54"]
 shader = ExtResource("12_idqol")
@@ -520,6 +520,7 @@ tp_scene = ExtResource("8_g4evb")
 motion_mirroring = Vector2(639, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
 position = Vector2(14.000015, -722)
 scale = Vector2(2.763, 3.048)
 texture = ExtResource("11_idqol")

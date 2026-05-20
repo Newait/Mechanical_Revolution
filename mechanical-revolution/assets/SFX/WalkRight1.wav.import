@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cbk21hb3cc3td"
-path="res://.godot/imported/WalkRight1.wav-3598ebc35a4923752772c80a0e0d9fb0.sample"
+path="res://.godot/imported/WalkRight1.wav-feedbf3a1ec327b95bc5e7e5ea99171f.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/WalkRight1.wav"
-dest_files=["res://.godot/imported/WalkRight1.wav-3598ebc35a4923752772c80a0e0d9fb0.sample"]
+source_file="res://assets/SFX/WalkRight1.wav"
+dest_files=["res://.godot/imported/WalkRight1.wav-feedbf3a1ec327b95bc5e7e5ea99171f.sample"]
 
 [params]
 

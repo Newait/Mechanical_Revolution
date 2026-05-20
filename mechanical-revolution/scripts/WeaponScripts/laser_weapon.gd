@@ -4,7 +4,11 @@ class_name LaserWeapon extends Weapon
 @export var laser : PackedScene = preload("uid://bjb5k7eu0d6is")
 var laserInstance : Laser
 var damage := 5.0
-var is_firing := false
+var is_firing := false:
+	set(val):
+		muzzle_fx.visible = val
+		
+		is_firing = val
 @onready var laser_sprite: Sprite2D = %Sprite2D
 @onready var muzzle_fx: GPUParticles2D = %MuzzleFX
 @export var process_material : ParticleProcessMaterial
