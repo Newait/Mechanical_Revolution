@@ -36,7 +36,7 @@ func _ready() -> void:
 func contFire(lookVector:Vector2) -> void:
 	laserInstance.upd_direction(lookVector)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_firing:
 		contFire(get_local_mouse_position().normalized())
 		if Input.is_action_just_released("Shoot"):

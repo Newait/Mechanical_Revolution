@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxcbdnmgti6qn"]
+
+[ext_resource type="Texture2D" uid="uid://cso8hy3mjfo6b" path="res://assets/ParticleFX/whitePuff01.png" id="1_jgu6d"]
+[ext_resource type="Script" uid="uid://cvxrkapk2fy30" path="res://scripts/explosion_particle.gd" id="2_vycky"]
+
+[sub_resource type="Curve" id="Curve_vycky"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.74242425, 0.9101124), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1f3yb"]
+curve = SubResource("Curve_vycky")
+
+[sub_resource type="Gradient" id="Gradient_uvlry"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5clyn"]
+gradient = SubResource("Gradient_uvlry")
+
+[sub_resource type="Gradient" id="Gradient_3o31m"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_66mbn"]
+gradient = SubResource("Gradient_3o31m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_to04v"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 71.45
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 180.0
+initial_velocity_min = 47.62
+initial_velocity_max = 47.62
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0.6509804, 0.11764706, 1)
+color_ramp = SubResource("GradientTexture1D_66mbn")
+color_initial_ramp = SubResource("GradientTexture1D_5clyn")
+alpha_curve = SubResource("CurveTexture_1f3yb")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+rotation = -0.0015692764
+scale = Vector2(0.6, 0.6)
+emitting = false
+texture = ExtResource("1_jgu6d")
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_to04v")
+script = ExtResource("2_vycky")

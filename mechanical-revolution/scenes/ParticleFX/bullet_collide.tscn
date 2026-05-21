@@ -43,7 +43,7 @@ alpha_curve = SubResource("CurveTexture_nqrud")
 sub_emitter_mode = 3
 sub_emitter_amount_at_collision = 1
 
-[node name="LaserCollision" type="GPUParticles2D"]
+[node name="BulletCollision" type="GPUParticles2D"]
 scale = Vector2(0.1, 0.1)
 emitting = false
 amount = 5

@@ -5,6 +5,8 @@ class_name RocketProjectile extends Projectile
 @export var max_explosion_dmg := 200.0
 @export var explosionRes : ExplosionInfo
 @export var explosionScn : PackedScene
+@export var explosion_main : PackedScene
+@export var explosion_smoke : PackedScene
 # Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
 	#pass # Replace with function body.
@@ -14,8 +16,16 @@ func _on_body_entered(body: Node2D) -> void:
 		(body as Enemy).take_damage(damage)
 	var newExplosion = explosionScn.instantiate()
 	(newExplosion as Explosion).InitInfo(explosionRes)
+	var newExplosionMain = explosion_main.instantiate()
+	var newExplosionSmoke = explosion_smoke.instantiate()
+	get_tree().current_scene.add_child(newExplosionMain)
+	get_tree().current_scene.add_child(newExplosionSmoke)
 	get_tree().current_scene.add_child(newExplosion)
+	newExplosionMain.restart()
+	newExplosionSmoke.restart()
 	(newExplosion as Explosion).global_position = global_position
+	(newExplosionMain as GPUParticles2D).global_position = global_position
+	(newExplosionSmoke as GPUParticles2D).global_position = global_position
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

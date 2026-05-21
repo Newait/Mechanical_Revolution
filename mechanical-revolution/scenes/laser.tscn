@@ -21,3 +21,4 @@ points = PackedVector2Array(0, 0, 773, 31)
 width = 50.0
 texture = ExtResource("2_a7dhc")
 texture_mode = 2
+end_cap_mode = 2
