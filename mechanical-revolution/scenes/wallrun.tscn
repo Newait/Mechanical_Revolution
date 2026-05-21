@@ -1,12 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://copky477kjpps"]
+[gd_scene load_steps=6 format=3 uid="uid://c2tvhpcp7gw76"]
+
+[ext_resource type="Script" uid="uid://c862r7bron245" path="res://scripts/wallrun.gd" id="1_5wyh8"]
+[ext_resource type="Shader" uid="uid://chstvtgjjfe76" path="res://Resource/top_arrow.gdshader" id="1_rukal"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxoy0"]
+shader = ExtResource("1_rukal")
+shader_parameter/color1 = Color(1, 0.60715866, 0.27975246, 1)
+shader_parameter/color2 = Color(0.94464445, 0.89347976, 0, 1)
+shader_parameter/right_to_left = true
+shader_parameter/desired_angle = 45.0
+shader_parameter/speed = 100.0
+shader_parameter/width = 40.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5wyh8"]
+shader = ExtResource("1_rukal")
+shader_parameter/color1 = Color(1, 0.60715866, 0.27975246, 1)
+shader_parameter/color2 = Color(0.94464445, 0.89347976, 0, 1)
+shader_parameter/right_to_left = false
+shader_parameter/desired_angle = 135.0
+shader_parameter/speed = 100.0
+shader_parameter/width = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxoy0"]
 size = Vector2(40, 40)
 
 [node name="Wallrun" type="Area2D"]
 collision_layer = 2
+script = ExtResource("1_5wyh8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_nxoy0")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -14,6 +38,20 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
 offset_top = -20.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20152658, 0.20152658, 0.20152658, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_5wyh8")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2

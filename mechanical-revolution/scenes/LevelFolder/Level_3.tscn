@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://balkvqtweaibj" path="res://scripts/game_manager.gd" id="1_fo0tu"]
 [ext_resource type="PackedScene" uid="uid://bgwtg1uowm1sx" path="res://scenes/tile_map.tscn" id="2_08gtc"]
-[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://Assets/wall1-Sheet-Sheet-export.png" id="3_bf4ao"]
+[ext_resource type="Texture2D" uid="uid://cj1d6h6hv638b" path="res://assets/wall1-Sheet-Sheet-export.png" id="3_bf4ao"]
 [ext_resource type="PackedScene" uid="uid://crq51rftqb4nm" path="res://scenes/player.tscn" id="4_qer2u"]
-[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://Assets/toolbar_UI.tscn" id="5_10aku"]
-[ext_resource type="PackedScene" uid="uid://copky477kjpps" path="res://scenes/wallrun.tscn" id="6_08gtc"]
+[ext_resource type="PackedScene" uid="uid://c5c62ofmgaede" path="res://assets/toolbar_UI.tscn" id="5_10aku"]
+[ext_resource type="PackedScene" uid="uid://c2tvhpcp7gw76" path="res://scenes/wallrun.tscn" id="6_08gtc"]
 [ext_resource type="PackedScene" uid="uid://dfaqc4wojcyu7" path="res://scenes/enemy.tscn" id="6_10aku"]
 [ext_resource type="PackedScene" uid="uid://bt212r22nlc3n" path="res://scenes/light2.tscn" id="6_bf4ao"]
 [ext_resource type="PackedScene" uid="uid://grru7weely6c" path="res://scenes/light.tscn" id="7_qer2u"]
@@ -200,12 +200,6 @@ tile_set = SubResource("TileSet_0tnpc")
 tile_map_data = PackedByteArray("AAAGAOz/AAAJAAQAAAAGAO3/AAAJAAQAAAAGAO7/AAAJAAQAAAAGAO//AAAJAAQAAAAGAPD/AAAJAAQAAAAGAPH/AAAJAAQAAAAGAPL/AAAJAAQAAAAGAPP/AAAJAAQAAAAGAPT/AAAJAAQAAAAGAPX/AAAJAAQAAAAGAPb/AAAJAAQAAAAGAPf/AAAJAAQAAAAGAPj/AAAJAAQAAAAGAPn/AAAJAAQAAAAGAPr/AAAJAAQAAAAGAPv/AAAJAAQAAAD+//X/AAAJAAQAAAD+//b/AAAJAAQAAAD+//f/AAAJAAQAAAD+//j/AAAJAAQAAAD+//n/AAAJAAQAAAD+//r/AAAJAAQAAAD+/+//AAAJAAQAAAD+//D/AAAJAAQAAAD+//H/AAAJAAQAAAD+//L/AAAJAAQAAAD+//P/AAAJAAQAAAD+//T/AAAJAAQAAAD+/+j/AAAJAAQAAAD+/+n/AAAJAAQAAAD+/+r/AAAJAAQAAAD+/+v/AAAJAAQAAAD+/+z/AAAJAAQAAAD+/+3/AAAJAAQAAAD+/+7/AAAJAAQAAAD+/+L/AAAJAAQAAAD+/+P/AAAJAAQAAAD+/+T/AAAJAAQAAAD+/+X/AAAJAAQAAAD+/+b/AAAJAAQAAAD+/+f/AAAJAAQAAAD+/93/AAAJAAQAAAD+/97/AAAJAAQAAAD+/9//AAAJAAQAAAD+/+D/AAAJAAQAAAD+/+H/AAAJAAQAAAD+/9f/AAAJAAQAAAD+/9j/AAAJAAQAAAD+/9n/AAAJAAQAAAD+/9r/AAAJAAQAAAD+/9v/AAAJAAQAAAD+/9z/AAAJAAQAAAD+/9P/AAAJAAQAAAD+/9T/AAAJAAQAAAD+/9X/AAAJAAQAAAD+/9b/AAAJAAQAAAAGAOL/AAAJAAQAAAAGAOP/AAAJAAQAAAAGAOT/AAAJAAQAAAAGAOX/AAAJAAQAAAAGAOb/AAAJAAQAAAAGANz/AAAJAAQAAAAGAN3/AAAJAAQAAAAGAN7/AAAJAAQAAAAGAN//AAAJAAQAAAAGAOD/AAAJAAQAAAAGAOH/AAAJAAQAAAAGANb/AAAJAAQAAAAGANf/AAAJAAQAAAAGANj/AAAJAAQAAAAGANn/AAAJAAQAAAAGANr/AAAJAAQAAAAGANv/AAAJAAQAAAA=")
 tile_set = SubResource("TileSet_fo0tu")
 
-[node name="Player" parent="." instance=ExtResource("4_qer2u")]
-unique_name_in_owner = true
-position = Vector2(2, -40)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 offset_left = 57.0
@@ -345,3 +339,9 @@ scale = Vector2(10, 3)
 [node name="Wallrun5" parent="Wallruns" instance=ExtResource("6_08gtc")]
 position = Vector2(6783, -3422)
 scale = Vector2(12, 3)
+
+[node name="Player" parent="." instance=ExtResource("4_qer2u")]
+unique_name_in_owner = true
+position = Vector2(2, -40)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
