@@ -1,9 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7rgtrys6bi5g"]
+[gd_scene load_steps=8 format=3 uid="uid://b7rgtrys6bi5g"]
 
 [ext_resource type="Script" uid="uid://bomw3km7rsfkn" path="res://scripts/WeaponScripts/weapontest.gd" id="1_xasec"]
 [ext_resource type="PackedScene" uid="uid://chgmjk7ebd517" path="res://scenes/Projectiles/pistol_bullet.tscn" id="2_n0kpw"]
 [ext_resource type="Shader" uid="uid://cq4c1t7ofplk5" path="res://assets/shader/outline.gdshader" id="3_8d5j1"]
 [ext_resource type="Texture2D" uid="uid://d0llkc87ed6h7" path="res://assets/revolver arm attachment.png" id="3_n0kpw"]
+
+[sub_resource type="Gradient" id="Gradient_8d5j1"]
+offsets = PackedFloat32Array(0, 0.62666667)
+colors = PackedColorArray(1, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yt8w1"]
+gradient = SubResource("Gradient_8d5j1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yt8w1"]
 shader = ExtResource("3_8d5j1")
@@ -15,6 +24,14 @@ shader_parameter/viewport_scale = Vector2(1, 1)
 scale = Vector2(0.46, 0.46)
 script = ExtResource("1_xasec")
 attack = ExtResource("2_n0kpw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(123.91304, -15.217391)
+scale = Vector2(4.495, 4.495)
+enabled = false
+energy = 5.0
+texture = SubResource("GradientTexture2D_yt8w1")
 
 [node name="CDTimer" type="Timer" parent="."]
 unique_name_in_owner = true

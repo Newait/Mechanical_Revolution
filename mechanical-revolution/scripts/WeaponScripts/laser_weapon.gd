@@ -15,17 +15,17 @@ var is_firing := false:
 
 func _process(delta: float) -> void:
 	var look := (get_global_mouse_position() - global_position).normalized()
-	if look.x < 0.0:
+	if look.x < 0.0 and (not laser_sprite.flip_v):
 		flip_sprite(true)
 		look *= -1.0
-	else:
+	elif look.x > 0.0 and laser_sprite.flip_v:
 		flip_sprite(false)
 	rotation = look.angle()
 func flip_sprite(left:bool=false) -> void:
-	laser_sprite.position.x = absf(laser_sprite.position.x) * (-1.0 if left else 1.0)
-	laser_sprite.flip_h = left
+	#laser_sprite.position.x = absf(laser_sprite.position.x) * (-1.0 if left else 1.0)
+	laser_sprite.flip_v = left
 	if laserInstance != null:
-		laserInstance.position.x = absf(laserInstance.position.x) * (-1.0 if left else 1.0)
+		laserInstance.position.x = absf(laserInstance.position.x) * (1.0 if left else 1.0)
 	
 
 func _ready() -> void:
@@ -44,6 +44,13 @@ func _physics_process(delta: float) -> void:
 
 func stop_fire() -> void:
 	_can_fire = false
+	if laserInstance.laser_sparks_instance != null:
+		laserInstance.laser_sparks_instance.queue_free()
+	if laserInstance.laser_sear_instance != null:
+		laserInstance.laser_sear_instance.emitting = false
+
+		laserInstance.cut_off_sear()
+		
 	laserInstance.queue_free()
 	is_firing = false
 	cd_timer.start()

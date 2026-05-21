@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://b12ksimkicjti"]
+
+[ext_resource type="Texture2D" uid="uid://c5xeeng2bcxcb" path="res://assets/ParticleFX/trace_01.png" id="1_xb53f"]
+[ext_resource type="Script" uid="uid://bobhcbt5mnhk1" path="res://scripts/ProjectileScripts/bullet_collide.gd" id="2_kbx1a"]
+
+[sub_resource type="Curve" id="Curve_kbx1a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6969697, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nqrud"]
+curve = SubResource("Curve_kbx1a")
+
+[sub_resource type="Gradient" id="Gradient_0md8o"]
+offsets = PackedFloat32Array(0, 0.7735849)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0.2509804, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_52mbt"]
+gradient = SubResource("Gradient_0md8o")
+
+[sub_resource type="Curve" id="Curve_xb53f"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 2.2471924), 0.0, 0.0, 0, 0, Vector2(0.8636363, -11.235931), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kbx1a"]
+curve = SubResource("Curve_xb53f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nu7db"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(0, -90, 0)
+initial_velocity_min = 1000.0
+initial_velocity_max = 5000.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 200.0
+linear_accel_max = 200.0
+linear_accel_curve = SubResource("CurveTexture_kbx1a")
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_52mbt")
+alpha_curve = SubResource("CurveTexture_nqrud")
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[node name="LaserCollision" type="GPUParticles2D"]
+scale = Vector2(0.1, 0.1)
+emitting = false
+amount = 5
+texture = ExtResource("1_xb53f")
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nu7db")
+script = ExtResource("2_kbx1a")
