@@ -15,6 +15,7 @@ const SLIDE_MULTI := 2.5
 const SLIDE_DECCEL := DECCELERATION/3.0
 const MAX_BOOST_SPEED := 1000.0
 const BOOST_FACTOR := 0.9
+@onready var dash_sound: AudioStreamPlayer = $DashSound
 
 var playerState := "Running":
 	set(val):
@@ -189,6 +190,7 @@ func _physics_process(delta: float) -> void:
 	#print(playerState)
 	if Input.is_action_just_pressed("dash") and absf(velocity.x) > 200.0:
 		big_boosting = true
+		dash_sound.play()
 	match playerState:
 		"Running":
 			animated_sprite_2d.speed_scale = absf(velocity.x/desired_velocity.x)
