@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bssnelxmi2jvt" path="res://scenes/weaponscenes/unarmed.tscn" id="8_ur7pv"]
 [ext_resource type="PackedScene" uid="uid://bxhk61y4me6u4" path="res://scenes/weaponscenes/rocket_weapon.tscn" id="8_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://ckeegaktgt4mc" path="res://assets/playeranims/main player animated idle-Sheet.png" id="9_ur7pv"]
-[ext_resource type="Shader" uid="uid://cq4c1t7ofplk5" path="res://assets/shader/outline.gdshader" id="11_4r5pv"]
+[ext_resource type="Shader" path="res://assets/shader/outline.gdshader" id="11_4r5pv"]
 [ext_resource type="PackedScene" uid="uid://cyyqq4law6skj" path="res://scenes/grapple.tscn" id="11_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://chmk1faj0acb0" path="res://assets/playeranims/mainplayersprite-dash-Sheet.png" id="11_fulsm"]
 [ext_resource type="Texture2D" uid="uid://drx3lqags1kua" path="res://assets/playeranims/mainplayerspritedescend.png" id="12_4r5pv"]
@@ -430,9 +430,9 @@ material = SubResource("ShaderMaterial_60mlk")
 unique_name_in_owner = true
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i3pqv")
-animation = &"slide"
+animation = &"run"
 autoplay = "idle"
-frame_progress = 0.3670508
+frame_progress = 0.61964566
 
 [node name="StandPhysicsBox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
