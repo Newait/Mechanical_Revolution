@@ -12,6 +12,7 @@ var is_firing := false:
 @onready var laser_sprite: Sprite2D = %Sprite2D
 @onready var muzzle_fx: GPUParticles2D = %MuzzleFX
 @export var process_material : ParticleProcessMaterial
+@onready var laser_sound: AudioStreamPlayer = $LaserSound
 
 func _process(delta: float) -> void:
 	var look := (get_global_mouse_position() - global_position).normalized()
@@ -43,6 +44,7 @@ func _physics_process(_delta: float) -> void:
 			stop_fire()
 
 func stop_fire() -> void:
+	laser_sound.stream_paused = true
 	_can_fire = false
 	if laserInstance.laser_sparks_instance != null:
 		laserInstance.laser_sparks_instance.queue_free()
@@ -63,6 +65,7 @@ func fire(lookVector:Vector2, _speed:float) -> void:
 		move_child(laserInstance,0)
 		
 		is_firing = true
+		laser_sound.play()
 	#if _can_fire:
 		#_can_fire = false
 		#timer.start()

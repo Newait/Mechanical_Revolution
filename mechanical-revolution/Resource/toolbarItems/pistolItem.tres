@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponItem" load_steps=3 format=3 uid="uid://dnqkdcw4htpcs"]
 
 [ext_resource type="Script" uid="uid://2mqmm8s3lmee" path="res://scripts/resourceScripts/weapon_info.gd" id="1_7he4e"]
-[ext_resource type="Texture2D" uid="uid://d0llkc87ed6h7" path="res://Assets/revolver arm attachment.png" id="1_q06fu"]
+[ext_resource type="Texture2D" uid="uid://d0llkc87ed6h7" path="res://assets/revolver arm attachment.png" id="1_q06fu"]
 
 [resource]
 script = ExtResource("1_7he4e")
