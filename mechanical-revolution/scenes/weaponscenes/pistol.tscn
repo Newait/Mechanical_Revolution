@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7rgtrys6bi5g"]
+[gd_scene load_steps=15 format=3 uid="uid://b7rgtrys6bi5g"]
 
 [ext_resource type="Script" uid="uid://bomw3km7rsfkn" path="res://scripts/WeaponScripts/weapontest.gd" id="1_xasec"]
 [ext_resource type="PackedScene" uid="uid://chgmjk7ebd517" path="res://scenes/Projectiles/pistol_bullet.tscn" id="2_n0kpw"]
-[ext_resource type="Shader" uid="uid://cq4c1t7ofplk5" path="res://assets/shader/outline.gdshader" id="3_8d5j1"]
+[ext_resource type="Shader" path="res://assets/shader/outline.gdshader" id="3_8d5j1"]
 [ext_resource type="Texture2D" uid="uid://d0llkc87ed6h7" path="res://assets/revolver arm attachment.png" id="3_n0kpw"]
 [ext_resource type="Texture2D" uid="uid://drhtbsu237766" path="res://assets/ParticleFX/pistol_muzzle.png" id="5_fcpsv"]
 [ext_resource type="PackedScene" uid="uid://b12ksimkicjti" path="res://scenes/ParticleFX/bullet_collide.tscn" id="6_bq3o1"]
+[ext_resource type="AudioStream" uid="uid://cxjmvttdxuftd" path="res://assets/SFX/PistolLaunch.wav" id="7_bq3o1"]
+[ext_resource type="AudioStream" uid="uid://g4156eq0nayf" path="res://assets/SFX/PistolSlider.wav" id="8_gvefp"]
 
 [sub_resource type="Gradient" id="Gradient_8d5j1"]
 offsets = PackedFloat32Array(0, 0.62666667)
@@ -86,7 +88,16 @@ position = Vector2(204.34782, -17.391304)
 emitting = false
 amount = 1
 texture = ExtResource("5_fcpsv")
-lifetime = 0.09999999999999999
+lifetime = 0.1
 one_shot = true
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_wnm2o")
+
+[node name="pistolshot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bq3o1")
+volume_db = -2.0
+
+[node name="pistolslider" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gvefp")
+volume_db = 2.0
+autoplay = true

@@ -13,6 +13,7 @@ var is_firing := false:
 @onready var muzzle_fx: GPUParticles2D = %MuzzleFX
 @export var process_material : ParticleProcessMaterial
 @onready var laser_sound: AudioStreamPlayer = $LaserSound
+@onready var laserloading: AudioStreamPlayer = $Laserloading
 
 func _process(delta: float) -> void:
 	var look := (get_global_mouse_position() - global_position).normalized()
@@ -30,6 +31,7 @@ func flip_sprite(left:bool=false) -> void:
 	
 
 func _ready() -> void:
+	laserloading.play()
 	cd_timer.timeout.connect(func () -> void:
 		_can_fire = true
 	)

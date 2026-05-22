@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0vvgjjvbytn8"]
+[gd_scene load_steps=11 format=3 uid="uid://b0vvgjjvbytn8"]
 
 [ext_resource type="Script" uid="uid://frpsp54ofiy" path="res://scripts/WeaponScripts/laser_weapon.gd" id="1_nblfd"]
 [ext_resource type="Shader" path="res://assets/shader/outline.gdshader" id="2_bvdi3"]
 [ext_resource type="Texture2D" uid="uid://bn21k2hrg4ffq" path="res://assets/laser gun.png" id="2_dhtfa"]
 [ext_resource type="Texture2D" uid="uid://bf15e4n480y2k" path="res://assets/ParticleFX/muzzle_01 copy.png" id="2_ne2wy"]
 [ext_resource type="AudioStream" uid="uid://mc745dh3nmnu" path="res://assets/SFX/LaserFiring.wav" id="5_fr77p"]
+[ext_resource type="AudioStream" uid="uid://c4310osor3gg3" path="res://assets/SFX/laserloading.wav" id="6_la0ac"]
 
 [sub_resource type="Curve" id="Curve_nxg87"]
 _data = [Vector2(0, 0.6689233), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -61,3 +62,8 @@ one_shot = true
 [node name="LaserSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_fr77p")
 volume_db = -4.0
+
+[node name="Laserloading" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_la0ac")
+volume_db = 2.0
+pitch_scale = 0.8

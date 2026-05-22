@@ -5,6 +5,7 @@ extends Weapon
 @onready var barrel: Node2D = %Barrel
 @onready var bullet_collision: GPUParticles2D = %BulletCollision
 @onready var muzzle_fx: GPUParticles2D = %MuzzleFX
+@onready var pistolshot: AudioStreamPlayer = $pistolshot
 
 @export var flip_list : Array[Node2D]
 var firing_fx := false
@@ -33,6 +34,7 @@ func flip_sprite(left:bool=false) -> void:
 	muzzle_fx.scale = Vector2(flip_val,flip_val) * absf(muzzle_fx.scale.x)
 	
 func fire(lookVector:Vector2,add_speed:= 0.0) -> void:
+	pistolshot.play()
 	if _can_fire:
 		_can_fire = false
 		point_light_2d.enabled = true
