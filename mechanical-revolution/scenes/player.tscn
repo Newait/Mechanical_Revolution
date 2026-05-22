@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://crq51rftqb4nm"]
+[gd_scene load_steps=72 format=3 uid="uid://crq51rftqb4nm"]
 
 [ext_resource type="Script" uid="uid://c1rmemdk1s4ei" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="PackedScene" uid="uid://b0vvgjjvbytn8" path="res://scenes/weaponscenes/laser_weapon.tscn" id="3_dqkch"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://ddgsupy5qjh2s" path="res://assets/playeranims/sidewaysmain player sprite-Sheet.png" id="16_a38lo"]
 [ext_resource type="Texture2D" uid="uid://ddvemm8u536w4" path="res://assets/playeranims/mainplayerspritesliding.png" id="17_4ni07"]
 [ext_resource type="Texture2D" uid="uid://c582wt0js7cvd" path="res://assets/playeranims/mpspritewallrun-Sheet.png" id="18_l71n6"]
+[ext_resource type="AudioStream" uid="uid://14dhs8wv5ude" path="res://assets/SFX/DashSound.wav" id="20_60mlk"]
+[ext_resource type="AudioStream" uid="uid://bw8h4k05fixv4" path="res://assets/SFX/GrappleThrow.wav" id="21_i4ail"]
 
 [sub_resource type="Gradient" id="Gradient_4r5pv"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
@@ -432,7 +434,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_i3pqv")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.61964566
+frame_progress = 0.65123886
 
 [node name="StandPhysicsBox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -478,3 +480,13 @@ one_shot = true
 unique_name_in_owner = true
 target_position = Vector2(0, -33)
 collision_mask = 51
+
+[node name="DashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_60mlk")
+volume_db = -16.0
+pitch_scale = 0.8
+
+[node name="GrappleThrow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_i4ail")
+volume_db = 2.0
+pitch_scale = 0.8
