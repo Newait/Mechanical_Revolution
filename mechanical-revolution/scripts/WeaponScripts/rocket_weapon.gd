@@ -4,6 +4,8 @@ var laserInstance : Laser
 var damage := 5.0
 var is_firing := false
 @onready var rocket_sprite: Sprite2D = %RocketSprite
+@onready var rocket_load: AudioStreamPlayer = $RocketLoad
+@onready var rocket_impact: AudioStreamPlayer = $RocketImpact
 
 
 
@@ -20,6 +22,7 @@ func flip_sprite(left:bool=false) -> void:
 	rocket_sprite.flip_h = left
 
 func _ready() -> void:
+	rocket_load.play()
 	timer.timeout.connect(func () -> void:
 		_can_fire = true
 	)
@@ -31,6 +34,7 @@ func fire(lookVector:Vector2, add_speed:=0.0) -> void:
 	
 	if _can_fire:
 		_can_fire = false
+		rocket_impact.play()
 		timer.start()
 		timer.timeout.connect(func () -> void:
 			_can_fire = true
