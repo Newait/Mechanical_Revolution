@@ -16,6 +16,7 @@ var kb_force := 1000.0
 @onready var detect_box: Area2D = %DetectBox
 @onready var hitbox: Area2D = %Hitbox
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+@onready var pain_sounds: AudioStreamPlayer = $PainSounds
 
 #@onready var raycastright: RayCast2D = %Raycastright
 #@onready var raycastleft: RayCast2D = %Raycastleft
@@ -64,7 +65,6 @@ func _physics_process(delta: float) -> void:
 				animated_sprite_2d.play("pursuit")
 			elif animated_sprite_2d.animation != &"walking" and absf(velocity.x) < walking_factor * max_speed:
 				animated_sprite_2d.play("walking")
-			print(velocity.x, max_speed)
 			if _get_player_position():
 				if playerdirection.x > 0.0:
 					direction = 1.0
@@ -84,6 +84,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage(damage: float) -> void:
+	pain_sounds.play()
 	enemyhealth -= damage
 	if (enemyhealth <= 0.0):
 		_on_death()

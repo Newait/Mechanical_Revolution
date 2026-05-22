@@ -1,9 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7rgtrys6bi5g"]
+[gd_scene load_steps=15 format=3 uid="uid://b7rgtrys6bi5g"]
 
 [ext_resource type="Script" uid="uid://bomw3km7rsfkn" path="res://scripts/WeaponScripts/weapontest.gd" id="1_xasec"]
 [ext_resource type="PackedScene" uid="uid://chgmjk7ebd517" path="res://scenes/Projectiles/pistol_bullet.tscn" id="2_n0kpw"]
-[ext_resource type="Shader" uid="uid://cq4c1t7ofplk5" path="res://assets/shader/outline.gdshader" id="3_8d5j1"]
+[ext_resource type="Shader" path="res://assets/shader/outline.gdshader" id="3_8d5j1"]
 [ext_resource type="Texture2D" uid="uid://d0llkc87ed6h7" path="res://assets/revolver arm attachment.png" id="3_n0kpw"]
+[ext_resource type="Texture2D" uid="uid://drhtbsu237766" path="res://assets/ParticleFX/pistol_muzzle.png" id="5_fcpsv"]
+[ext_resource type="PackedScene" uid="uid://b12ksimkicjti" path="res://scenes/ParticleFX/bullet_collide.tscn" id="6_bq3o1"]
+[ext_resource type="AudioStream" uid="uid://cxjmvttdxuftd" path="res://assets/SFX/PistolLaunch.wav" id="7_bq3o1"]
+[ext_resource type="AudioStream" uid="uid://g4156eq0nayf" path="res://assets/SFX/PistolSlider.wav" id="8_gvefp"]
+
+[sub_resource type="Gradient" id="Gradient_8d5j1"]
+offsets = PackedFloat32Array(0, 0.62666667)
+colors = PackedColorArray(1, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yt8w1"]
+gradient = SubResource("Gradient_8d5j1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yt8w1"]
 shader = ExtResource("3_8d5j1")
@@ -11,10 +24,37 @@ shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 4.0
 shader_parameter/viewport_scale = Vector2(1, 1)
 
-[node name="Weapon" type="Node2D"]
+[sub_resource type="Curve" id="Curve_gvefp"]
+_data = [Vector2(0, 0.6689233), 0.0, 0.0, 0, 0, Vector2(1, 0.79775286), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wt3xt"]
+curve = SubResource("Curve_gvefp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wnm2o"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(10, 0, 0)
+angle_min = -89.99999
+angle_max = -89.99999
+gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+scale_max = 0.65
+scale_curve = SubResource("CurveTexture_wt3xt")
+color = Color(1, 1, 0.2509804, 1)
+
+[node name="Weapon" type="Node2D" node_paths=PackedStringArray("flip_list")]
 scale = Vector2(0.46, 0.46)
 script = ExtResource("1_xasec")
+flip_list = [NodePath("CanvasGroup/PistolSprite"), NodePath("Barrel"), NodePath("BulletCollision"), NodePath("MuzzleFX"), NodePath("PointLight2D")]
 attack = ExtResource("2_n0kpw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(123.91304, -15.217391)
+scale = Vector2(4.495, 4.495)
+enabled = false
+energy = 5.0
+texture = SubResource("GradientTexture2D_yt8w1")
 
 [node name="CDTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -30,3 +70,34 @@ texture_filter = 1
 position = Vector2(84.78261, -17.391306)
 scale = Vector2(2.052795, 2.1491754)
 texture = ExtResource("3_n0kpw")
+
+[node name="Barrel" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(123.91304, -13.043478)
+
+[node name="BulletCollision" parent="." instance=ExtResource("6_bq3o1")]
+unique_name_in_owner = true
+position = Vector2(126.08695, -15.217391)
+rotation = 1.5707964
+scale = Vector2(0.36000004, 0.36000004)
+script = null
+
+[node name="MuzzleFX" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(204.34782, -17.391304)
+emitting = false
+amount = 1
+texture = ExtResource("5_fcpsv")
+lifetime = 0.1
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_wnm2o")
+
+[node name="pistolshot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bq3o1")
+volume_db = -2.0
+
+[node name="pistolslider" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gvefp")
+volume_db = 2.0
+autoplay = true

@@ -268,6 +268,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, WALL_RUN_DECCEL * delta)
 		"Jump Up":
 			# Add the gravity.
+			if absf(velocity.y) < 20.0 and animated_sprite_2d.animation == &"jump_up":
+				animated_sprite_2d.play("peak_jump")
 			if velocity.y > 0:
 				playerState = "Falling"
 				last_direction_wall = 0.0
@@ -276,6 +278,8 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, desired_velocity.x, AIR_ACCELERATION * delta)
 			else:
 				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
+			right_wall_cast.force_raycast_update()
+			left_wall_cast.force_raycast_update()
 			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
 				#if not(direction==last_direction_wall):
 				wall_direction = direction
@@ -310,6 +314,11 @@ func _physics_process(delta: float) -> void:
 
 				
 		"Falling":
+			if absf(velocity.y) < 20.0:
+				if animated_sprite_2d.animation == &"fall":
+					animated_sprite_2d.play("peak_jump")
+			elif animated_sprite_2d.animation == &"peak_jump":
+				animated_sprite_2d.play("fall")
 			if is_on_floor():
 				playerState = "Running"
 				last_direction_wall = 0.0
@@ -318,6 +327,8 @@ func _physics_process(delta: float) -> void:
 				velocity.x = move_toward(velocity.x, desired_velocity.x, AIR_ACCELERATION * delta)
 			else:
 				velocity.x = move_toward(velocity.x, 0, AIR_ACCELERATION * delta)
+			right_wall_cast.force_raycast_update()
+			left_wall_cast.force_raycast_update()
 			if (right_wall_cast.is_colliding() and direction > 0.0) or (left_wall_cast.is_colliding() and direction < 0.0):
 				if not(direction==last_direction_wall):
 					wall_direction = direction

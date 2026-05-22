@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxhk61y4me6u4"]
+[gd_scene load_steps=8 format=3 uid="uid://bxhk61y4me6u4"]
 
 [ext_resource type="Script" uid="uid://cl0dkh85cn5mn" path="res://scripts/WeaponScripts/rocket_weapon.gd" id="1_757p5"]
 [ext_resource type="Texture2D" uid="uid://dy3a2y4r1bhi2" path="res://assets/rocket launcher.png" id="2_h4lji"]
 [ext_resource type="PackedScene" uid="uid://b0v3m7sex0cef" path="res://scenes/Projectiles/rocket.tscn" id="2_r36wl"]
-[ext_resource type="Shader" uid="uid://cq4c1t7ofplk5" path="res://assets/shader/outline.gdshader" id="3_r36wl"]
+[ext_resource type="Shader" path="res://assets/shader/outline.gdshader" id="3_r36wl"]
+[ext_resource type="AudioStream" uid="uid://u33f101mu7ng" path="res://assets/SFX/RocketLoad.mp3" id="5_ty31p"]
+[ext_resource type="AudioStream" uid="uid://c0v5jxmc0vu65" path="res://assets/SFX/Explosion.wav" id="6_4k7eo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8jdxy"]
 shader = ExtResource("3_r36wl")
@@ -29,3 +31,14 @@ unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(30.434782, 0)
 texture = ExtResource("2_h4lji")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="RocketLoad" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ty31p")
+volume_db = 4.0
+pitch_scale = 0.8
+
+[node name="RocketImpact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4k7eo")
+volume_db = -4.0

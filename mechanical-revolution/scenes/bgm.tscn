@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2ip12pjnjh3y"]
+
+[ext_resource type="AudioStream" uid="uid://dl0w3pko1sysp" path="res://assets/Guitar-Mayhem-5.mp3" id="1_q5y64"]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource("1_q5y64")
+volume_db = -8.0
+autoplay = true
+parameters/looping = true

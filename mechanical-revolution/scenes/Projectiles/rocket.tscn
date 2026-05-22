@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0v3m7sex0cef"]
+[gd_scene load_steps=11 format=3 uid="uid://b0v3m7sex0cef"]
 
 [ext_resource type="Texture2D" uid="uid://b7s1o40iaue6g" path="res://assets/RocketRPG_Bullet.png" id="1_3aohs"]
 [ext_resource type="Script" uid="uid://dk1d5y1dhxwkc" path="res://scripts/ProjectileScripts/rocket.gd" id="1_p1wyp"]
 [ext_resource type="Script" uid="uid://dr442aw2r2gmm" path="res://scripts/resourceScripts/explosion_info.gd" id="2_aawao"]
 [ext_resource type="PackedScene" uid="uid://piew3tl7825o" path="res://scenes/Projectiles/explosion.tscn" id="3_r4wva"]
 [ext_resource type="Shader" uid="uid://cq4c1t7ofplk5" path="res://assets/shader/outline.gdshader" id="4_fg3tm"]
+[ext_resource type="PackedScene" uid="uid://bxcbdnmgti6qn" path="res://scenes/ParticleFX/explosion.tscn" id="4_ghp7f"]
+[ext_resource type="PackedScene" uid="uid://be8d6cmwibe2v" path="res://scenes/ParticleFX/explosion_smoke.tscn" id="5_mno7p"]
 
 [sub_resource type="Resource" id="Resource_r4wva"]
 script = ExtResource("2_aawao")
@@ -29,6 +31,8 @@ collision_mask = 52
 script = ExtResource("1_p1wyp")
 explosionRes = SubResource("Resource_r4wva")
 explosionScn = ExtResource("3_r4wva")
+explosion_main = ExtResource("4_ghp7f")
+explosion_smoke = ExtResource("5_mno7p")
 travel_speed = 1250.0
 damage = 50.0
 metadata/_custom_type_script = "uid://dk1d5y1dhxwkc"
