@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bt212r22nlc3n" path="res://scenes/light2.tscn" id="8_fik6u"]
 [ext_resource type="PackedScene" uid="uid://1s8ikuel8yb6" path="res://scenes/LevelFolder/Level_2.tscn" id="8_g4evb"]
 [ext_resource type="Texture2D" uid="uid://dbr1uwxmut1dp" path="res://assets/Background.png" id="11_idqol"]
-[ext_resource type="Shader" path="res://Assets/shader/repeatTexture.gdshader" id="12_idqol"]
+[ext_resource type="Shader" uid="uid://co8577lomdqo5" path="res://assets/shader/repeatTexture.gdshader" id="12_idqol"]
 [ext_resource type="Texture2D" uid="uid://cj1dtqitudsy5" path="res://assets/server.png" id="13_cdv85"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dkk54"]
