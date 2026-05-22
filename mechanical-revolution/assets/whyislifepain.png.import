@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwq13q1kh44gd"
-path="res://.godot/imported/robot revolver.png-900d336988f0b22faebfaecff431e0e3.ctex"
+uid="uid://brc50uqvtpujd"
+path="res://.godot/imported/whyislifepain.png-57653fa86a177c93e060f8209c92f93b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemyanims/robot revolver.png"
-dest_files=["res://.godot/imported/robot revolver.png-900d336988f0b22faebfaecff431e0e3.ctex"]
+source_file="res://assets/whyislifepain.png"
+dest_files=["res://.godot/imported/whyislifepain.png-57653fa86a177c93e060f8209c92f93b.ctex"]
 
 [params]
 

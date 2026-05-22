@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjlibd1xfgd5j"
-path="res://.godot/imported/moveable laser gun-export.png-f88d698193c38c5769d2f4486066c31c.ctex"
+path="res://.godot/imported/moveable laser gun-export.png-d7cf8baceb5cc9890c6d5b5a81812705.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/enemyanims/moveable laser gun-export.png"
-dest_files=["res://.godot/imported/moveable laser gun-export.png-f88d698193c38c5769d2f4486066c31c.ctex"]
+source_file="res://assets/enemyanims/moveable laser gun-export.png"
+dest_files=["res://.godot/imported/moveable laser gun-export.png-d7cf8baceb5cc9890c6d5b5a81812705.ctex"]
 
 [params]
 

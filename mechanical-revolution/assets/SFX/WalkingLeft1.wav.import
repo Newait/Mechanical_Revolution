@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dhe1y5chyr5kg"
-path="res://.godot/imported/WalkingLeft1.wav-05aa744e2b9439f418f7839d00744331.sample"
+path="res://.godot/imported/WalkingLeft1.wav-12c32fb6306a9f318acab74754561c1b.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/WalkingLeft1.wav"
-dest_files=["res://.godot/imported/WalkingLeft1.wav-05aa744e2b9439f418f7839d00744331.sample"]
+source_file="res://assets/SFX/WalkingLeft1.wav"
+dest_files=["res://.godot/imported/WalkingLeft1.wav-12c32fb6306a9f318acab74754561c1b.sample"]
 
 [params]
 

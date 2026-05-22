@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nivo4ybyc7ii"
-path="res://.godot/imported/LightPolygon.png-bb8e360fe53f0496c7c5e078814f636c.ctex"
+path="res://.godot/imported/LightPolygon.png-c744d1189b5ef0f0c5764a524e765a3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/LightPolygon.png"
-dest_files=["res://.godot/imported/LightPolygon.png-bb8e360fe53f0496c7c5e078814f636c.ctex"]
+source_file="res://assets/LightPolygon.png"
+dest_files=["res://.godot/imported/LightPolygon.png-c744d1189b5ef0f0c5764a524e765a3a.ctex"]
 
 [params]
 
