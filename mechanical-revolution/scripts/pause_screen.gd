@@ -6,10 +6,14 @@ func _ready() -> void:
 func resume():
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
+	for button: Button in $PanelContainer/VBoxContainer.get_children():
+		button.disabled = true
 
 func pause():
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
+	for button: Button in $PanelContainer/VBoxContainer.get_children():
+		button.disabled = false
 
 func testEsc():
 	if Input.is_action_just_pressed("pause") and get_tree().paused == false:

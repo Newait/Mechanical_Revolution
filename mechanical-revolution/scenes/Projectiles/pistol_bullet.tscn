@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://chgmjk7ebd517"]
+[gd_scene load_steps=9 format=3 uid="uid://chgmjk7ebd517"]
 
 [ext_resource type="Script" uid="uid://luar0oh7puga" path="res://scripts/ProjectileScripts/pistol_bullet.gd" id="1_c24l2"]
 [ext_resource type="Shader" uid="uid://cq4c1t7ofplk5" path="res://assets/shader/outline.gdshader" id="2_pwgq6"]
 [ext_resource type="Texture2D" uid="uid://d2qt0sl1l8uc" path="res://assets/Bullet.png" id="2_rgpvk"]
 [ext_resource type="PackedScene" uid="uid://b12ksimkicjti" path="res://scenes/ParticleFX/bullet_collide.tscn" id="2_yvi33"]
+[ext_resource type="PackedScene" uid="uid://b3d8aou3o1bi1" path="res://scenes/audio_stream_player_2d.tscn" id="3_yvi33"]
+[ext_resource type="AudioStream" uid="uid://dsarj0nwd6gye" path="res://assets/SFX/PistolHit.wav" id="4_khhyo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pwgq6"]
 radius = 16.03122
@@ -19,6 +21,8 @@ collision_layer = 4
 collision_mask = 52
 script = ExtResource("1_c24l2")
 bullet_collide = ExtResource("2_yvi33")
+bullet_hit_sound = ExtResource("3_yvi33")
+bullet_hit_audio = ExtResource("4_khhyo")
 travel_speed = 1000.0
 damage = 50.0
 metadata/_custom_type_script = "uid://luar0oh7puga"
